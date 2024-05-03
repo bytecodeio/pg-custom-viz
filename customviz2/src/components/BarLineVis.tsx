@@ -38,7 +38,7 @@ import * as Gauge from "chartjs-gauge";
 import "bootstrap/scss/bootstrap.scss";
 // import Button from "react-bootstrap/Button";
 
-import { Button, Overlay, OverlayTrigger, Popover, PopoverBody, PopoverHeader} from 'react-bootstrap';
+import { Row, Col, Container, Button, Overlay, OverlayTrigger, Popover, PopoverBody, PopoverHeader, ProgressBar} from 'react-bootstrap';
 import styled from "styled-components";
 import CSS from 'csstype';
 
@@ -776,7 +776,7 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
 console.log(data)
 
-
+  // {item[reachLeft1].value.toLocaleString()}
 
   return (
     <Fragment>
@@ -785,162 +785,71 @@ console.log(data)
 
     <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
-    <div className="blueBubble reach" style={{ backgroundColor: color_title ? background[0] : '#2960f6'}}>
-    <div class="d-flex justify-content-start">
-    <p class="white" style={{color: titleColor ? titleColor : '#fff'}}>Reach</p>
+    <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : '#f7f8f9'}}>
+    <div class="d-flex justify-content-between">
+    <p class="white mb-4" style={{color: titleColor ? titleColor : '#14171c'}}>{writeTitle === "" ? "Total Media Spend and Investment" : writeTitle}</p>
+
+
+    <p className="gray">Total Investment</p>
     </div>
+    <Container fluid>
+      <Row>
+      {data.map((item, i) =>(
+        <>
+
+      <Col md={8}>
+      <p className="mb-0">{item[reachLeft2].value}</p>
+      <div className="position-relative">
+      <div className="progress">
+        <div
+        className="progress-bar"
+        role="progressbar"
+        style={{ width:  Math.round(item[reachLeft1].value.toFixed(0))}}
+        ></div>
+        </div>
+
+          <span className="progress-label">
+
+          {Math.round(item[reachLeft1].value.toFixed(0))}%
+
+          </span>
+        </div>
 
 
-    {data.map((item, i) =>(
-
-      <div className="whiteAcross">
+      </Col>
 
 
+      <Col md={3} className="offset-1">
+       <p className="mb-0">&nbsp;</p>
+      <div className="position-relative">
+      <div className="progress">
+        <div
+        className="progress-bar"
+        role="progressbar"
+        style={{ width:  Math.round(item[reachLeft3].value.toFixed(0))}}
+        ></div>
+        </div>
 
-      <div className="d-flex flex-column">
+          <span className="progress-label">
 
-      <p className="mb-0">
+          {Math.round(item[reachLeft3].value.toFixed(0))}
 
-          {item[reachLeft1].value.toLocaleString()}
-
-      </p>
-
-      <p className="large mb-0">
-
-     {dollar1 ? "$" : ""}{Math.round(item[reachLeft2].value.toLocaleString()).toFixed(2)}{percentSign1 ? "%" : ""}
-
-      </p>
-
-      <p className="mb-0 small">
-
-
-      {write4 === "" ? item[reachLeft3].value.toLocaleString() : write4}
-
-
-
-      </p>
-      </div>
-
-
-
-      <div class={item[reachRight].value >= 102 ? "varianceBubble positive" :
-      item[reachRight].value < 102 && item[reachRight].value > 98 ? "varianceBubble neutral" :
-      "varianceBubble negative"}>
-
-      <i class="far fa-long-arrow-up"></i>
-
-      {item[reachRight].value === !NaN ? Math.round(item[reachRight].value.toLocaleString()).toFixed(0) : item[reachRight].value.toLocaleString()}{right1 ? "%" : ""} {iya1 ? "IYA" : ""}
-
-
-       </div>
-      </div>
-
-    ))}
-
-
-
-
-    </div>
-
-
-
-        <div className="blueBubble effectiveness" style={{backgroundColor: color_title ? background[0] : '#2960f6'}}>
-          <div class="d-flex justify-content-start">
-          <p class="white" style={{color: titleColor ? titleColor : '#fff'}}>Effectiveness</p>
-            </div>
-
-            {data.map((item, i) =>(
-
-              <div className="whiteAcross">
-              <div className="d-flex flex-column">
-
-              <p className="mb-0">
-              {item[effectivenessLeft1].value.toLocaleString()}
-
-              </p>
-
-              <p className="large mb-0">
-
-     {dollar2 ? "$" : ""}{Math.round(item[effectivenessLeft2].value.toLocaleString()).toFixed(2)}{percentSign2 ? "%" : ""}
-
-
-
-                 </p>
-
-              <p className="mb-0 small">
-
-              {write7 === "" ? item[effectivenessLeft3].value.toLocaleString() : write7}
-
-
-
-              </p>
-              </div>
-
-              <div class={item[effectivenessRight].value >= 102 ? "varianceBubble positive" :
-              item[effectivenessRight].value < 102 && item[effectivenessRight].value > 98 ? "varianceBubble neutral" :
-              "varianceBubble negative"}>
-
-
-              <i class="far fa-long-arrow-up"></i>
-
-  {item[effectivenessRight].value === !NaN ? Math.round(item[effectivenessRight].value.toLocaleString()).toFixed(0) : item[effectivenessRight].value.toLocaleString()}{right2 ? "%" : ""} {iya2 ? "IYA" : ""}
-
-
-               </div>
-              </div>
-
-            ))}
-
-
+          </span>
         </div>
 
 
 
-            <div className="blueBubble efficiency" style={{backgroundColor: color_title ? background[0] : '#2960f6'}}>
-              <div class="d-flex justify-content-start">
-              <p class="white" style={{color: titleColor ? titleColor : '#fff'}}>Efficiency</p>
-                </div>
+
+        </Col>
+
+          </>
+    ))}
 
 
-                {data.map((item, i) =>(
+    </Row>
+    </Container>
+    </div>
 
-                  <div className="whiteAcross">
-                  <div className="d-flex flex-column">
-
-                  <p className="mb-0">
-                  {item[efficiencyLeft1].value.toLocaleString()}
-                  </p>
-
-                  <p className="large mb-0">
-
-
-        {dollar3 ? "$" : ""}{Math.round(item[efficiencyLeft2].value.toLocaleString()).toFixed(2)}{percentSign3 ? "%" : ""}
-
-                  </p>
-
-                  <p className="mb-0 small">
-          {write11 === "" ? item[efficiencyLeft3].value.toLocaleString() : write11}
-                  </p>
-                  </div>
-
-                  <div class={item[efficiencyRight].value >= 102 ? "varianceBubble positive" :
-                  item[efficiencyRight].value < 102 && item[efficiencyRight].value > 98 ? "varianceBubble neutral" :
-                  "varianceBubble negative"}>
-
-                  <i class="far fa-long-arrow-up"></i>
-
-
-                  {item[efficiencyRight].value === !NaN ? Math.round(item[efficiencyRight].value.toLocaleString()).toFixed(0) : item[efficiencyRight].value.toLocaleString()}{right3 ? "%" : ""} {iya3 ? "IYA" : ""}
-
-
-
-
-                  </div>
-                  </div>
-
-                ))}
-
-            </div>
 
 
 

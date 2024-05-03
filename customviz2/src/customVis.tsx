@@ -99,14 +99,25 @@ looker.plugins.visualizations.add({
     const configOptions: ConfigOptions = {
 
 
+
+            writeTitle: {
+              type: "string",
+              label: "Title Override",
+              default: "",
+              order: 0,
+              section: "Style",
+            },
+
+
+
       reachLeft1: {
-        label: "Choose Left Side Value 1 for Reach",
+        label: "Choose Left Progress Bar Values",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
-        section: "Reach",
-        order: 0,
+        section: "Style",
+        order: 2,
       },
 
 
@@ -121,13 +132,13 @@ looker.plugins.visualizations.add({
 
 
       reachLeft2: {
-        label: "Choose Left Side Value 2 for Reach",
+        label: "Choose Labels",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
-        section: "Reach",
-        order: 2,
+          section: "Style",
+        order: 1,
       },
 
       dollar1: {
@@ -146,12 +157,12 @@ looker.plugins.visualizations.add({
      },
 
       reachLeft3: {
-        label: "Choose Left Side Value 3 for Reach",
+        label: "Choose Right Progress Bar Values",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
-        section: "Reach",
+        section: "Style",
         order: 5,
       },
 
@@ -376,7 +387,7 @@ looker.plugins.visualizations.add({
         type: 'array',
         label: 'Background Color',
         display: 'colors',
-        default: ['#0066ff', '#a2c4c9', '#00363d', '#dd3333', '#80ce5d', '#f78131', '#369dc1', '#c572d3', '#36c1b3', '#b57052', '#ed69af'],
+        default: ['#f7f8f9','#0066ff', '#a2c4c9', '#00363d', '#dd3333', '#80ce5d', '#f78131', '#369dc1', '#c572d3', '#36c1b3', '#b57052', '#ed69af'],
         order: 4,
         section: "Style",
       },
@@ -386,9 +397,9 @@ looker.plugins.visualizations.add({
       titleColor: {
         type: "string",
         label: "Title Color",
-        default: "#ffffff",
+        default: "#14171c",
         display: "text",
-        placeholder: "#ffffff",
+        placeholder: "#14171c",
 
         order: 6,
         section: "Style",
