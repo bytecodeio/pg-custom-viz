@@ -210,23 +210,23 @@ p{
   color:#14171b !important
 }
 
- .pv .progress-bar{
+ .col-md-8:nth-child(1)  .progress-bar{
   background: #12d465;
 }
 
- .social .progress-bar{
+.col-md-8:nth-child(3) .progress-bar{
   background: #ffda00;
 }
 
- .search .progress-bar {
+.col-md-8:nth-child(5) .progress-bar {
   background: #0066ff;
 }
 
- .tv .progress-bar {
+.col-md-8:nth-child(7) .progress-bar {
   background: #e22bb7;
 }
 
-.digital .progress-bar {
+.col-md-8:nth-child(9) .progress-bar {
  background: #6fd0e9;
 }
 
