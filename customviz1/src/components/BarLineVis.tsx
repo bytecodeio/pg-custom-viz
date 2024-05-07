@@ -190,17 +190,47 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     dollar3,
     percentSign3,
     reachLeft1,
+    reach2Left1,
+    reach3Left1,
     reachLeft2,
+    reach2Left2,
+    reach3Left2,
+    reach2Left3,
+    reach3Left3,
     reachLeft3,
     reachRight,
+    reach2Right,
+    reach3Right,
     effectivenessLeft1,
     effectivenessLeft2,
     effectivenessLeft3,
     effectivenessRight,
+
+    effectiveness2Left1,
+    effectiveness2Left2,
+    effectiveness2Left3,
+    effectiveness2Right,
+
+    effectiveness3Left1,
+    effectiveness3Left2,
+    effectiveness3Left3,
+    effectiveness3Right,
+
     efficiencyLeft1,
     efficiencyLeft2,
     efficiencyLeft3,
     efficiencyRight,
+
+    efficiency2Left1,
+    efficiency2Left2,
+    efficiency2Left3,
+    efficiency2Right,
+
+    efficiency3Left1,
+    efficiency3Left2,
+    efficiency3Left3,
+    efficiency3Right,
+
     write1,
     write2,
     write3,
@@ -215,10 +245,26 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     write12,
     right1,
     iya1,
-    right2,
+    reach2right1,
+    reach2iya1,
+
+    reach3right1,
+    reach3iya1,
     iya2,
+    right2,
+    effectivenessright2,
+
+    effectiveness2right2,
+    effectiveness2iya2,
+    effectiveness3right2,
+    effectiveness3iya2,
     right3,
-    iya3
+    iya3,
+    effectivenessiya2,
+    efficiency2right2,
+    efficiency2iya2,
+    efficiency3right2,
+    efficiency3iya2
   } = config;
 
 
@@ -268,22 +314,6 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
   );
 
 
-
-  //
-  // let tooltipMeasure = [];
-  //
-  // for (const [key, value] of Object.entries(firstData)) {
-  //   if (key.split(".")[1] === "count_orders") {
-  //   tooltipMeasure = firstData[key].value.split(",").map((e) => e.trim());
-  //
-  //   }
-  // }
-  // // let tooltipMeasure = tooltipMeasure.toString()
-  //
-  //
-  // console.log(tooltipMeasure, "count_orders")
-
-
   const colors = config.color_range
 
   const background = config.color_title
@@ -317,10 +347,6 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     let canvasElement = document.getElementById("chart") as HTMLCanvasElement;
     if (canvasElement) {
       const ctx = canvasElement.getContext("2d");
-
-
-
-
 
       setChartData({ labels, datasets });
     }
@@ -395,17 +421,11 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
       setTooltip({
 
-
         dimensionLabel0: `${dimensionLabel}:`,
 
         dimensionLabel: `${context.tooltip.title[0]}`,
         measureLabel: `${context.tooltip.dataPoints[0].dataset.label}: `,
 
-
-
-        // measureLabel0: `${yAxisLeftValues}: `,
-        // measureLabel0: `${context.tooltip.dataPoints[0].formattedValue}`,
-        //measureLabel0: percentSign ? `${context.tooltip.dataPoints[0].formattedValue*100}%` : `${context.tooltip.dataPoints[0].formattedValue}`,
         left:
             position.left + window.pageXOffset + context.tooltip.caretX + "px",
             rows,
@@ -424,357 +444,6 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
   }
 
 
-  // const Content = config.textTitle.split(",").map((d, i) => ({
-  //   textTitle: d,
-  //   // textTitle:config.textTitle.split(",")[i],
-  //
-  //
-  //
-  //
-  // }))
-//
-//   Content.map((val, i) => (
-//
-// console.log(val.yAxisDropdown, "seifuewbiviyewiwvew")
-//
-//   ))
-//
-//
-
-
- //
- // const yAxisValues = data.map(item => item[yAxisLeftValues].value)
-
-
-
-
-
-
-
-//
-//
-//
-//
-//
-//   var total = 0;
-//   for(var i = 0; i < yAxisValues.length; i++) {
-//       total += yAxisValues[i];
-//   }
-//   var avg = total / yAxisValues.length;
-//   let array = yAxisValues
-//
-// function calculateAverage(array) {
-// let num = 0;
-// for (let i = 0; i < yAxisValues.length; i++) {
-//    // console.log(yAxisValues[i]);
-//
-//  num += +yAxisValues[i];
-//    // console.log(yAxisValues.length)
-// }
-// return num / yAxisValues.length
-//
-// }
-//
-// var average = calculateAverage(array);
-//
-// var average =  percentSign ? Math.round(average * 100).toLocaleString() : Math.round(average * 1).toLocaleString();
-//
-//
-//   let title = Content.map(function(val, i){ return val.textTitle });
-//
-//   let title = title[0]
-//
-//
-//   let percent = Content.map(function(val, i){ return val.yAxisDropdown });
-//
-//   let percent = Math.round(percent[0] * 100)
-//
-//
-//   let result = data.map(item => item[symbol].value)
-//
-//
-//
-//   let target = percentSign ? Math.round(result[0]*100) : Math.round(result[0]) ;
-//
-//   let yAxisRightDropdownValues = Content.map(function(val, i){ return val.yAxisRightDropdown });
-//
-//
-//   let yAxisRightDropdownValues = Math.round(yAxisRightDropdownValues[0])
-//
-//
-//   const first = labels[0];
-//   const lastLabel = labels[labels.length - 1];
-//
-//
-//
-//   let array2 = yAxisDropdown.split(',').map(function(item) {
-//       return parseInt(item);
-//   });
-//
-//
-//   const yDrop = data.map(item => item[yAxisDropdown].value)
-//
-//   const last = yDrop[yDrop.length - 1];
-//
-//
-//   // const last = Math.round(last * 1).toLocaleString();
-//   //
-//   //
-//   // console.log(last)
-//
-// // var labels = [first, lastLabel]
-// // console.log(thing)
-// //
-// // console.log(labels)
-//
-//
-//
-// const percentDiff1 = percentSign ? Math.round(last / (target/100) * 100) : Math.round(last / target * 100)
-// const percentDiff2 =  Math.round(last / parseInt(writeTarget) * 100)
-//
-// const percentDiff3 = percentSign ? Math.round(last / (parseInt(average)/100) * 100) : Math.round(last / parseInt(average) * 100)
-//
-//
-//
-// console.log(last, percentDiff1, percentDiff2, percentDiff3 )
-//
-//
-//   const popoverHoverFocus = (
-//     <Popover
-//     className={toolOn ? "" : "hidden"}
-//     id="popover"
-//     >
-//     <p>{writeTooltip}</p>
-//     </Popover>
-//   );
-//
-//   const chartOptions: ChartOptions<"scatter" | "bar"> = useMemo(
-//     () => ({
-//       layout: {
-//         padding: {
-//           top: 30,
-//           right:10,
-//           left: 10,
-//           bottom:0
-//
-//         },
-//       },
-//
-//       onClick: (event, elements, chart) => {
-//
-//         if (!elements.length) {
-//           return;
-//         }
-//         const { datasetIndex, index: dataIndex } = elements[0];
-//
-//         if (hasPivot) {
-//
-//           const measureLinks = Object.values(data[dataIndex][measureName])[datasetIndex].links ?? [];
-//           const dimensionLinks = (data[dataIndex][dimensionName].links as Link[]) ?? [];
-//
-//         }
-//         else{
-//           const measureLinks = data[dataIndex][measureName].links ?? [];
-//
-//           const dimensionLinks = (data[dataIndex][dimensionName].links) ?? [];
-//         }
-//
-//         lookerCharts.Utils.openDrillMenu({
-//           links: [...measureLinks, ...dimensionLinks],
-//           event: event.native,
-//         });
-//       },
-//       maintainAspectRatio: false,
-//       responsive: true,
-//       plugins: {
-//         datalabels: {
-//
-//             // display:  showDatalabels ?  "auto" : false,
-//
-//           display: showDatalabels && !autoData ?  "auto" :  showDatalabels && autoData  ? true : !showDatalabels && autoData ? false : !showDatalabels && !autoData ? false : false,
-//           formatter: function(value: number) {
-//
-//            if (value > 0 && value <  1){
-//                 return `${percentSign ? (value*100).toFixed(0) + '%' : (value).toFixed(2)}`
-//             }
-//
-//            else if (value < 100){
-//
-//               return `${percentSign ? Math.round(value*100).toFixed(0) + '%' : Math.round(value*1)}`
-//             }
-//             else if (value < 1000){
-//
-//             return `${percentSign ? Math.round(value*100).toFixed(0) + '%' : Math.round(value*1)}`
-//           }
-//             else{
-//                 let percentage = (value) / 1000
-//                 return `${percentSign ? formatNumber(Math.round(percentage.toFixed(0) * 1000)) + '%' : formatNumber(Math.round(percentage.toFixed() * 1000))}`;
-//             }
-//         },
-//
-//           font: {
-//             size: 10,
-//             weight: '500',
-//             family: bodyStyle ? bodyStyle : "'Roboto'"
-//
-//           },
-//
-//           anchor: 'end',
-//           align: 'end',
-//
-//         },
-//         legend: {
-//           position: "bottom",
-//           labels:
-//
-//           {
-//             color:'#262D33',
-//             font: {
-//               size: `${legendSize ?  legendSize  : 10 }`,
-//               weight: '500',
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//
-//             },
-//             usePointStyle: true
-//           },
-//           align: "center" as const,
-//           display: `${showXGridLines ? hasNoPivot || hasPivot : ""}`
-//         },
-//
-//         tooltip: {
-//           enabled: false,
-//           position: "nearest",
-//           external: (context) =>
-//           tooltipHandler(context, setTooltip),
-//         },
-//       },
-//       scales: {
-//         x: {
-//           border: {
-//             display: false,
-//           },
-//
-//           grid: {
-//             display: false,
-//           },
-//           stacked: false,
-//           title: {
-//             display: false,
-//             // text: ` ${xAxisDropdown ?  xAxisDropdownValues  : dimensionLabel }`,
-//             font: {
-//               size: 10,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             }
-//           },
-//           ticks: {
-//
-//
-//             display: showTwo || showX ? true : false,
-//
-//             // `${showX  ? true : false  : showTwo  ? true : false : false}`,
-//
-//               autoSkip: `${diagonal ?  true : false }`,
-//               maxRotation: `${diagonal ?  60  : 0 }`,
-//               minRotation: `${diagonal ?  60  : 0 }`,
-//
-//               maxTicksLimit: `${showTwo ?  1 : 5000}`,
-//               autoSkip: `${showTwo ?  true : false}`,
-//               minRotation:`${showTwo ?  0 : 0}`,
-//
-//
-//             // callback: () => {
-//             //
-//             //   return labels[0];
-//             //   // return labels[labels.length - 1];
-//             // },
-//
-//
-//
-//             font: {
-//               size:`${xFontSize ?  xFontSize  : 10 }`,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             },
-//             color: 'black',
-//           },
-//         },
-//
-//         yLeft: {
-//           border: {
-//             display: false,
-//           },
-//           grid: {
-//             display: false,
-//           },
-//           position: "left" as const,
-//           stacked: false,
-//           ticks: {
-//             font: {
-//               size: `${yFontSize ?  yFontSize  : 10 }`,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             },
-//             display:showYGridLines,
-//             callback: function (value: number) {
-//               return `${percentSign ? formatNumber((value*100).toFixed(0)) + "%" :  formatNumber(value)}`;
-//             },
-//           },
-//           title: {
-//             display: false,
-//             // text: `${showYGridLines ?  yAxisRightDropdownValues  : measureLabel }`,
-//             font: {
-//               size: 10,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             }
-//           },
-//
-//         },
-//
-//         yRight: {
-//           legend: {
-//             display: true,
-//         },
-//         grid: {
-//           display: false,
-//         },
-//         position: "right" as const,
-//         display: false,
-//         ticks: {
-//
-//           display: false,
-//
-//
-//         },
-//
-//
-//       },
-//
-//       },
-//     }),
-//     []
-//   );
-//
-//   const kpiValue = data.reduce((total, currentRow) => {
-//     let newTotal = total;
-//     if (hasPivot) {
-//       const cellValues = Object.values(currentRow[measureName]).map(
-//         (cell) => cell.value
-//       );
-//       for (let i = 0; i < cellValues.length; i++) {
-//         newTotal += cellValues[i];
-//       }
-//     } else {
-//       newTotal += currentRow[measureName].value;
-//     }
-//
-//     return newTotal;
-//   }, 0);
-//
-//   function handleChartTypeSelection(newChartType: ChartType) {
-//     setSelectedChartType(newChartType);
-//     updateChartData(newChartType);
-//   }
-
-
-console.log(data)
 
 
 
@@ -790,55 +459,93 @@ console.log(data)
     <p class="white" style={{color: titleColor ? titleColor : '#fff'}}>Reach</p>
     </div>
 
-
     {data.map((item, i) =>(
 
+      <>
+
       <div className="whiteAcross">
-
-
-
       <div className="d-flex flex-column">
-
       <p className="mb-0">
-
-          {item[reachLeft1].value.toLocaleString()}
-
+      {reachLeft1}
       </p>
-
       <p className="large mb-0">
 
-     {dollar1 ? "$" : ""}{Math.round(item[reachLeft2].value.toLocaleString()).toFixed(2)}{percentSign1 ? "%" : ""}
-
+     {item[reachLeft2].rendered}
       </p>
-
       <p className="mb-0 small">
-
-
-      {write4 === "" ? item[reachLeft3].value.toLocaleString() : write4}
-
-
+      {reachLeft3}
 
       </p>
       </div>
-
-
 
       <div class={item[reachRight].value >= 102 ? "varianceBubble positive" :
       item[reachRight].value < 102 && item[reachRight].value > 98 ? "varianceBubble neutral" :
       "varianceBubble negative"}>
 
       <i class="far fa-long-arrow-up"></i>
-
-      {item[reachRight].value === !NaN ? Math.round(item[reachRight].value.toLocaleString()).toFixed(0) : item[reachRight].value.toLocaleString()}{right1 ? "%" : ""} {iya1 ? "IYA" : ""}
-
+      {item[reachRight].rendered}{right1 ? "%" : ""}&nbsp;&nbsp;{iya1 ? "IYA" : ""}
 
        </div>
       </div>
 
+
+
+      <div className="whiteAcross">
+      <div className="d-flex flex-column">
+      <p className="mb-0">
+      {reach2Left1}
+      </p>
+      <p className="large mb-0">
+
+     {item[reach2Left2].rendered}
+      </p>
+      <p className="mb-0 small">
+      {reach2Left3}
+
+      </p>
+      </div>
+
+      <div class={item[reach2Right].value >= 102 ? "varianceBubble positive" :
+      item[reach2Right].value < 102 && item[reach2Right].value > 98 ? "varianceBubble neutral" :
+      "varianceBubble negative"}>
+
+      <i class="far fa-long-arrow-up"></i>
+      {item[reach2Right].rendered}{reach2right1 ? "%" : ""}&nbsp;&nbsp;{reach2iya1 ? "IYA" : ""}
+
+       </div>
+      </div>
+
+
+
+      <div className="whiteAcross mb-5">
+      <div className="d-flex flex-column">
+      <p className="mb-0">
+      {reach3Left1}
+      </p>
+      <p className="large mb-0">
+
+     {item[reach3Left2].rendered}
+      </p>
+      <p className="mb-0 small">
+      {reach3Left3}
+
+      </p>
+      </div>
+
+      <div class={item[reach3Right].value >= 102 ? "varianceBubble positive" :
+      item[reach3Right].value < 102 && item[reach3Right].value > 98 ? "varianceBubble neutral" :
+      "varianceBubble negative"}>
+
+      <i class="far fa-long-arrow-up"></i>
+      {item[reach3Right].rendered}{reach3right1 ? "%" : ""}&nbsp;&nbsp;{reach3iya1 ? "IYA" : ""}
+
+       </div>
+      </div>
+
+      </>
+
+
     ))}
-
-
-
 
     </div>
 
@@ -851,25 +558,25 @@ console.log(data)
 
             {data.map((item, i) =>(
 
+              <>
+
               <div className="whiteAcross">
               <div className="d-flex flex-column">
 
               <p className="mb-0">
-              {item[effectivenessLeft1].value.toLocaleString()}
+              {effectivenessLeft1}
 
               </p>
 
               <p className="large mb-0">
 
-     {dollar2 ? "$" : ""}{Math.round(item[effectivenessLeft2].value.toLocaleString()).toFixed(2)}{percentSign2 ? "%" : ""}
+               {item[effectivenessLeft2].rendered}
 
-
-
-                 </p>
+               </p>
 
               <p className="mb-0 small">
 
-              {write7 === "" ? item[effectivenessLeft3].value.toLocaleString() : write7}
+              {effectivenessLeft3}
 
 
 
@@ -882,12 +589,81 @@ console.log(data)
 
 
               <i class="far fa-long-arrow-up"></i>
-
-  {item[effectivenessRight].value === !NaN ? Math.round(item[effectivenessRight].value.toLocaleString()).toFixed(0) : item[effectivenessRight].value.toLocaleString()}{right2 ? "%" : ""} {iya2 ? "IYA" : ""}
-
+                {item[effectivenessRight].rendered}{effectivenessright2 ? "%" : ""}&nbsp;&nbsp;{effectivenessiya2 ? "IYA" : ""}
 
                </div>
               </div>
+
+              <div className="whiteAcross">
+              <div className="d-flex flex-column">
+
+              <p className="mb-0">
+              {effectiveness2Left1}
+
+              </p>
+
+              <p className="large mb-0">
+
+               {item[effectiveness2Left2].rendered}
+
+               </p>
+
+              <p className="mb-0 small">
+
+              {effectiveness2Left3}
+
+
+
+              </p>
+              </div>
+
+              <div class={item[effectiveness2Right].value >= 102 ? "varianceBubble positive" :
+              item[effectiveness2Right].value < 102 && item[effectiveness2Right].value > 98 ? "varianceBubble neutral" :
+              "varianceBubble negative"}>
+
+
+              <i class="far fa-long-arrow-up"></i>
+                {item[effectiveness2Right].rendered}{effectiveness2right2 ? "%" : ""}&nbsp;&nbsp;{effectiveness2iya2 ? "IYA" : ""}
+
+               </div>
+              </div>
+
+
+              <div className="whiteAcross">
+              <div className="d-flex flex-column">
+
+              <p className="mb-0">
+              {effectiveness3Left1}
+
+              </p>
+
+              <p className="large mb-0">
+
+               {item[effectiveness3Left2].rendered}
+
+               </p>
+
+              <p className="mb-0 small">
+
+              {effectiveness3Left3}
+
+
+
+              </p>
+              </div>
+
+              <div class={item[effectiveness3Right].value >= 102 ? "varianceBubble positive" :
+              item[effectiveness3Right].value < 102 && item[effectiveness3Right].value > 98 ? "varianceBubble neutral" :
+              "varianceBubble negative"}>
+
+
+              <i class="far fa-long-arrow-up"></i>
+                {item[effectiveness3Right].rendered}{effectiveness3right2 ? "%" : ""}&nbsp;&nbsp;{effectiveness3iya2 ? "IYA" : ""}
+
+               </div>
+              </div>
+
+              </>
 
             ))}
 
@@ -896,54 +672,129 @@ console.log(data)
 
 
 
-            <div className="blueBubble efficiency" style={{backgroundColor: color_title ? background[0] : '#2960f6'}}>
-              <div class="d-flex justify-content-start">
-              <p class="white" style={{color: titleColor ? titleColor : '#fff'}}>Efficiency</p>
+
+
+
+                <div className="blueBubble efficiency" style={{backgroundColor: color_title ? background[0] : '#2960f6'}}>
+                  <div class="d-flex justify-content-start">
+                  <p class="white" style={{color: titleColor ? titleColor : '#fff'}}>Efficiency</p>
+                    </div>
+
+                    {data.map((item, i) =>(
+
+                      <>
+
+                      <div className="whiteAcross">
+                      <div className="d-flex flex-column">
+
+                      <p className="mb-0">
+                      {efficiencyLeft1}
+
+                      </p>
+
+                      <p className="large mb-0">
+
+                       {item[efficiencyLeft2].rendered}
+
+                       </p>
+
+                      <p className="mb-0 small">
+
+                      {efficiencyLeft3}
+
+
+
+                      </p>
+                      </div>
+
+                      <div class={item[efficiencyRight].value >= 102 ? "varianceBubble positive" :
+                      item[efficiencyRight].value < 102 && item[efficiencyRight].value > 98 ? "varianceBubble neutral" :
+                      "varianceBubble negative"}>
+
+
+                      <i class="far fa-long-arrow-up"></i>
+                        {item[efficiencyRight].rendered}{right3 ? "%" : ""}&nbsp;&nbsp;{iya3 ? "IYA" : ""}
+
+                       </div>
+                      </div>
+
+
+
+                      <div className="whiteAcross">
+                      <div className="d-flex flex-column">
+
+                      <p className="mb-0">
+                      {efficiency2Left1}
+
+                      </p>
+
+                      <p className="large mb-0">
+
+                       {item[efficiency2Left2].rendered}
+
+                       </p>
+
+                      <p className="mb-0 small">
+
+                      {efficiency2Left3}
+
+
+
+                      </p>
+                      </div>
+
+                      <div class={item[efficiency2Right].value >= 102 ? "varianceBubble positive" :
+                      item[efficiency2Right].value < 102 && item[efficiency2Right].value > 98 ? "varianceBubble neutral" :
+                      "varianceBubble negative"}>
+
+
+                      <i class="far fa-long-arrow-up"></i>
+                        {item[efficiency2Right].rendered}{efficiency2right2 ? "%" : ""}&nbsp;&nbsp;{efficiency2iya2 ? "IYA" : ""}
+
+                       </div>
+                      </div>
+
+
+                      <div className="whiteAcross">
+                      <div className="d-flex flex-column">
+
+                      <p className="mb-0">
+                      {efficiency3Left1}
+
+                      </p>
+
+                      <p className="large mb-0">
+
+                       {item[efficiency3Left2].rendered}
+
+                       </p>
+
+                      <p className="mb-0 small">
+
+                      {efficiency3Left3}
+
+
+
+                      </p>
+                      </div>
+
+                      <div class={item[efficiency3Right].value >= 102 ? "varianceBubble positive" :
+                      item[efficiency3Right].value < 102 && item[efficiency3Right].value > 98 ? "varianceBubble neutral" :
+                      "varianceBubble negative"}>
+
+
+                      <i class="far fa-long-arrow-up"></i>
+                        {item[efficiency3Right].rendered}{efficiency3right2 ? "%" : ""}&nbsp;&nbsp;{efficiency3iya2 ? "IYA" : ""}
+
+                       </div>
+                      </div>
+
+                      </>
+
+                    ))}
+
+
                 </div>
-
-
-                {data.map((item, i) =>(
-
-                  <div className="whiteAcross">
-                  <div className="d-flex flex-column">
-
-                  <p className="mb-0">
-                  {item[efficiencyLeft1].value.toLocaleString()}
-                  </p>
-
-                  <p className="large mb-0">
-
-
-        {dollar3 ? "$" : ""}{Math.round(item[efficiencyLeft2].value.toLocaleString()).toFixed(2)}{percentSign3 ? "%" : ""}
-
-                  </p>
-
-                  <p className="mb-0 small">
-          {write11 === "" ? item[efficiencyLeft3].value.toLocaleString() : write11}
-                  </p>
-                  </div>
-
-                  <div class={item[efficiencyRight].value >= 102 ? "varianceBubble positive" :
-                  item[efficiencyRight].value < 102 && item[efficiencyRight].value > 98 ? "varianceBubble neutral" :
-                  "varianceBubble negative"}>
-
-                  <i class="far fa-long-arrow-up"></i>
-
-
-                  {item[efficiencyRight].value === !NaN ? Math.round(item[efficiencyRight].value.toLocaleString()).toFixed(0) : item[efficiencyRight].value.toLocaleString()}{right3 ? "%" : ""} {iya3 ? "IYA" : ""}
-
-
-
-
-                  </div>
-                  </div>
-
-                ))}
-
-            </div>
-
-
-
 
     </div>
     </Styles>

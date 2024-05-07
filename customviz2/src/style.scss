@@ -195,24 +195,39 @@ display: none
 
 }
 
+.progress-label.white {
+  color: white;
+  font-size: 17px;
+    font-weight: 500;
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    left: 13px;
+
+}
+
 p{
   color:#14171b !important
 }
 
- .col-md-8:nth-child(1) .progress-bar{
+ .pv .progress-bar{
   background: #12d465;
 }
 
- .col-md-8:nth-child(3) .progress-bar{
+ .social .progress-bar{
   background: #ffda00;
 }
 
- .col-md-8:nth-child(5) .progress-bar {
+ .search .progress-bar {
   background: #0066ff;
 }
 
- .col-md-8:nth-child(7) .progress-bar {
+ .tv .progress-bar {
   background: #e22bb7;
+}
+
+.digital .progress-bar {
+ background: #6fd0e9;
 }
 
 
@@ -620,4 +635,18 @@ position: relative;
     font-size: 10px;
     margin-left: 6px;
   }
+}
+
+@media (min-width: 300px) {
+    .col-md-8 {
+        flex: 0 0 auto;
+        width: 66.66666667% !important;
+    }
+
+    .col-md-3 {
+        flex: 0 0 auto;
+        width: 25% !important;
+    }
+
+
 }

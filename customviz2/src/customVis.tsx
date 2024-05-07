@@ -106,115 +106,232 @@ looker.plugins.visualizations.add({
               default: "",
               order: 0,
               section: "Style",
+
             },
 
 
+            writeTitle2: {
+              type: "string",
+              label: "Subtitle Override",
+              default: "",
+              order: 1,
+              section: "Style",
+
+            },
+
+            titleColor: {
+              type: "string",
+              label: "Title Color",
+              default: "#14171c",
+              display: "text",
+              placeholder: "",
+
+              order: 2,
+              section: "Style",
+
+            },
+
+                titleColor2: {
+                  type: "string",
+                  label: "Subtitle Color",
+                  default: "#637087",
+                  display: "text",
+                  placeholder: "",
+
+                  order: 3,
+                    section: "Style",
+
+                },
+
+
+                reachLeft3: {
+                  label: "Programmatic & Video Spend Value",
+                  type: "string",
+                  display: "select",
+                  default: kpiFieldDefault,
+                  values: fieldOptions0,
+
+                  order: 4,
+                    section: "Bar 1",
+                },
+
 
       reachLeft1: {
-        label: "Choose Left Progress Bar Values",
+        label: "Programmatic & Video Total Investment Value",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
-        section: "Style",
-        order: 2,
+
+        order: 5,
+        section: "Bar 1",
       },
-
-
-         // write1: {
-         //    type: "string",
-         //    label: "Override Left Side Value 1 for Reach",
-         //    default: "",
-         //    order: 1,
-         //    section: "Reach",
-         //  },
-
 
 
       reachLeft2: {
-        label: "Choose Labels",
+        label: "Social Spend Value",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
-          section: "Style",
-        order: 1,
-      },
 
-      dollar1: {
-       type: "boolean",
-       label: "Add $ Sign Left Side Value 2",
-       default: false,
-       order: 3,
-      section: "Reach",
-     },
-     percentSign1: {
-       type: "boolean",
-       label: "Add % Sign Left Side Value 2",
-       default: false,
-       order: 4,
-      section: "Reach",
-     },
-
-      reachLeft3: {
-        label: "Choose Right Progress Bar Values",
-        type: "string",
-        display: "select",
-        default: kpiFieldDefault,
-        values: fieldOptions0,
-        section: "Style",
-        order: 5,
+        order: 6,
+        section: "Bar 2",
       },
 
 
-      write4: {
-         type: "string",
-         label: "Override Left Side Value 3 for Reach",
-         default: "",
-         order: 6,
-         section: "Reach",
-       },
+            write1: {
+              label: "Social Investment Value",
+              type: "string",
+              display: "select",
+              default: kpiFieldDefault,
+              values: fieldOptions0,
+
+              order: 7,
+              section: "Bar 2",
+            },
+
+
+            dollar1: {
+              label: "Search Spend Value",
+              type: "string",
+              display: "select",
+              default: kpiFieldDefault,
+              values: fieldOptions0,
+
+              order: 6,
+              section: "Bar 3",
+            },
+
+
+                  percentSign1: {
+                    label: "Search Investment Value",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions0,
+
+                    order: 7,
+                    section: "Bar 3",
+                  },
+
+                  write4: {
+                    label: "TV Spend Value",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions0,
+
+                    order: 6,
+                    section: "Bar 4",
+                  },
+
+
+                        reachRight: {
+                          label: "TV Investment Value",
+                          type: "string",
+                          display: "select",
+                          default: kpiFieldDefault,
+                          values: fieldOptions0,
+
+                          order: 7,
+                          section: "Bar 4",
+                        },
+
+
+                        write5: {
+                          label: "Digital Spend Value",
+                          type: "string",
+                          display: "select",
+                          default: kpiFieldDefault,
+                          values: fieldOptions0,
+
+                          order: 6,
+                          section: "Bar 5",
+                        },
+
+
+                            effectivenessRight: {
+                                label: "Digital Investment Value",
+                                type: "string",
+                                display: "select",
+                                default: kpiFieldDefault,
+                                values: fieldOptions0,
+
+                                order: 7,
+                                section: "Bar 5",
+                              },
 
 
 
-      reachRight: {
-        label: "Choose Right Side Value for Reach",
-        type: "string",
-        display: "select",
-        default: kpiFieldDefault,
-        values: fieldOptions0,
-        section: "Reach",
-        order: 7,
-      },
-
-      right1: {
-        type: "boolean",
-        label: "Add % Sign Right Side Value for Reach",
-        default: false,
-        order: 8,
-       section: "Reach",
-      },
 
 
-      iya1: {
-        type: "boolean",
-        label: "IYA",
-        default: false,
-        order: 9,
-       section: "Reach",
-      },
+     //  dollar1: {
+     //   type: "boolean",
+     //   label: "Add $ Sign Left Side Value 2",
+     //   default: false,
+     //   order: 3,
+     //  section: "Reach",
+     // },
+     // percentSign1: {
+     //   type: "boolean",
+     //   label: "Add % Sign Left Side Value 2",
+     //   default: false,
+     //   order: 4,
+     //  section: "Reach",
+     // },
 
 
 
-      effectivenessLeft1: {
-        label: "Choose Left Side Value 1 for Effectiveness",
-        type: "string",
-        display: "select",
-        default: kpiFieldDefault,
-        values: fieldOptions0,
-        section: "Effectiveness",
-        order: 0,
-      },
+      //
+      // write4: {
+      //    type: "string",
+      //    label: "Override Left Side Value 3 for Reach",
+      //    default: "",
+      //    order: 6,
+      //    section: "Reach",
+      //  },
+      //
+      //
+      //
+      // reachRight: {
+      //   label: "Choose Right Side Value for Reach",
+      //   type: "string",
+      //   display: "select",
+      //   default: kpiFieldDefault,
+      //   values: fieldOptions0,
+      //   section: "Reach",
+      //   order: 7,
+      // },
+      //
+      // right1: {
+      //   type: "boolean",
+      //   label: "Add % Sign Right Side Value for Reach",
+      //   default: false,
+      //   order: 8,
+      //  section: "Reach",
+      // },
+      //
+      //
+      // iya1: {
+      //   type: "boolean",
+      //   label: "IYA",
+      //   default: false,
+      //   order: 9,
+      //  section: "Reach",
+      // },
+      //
+      //
+      //
+      // effectivenessLeft1: {
+      //   label: "Choose Left Side Value 1 for Effectiveness",
+      //   type: "string",
+      //   display: "select",
+      //   default: kpiFieldDefault,
+      //   values: fieldOptions0,
+      //   section: "Effectiveness",
+      //   order: 0,
+      // },
         //
         // write5: {
         //    type: "string",
@@ -224,186 +341,176 @@ looker.plugins.visualizations.add({
         //    section: "Effectiveness",
         //  },
 
-      effectivenessLeft2: {
-        label: "Choose Left Side Value 2 for Effectiveness",
-        type: "string",
-        display: "select",
-        default: kpiFieldDefault,
-        values: fieldOptions0,
-        section: "Effectiveness",
-        order: 2,
-      },
+     //  effectivenessLeft2: {
+     //    label: "Choose Left Side Value 2 for Effectiveness",
+     //    type: "string",
+     //    display: "select",
+     //    default: kpiFieldDefault,
+     //    values: fieldOptions0,
+     //    section: "Effectiveness",
+     //    order: 2,
+     //  },
+     //
+     //  dollar2: {
+     //   type: "boolean",
+     //   label: "Add $ Sign Left Side Value 2",
+     //   default: false,
+     //   order: 3,
+     //    section: "Effectiveness",
+     // },
+     // percentSign2: {
+     //   type: "boolean",
+     //   label: "Add % Sign Left Side Value 2",
+     //   default: false,
+     //   order: 4,
+     //  section: "Effectiveness",
+     // },
+     //  effectivenessLeft3: {
+     //    label: "Choose Left Side Value 3 for Effectiveness",
+     //    type: "string",
+     //    display: "select",
+     //    default: kpiFieldDefault,
+     //    values: fieldOptions0,
+     //    section: "Effectiveness",
+     //    order: 5,
+     //  },
+     //
+     //  write7: {
+     //     type: "string",
+     //     label: "Override Left Side Value 3 for Effectiveness",
+     //     default: "",
+     //     order: 6,
+     //     section: "Effectiveness",
+     //   },
+     //
+     //  effectivenessRight: {
+     //    label: "Choose Right Side Value for Effectiveness",
+     //    type: "string",
+     //    display: "select",
+     //    default: kpiFieldDefault,
+     //    values: fieldOptions0,
+     //    section: "Effectiveness",
+     //    order: 7,
+     //  },
+     //
+     //
+     //  right2: {
+     //    type: "boolean",
+     //    label: "Add % Sign Right Side Value for Effectiveness",
+     //    default: false,
+     //    order: 8,
+     //    section: "Effectiveness",
+     //  },
+     //
+     //
+     //  iya2: {
+     //    type: "boolean",
+     //    label: "IYA",
+     //    default: false,
+     //    order: 9,
+     //    section: "Effectiveness",
+     //  },
+     //
+     //
+     //
+     //          efficiencyLeft1: {
+     //          label: "Choose Left Side Value 1 for Efficiency",
+     //          type: "string",
+     //          display: "select",
+     //          default: kpiFieldDefault,
+     //          values: fieldOptions0,
+     //          section: "Efficiency",
+     //          order: 0,
+     //        },
+     //
+     //
+     //
+     //
+     //        efficiencyLeft2: {
+     //          label: "Choose Left Side Value 2 for Efficiency",
+     //          type: "string",
+     //          display: "select",
+     //          default: kpiFieldDefault,
+     //          values: fieldOptions0,
+     //          section: "Efficiency",
+     //          order: 2,
+     //        },
+     //
+     //        dollar3: {
+     //         type: "boolean",
+     //         label: "Add $ Sign Left Side Value 2",
+     //         default: false,
+     //         order: 3,
+     //          section: "Efficiency",
+     //       },
+     //       percentSign3: {
+     //         type: "boolean",
+     //         label: "Add % Sign Left Side Value 2",
+     //         default: false,
+     //         order: 4,
+     //          section: "Efficiency",
+     //       },
+     //
+     //
+     //
+     //        efficiencyLeft3: {
+     //          label: "Choose Left Side Value 3 for Efficiency",
+     //          type: "string",
+     //          display: "select",
+     //          default: kpiFieldDefault,
+     //          values: fieldOptions0,
+     //          section: "Efficiency",
+     //          order: 5,
+     //        },
+     //
+     //        write11: {
+     //           type: "string",
+     //           label: "Override Left Side Value 3 for Efficiency",
+     //           default: "",
+     //           order: 6,
+     //           section: "Efficiency"
+     //         },
+     //
+     //        efficiencyRight: {
+     //          label: "Choose Right Side Value for Efficiency",
+     //          type: "string",
+     //          display: "select",
+     //          default: kpiFieldDefault,
+     //          values: fieldOptions0,
+     //          section: "Efficiency",
+     //          order: 7,
+     //        },
+     //
+     //
+     //        right3: {
+     //          type: "boolean",
+     //          label: "Add % Sign Right Side Value for Efficiency",
+     //          default: false,
+     //          order: 8,
+     //          section: "Efficiency",
+     //        },
+     //
+     //
+     //        iya3: {
+     //          type: "boolean",
+     //          label: "IYA",
+     //          default: false,
+     //          order: 9,
+     //          section: "Efficiency",
+     //        },
 
-      dollar2: {
-       type: "boolean",
-       label: "Add $ Sign Left Side Value 2",
-       default: false,
-       order: 3,
-        section: "Effectiveness",
-     },
-     percentSign2: {
-       type: "boolean",
-       label: "Add % Sign Left Side Value 2",
-       default: false,
-       order: 4,
-      section: "Effectiveness",
-     },
-      effectivenessLeft3: {
-        label: "Choose Left Side Value 3 for Effectiveness",
-        type: "string",
-        display: "select",
-        default: kpiFieldDefault,
-        values: fieldOptions0,
-        section: "Effectiveness",
-        order: 5,
-      },
-
-      write7: {
-         type: "string",
-         label: "Override Left Side Value 3 for Effectiveness",
-         default: "",
-         order: 6,
-         section: "Effectiveness",
-       },
-
-      effectivenessRight: {
-        label: "Choose Right Side Value for Effectiveness",
-        type: "string",
-        display: "select",
-        default: kpiFieldDefault,
-        values: fieldOptions0,
-        section: "Effectiveness",
-        order: 7,
-      },
-
-
-      right2: {
-        type: "boolean",
-        label: "Add % Sign Right Side Value for Effectiveness",
-        default: false,
-        order: 8,
-        section: "Effectiveness",
-      },
-
-
-      iya2: {
-        type: "boolean",
-        label: "IYA",
-        default: false,
-        order: 9,
-        section: "Effectiveness",
-      },
+      //
+      // color_title: {
+      //   type: 'array',
+      //   label: 'Background Color',
+      //   display: 'colors',
+      //   default: ['#f7f8f9','#0066ff', '#a2c4c9', '#00363d', '#dd3333', '#80ce5d', '#f78131', '#369dc1', '#c572d3', '#36c1b3', '#b57052', '#ed69af'],
+      //   order: 4,
+      //   section: "Style",
+      // },
 
 
 
-              efficiencyLeft1: {
-              label: "Choose Left Side Value 1 for Efficiency",
-              type: "string",
-              display: "select",
-              default: kpiFieldDefault,
-              values: fieldOptions0,
-              section: "Efficiency",
-              order: 0,
-            },
-
-
-
-
-            efficiencyLeft2: {
-              label: "Choose Left Side Value 2 for Efficiency",
-              type: "string",
-              display: "select",
-              default: kpiFieldDefault,
-              values: fieldOptions0,
-              section: "Efficiency",
-              order: 2,
-            },
-
-            dollar3: {
-             type: "boolean",
-             label: "Add $ Sign Left Side Value 2",
-             default: false,
-             order: 3,
-              section: "Efficiency",
-           },
-           percentSign3: {
-             type: "boolean",
-             label: "Add % Sign Left Side Value 2",
-             default: false,
-             order: 4,
-              section: "Efficiency",
-           },
-
-
-
-            efficiencyLeft3: {
-              label: "Choose Left Side Value 3 for Efficiency",
-              type: "string",
-              display: "select",
-              default: kpiFieldDefault,
-              values: fieldOptions0,
-              section: "Efficiency",
-              order: 5,
-            },
-
-            write11: {
-               type: "string",
-               label: "Override Left Side Value 3 for Efficiency",
-               default: "",
-               order: 6,
-               section: "Efficiency"
-             },
-
-            efficiencyRight: {
-              label: "Choose Right Side Value for Efficiency",
-              type: "string",
-              display: "select",
-              default: kpiFieldDefault,
-              values: fieldOptions0,
-              section: "Efficiency",
-              order: 7,
-            },
-
-
-            right3: {
-              type: "boolean",
-              label: "Add % Sign Right Side Value for Efficiency",
-              default: false,
-              order: 8,
-              section: "Efficiency",
-            },
-
-
-            iya3: {
-              type: "boolean",
-              label: "IYA",
-              default: false,
-              order: 9,
-              section: "Efficiency",
-            },
-
-
-      color_title: {
-        type: 'array',
-        label: 'Background Color',
-        display: 'colors',
-        default: ['#f7f8f9','#0066ff', '#a2c4c9', '#00363d', '#dd3333', '#80ce5d', '#f78131', '#369dc1', '#c572d3', '#36c1b3', '#b57052', '#ed69af'],
-        order: 4,
-        section: "Style",
-      },
-
-
-
-      titleColor: {
-        type: "string",
-        label: "Title Color",
-        default: "#14171c",
-        display: "text",
-        placeholder: "#14171c",
-
-        order: 6,
-        section: "Style",
-      },
 
 
 
@@ -413,9 +520,10 @@ looker.plugins.visualizations.add({
       label: "Choose Font",
       display: "select",
       values: [{ "Roboto": "'Roboto'" } , { "Open Sans": "'Open Sans'" }, {"Montserrat" : "'Montserrat'"}, {"IBM Plex Sans" :  "'IBM Plex Sans'"},{"DM Serif Text": "DM Serif Text"}],
-      section: "Style",
+
       default: "'Roboto', sans-serif",
-      order: 29,
+      order: 7,
+        section: "Style",
     },
 
 

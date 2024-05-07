@@ -94,34 +94,23 @@ looker.plugins.visualizations.add({
 
 
 
-
     const lookerVis = this;
     const configOptions: ConfigOptions = {
 
 
       reachLeft1: {
-        label: "Choose Left Side Value 1 for Reach",
+        label: "Choose Label for Reach 1",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
-        values: fieldOptions0,
+        values: fieldOptions2,
         section: "Reach",
         order: 0,
       },
 
 
-         // write1: {
-         //    type: "string",
-         //    label: "Override Left Side Value 1 for Reach",
-         //    default: "",
-         //    order: 1,
-         //    section: "Reach",
-         //  },
-
-
-
       reachLeft2: {
-        label: "Choose Left Side Value 2 for Reach",
+        label: "Choose Value for Reach 1",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
@@ -130,44 +119,20 @@ looker.plugins.visualizations.add({
         order: 2,
       },
 
-      dollar1: {
-       type: "boolean",
-       label: "Add $ Sign Left Side Value 2",
-       default: false,
-       order: 3,
-      section: "Reach",
-     },
-     percentSign1: {
-       type: "boolean",
-       label: "Add % Sign Left Side Value 2",
-       default: false,
-       order: 4,
-      section: "Reach",
-     },
 
       reachLeft3: {
-        label: "Choose Left Side Value 3 for Reach",
+        label: "Choose Subtitle for Reach 1",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
-        values: fieldOptions0,
+        values: fieldOptions2,
         section: "Reach",
         order: 5,
       },
 
 
-      write4: {
-         type: "string",
-         label: "Override Left Side Value 3 for Reach",
-         default: "",
-         order: 6,
-         section: "Reach",
-       },
-
-
-
       reachRight: {
-        label: "Choose Right Side Value for Reach",
+        label: "Choose Right Side for Reach 1",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
@@ -178,16 +143,15 @@ looker.plugins.visualizations.add({
 
       right1: {
         type: "boolean",
-        label: "Add % Sign Right Side Value for Reach",
+        label: "% for Reach 1",
         default: false,
         order: 8,
        section: "Reach",
       },
 
-
       iya1: {
         type: "boolean",
-        label: "IYA",
+        label: "IYA for Reach 1",
         default: false,
         order: 9,
        section: "Reach",
@@ -195,68 +159,230 @@ looker.plugins.visualizations.add({
 
 
 
+
+      reach2Left1: {
+        label: "Choose Label for Reach 2",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions2,
+        section: "Reach",
+        order: 10,
+      },
+
+
+      reach2Left2: {
+        label: "Choose Value 2 for Reach 2",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions0,
+        section: "Reach",
+        order: 11,
+      },
+
+
+      reach2Left3: {
+        label: "Choose Subtitle for Reach 2",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions2,
+        section: "Reach",
+        order: 12,
+      },
+
+
+      reach2Right: {
+        label: "Choose Right Side Value for Reach 2",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions0,
+        section: "Reach",
+        order: 13,
+      },
+
+      reach2right1: {
+        type: "boolean",
+        label: "% for Reach 2",
+        default: false,
+        order: 14,
+       section: "Reach",
+      },
+
+      reach2iya1: {
+        type: "boolean",
+        label: "IYA for Reach 2",
+        default: false,
+        order: 15,
+       section: "Reach",
+      },
+
+
+
+            reach3Left1: {
+              label: "Choose Label for Reach 3",
+              type: "string",
+              display: "select",
+              default: kpiFieldDefault,
+              values: fieldOptions2,
+              section: "Reach",
+              order: 16,
+            },
+
+
+            reach3Left2: {
+              label: "Choose Value 2 for Reach 3",
+              type: "string",
+              display: "select",
+              default: kpiFieldDefault,
+              values: fieldOptions0,
+              section: "Reach",
+              order: 17,
+            },
+
+
+            reach3Left3: {
+              label: "Choose Subtitle for Reach 3",
+              type: "string",
+              display: "select",
+              default: kpiFieldDefault,
+              values: fieldOptions2,
+              section: "Reach",
+              order: 18,
+            },
+
+
+            reach3Right: {
+              label: "Choose Right Side Value for Reach 3",
+              type: "string",
+              display: "select",
+              default: kpiFieldDefault,
+              values: fieldOptions0,
+              section: "Reach",
+              order: 19,
+            },
+
+            reach3right1: {
+              type: "boolean",
+              label: "% for Reach 3",
+              default: false,
+              order: 20,
+             section: "Reach",
+            },
+
+            reach3iya1: {
+              type: "boolean",
+              label: "IYA for Reach 3",
+              default: false,
+              order: 21,
+             section: "Reach",
+            },
+
+
+            //
+            // write5: {
+            //    type: "string",
+            //    label: "Override Left Side Value 1 for Effectiveness",
+            //    default: "",
+            //    order: 1,
+            //    section: "Effectiveness",
+            //  },
+            //  dollar2: {
+            //   type: "boolean",
+            //   label: "Add $ Sign Left Side Value 2",
+            //   default: false,
+            //   order: 3,
+            //    section: "Effectiveness",
+            // },
+            // percentSign2: {
+            //   type: "boolean",
+            //   label: "Add % Sign Left Side Value 2",
+            //   default: false,
+            //   order: 4,
+            //  section: "Effectiveness",
+            // },
+            // write7: {
+            //    type: "string",
+            //    label: "Override Left Side Value 3 for Effectiveness",
+            //    default: "",
+            //    order: 6,
+            //    section: "Effectiveness",
+            //  },
+
+
+
+
+
       effectivenessLeft1: {
-        label: "Choose Left Side Value 1 for Effectiveness",
+        label: "Choose Label for Effectiveness 1",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions2,
+        section: "Effectiveness",
+        order: 0,
+      },
+
+      effectivenessLeft2: {
+        label: "Choose Value for Effectiveness 1",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
         section: "Effectiveness",
-        order: 0,
+        order: 1,
       },
-        //
-        // write5: {
-        //    type: "string",
-        //    label: "Override Left Side Value 1 for Effectiveness",
-        //    default: "",
-        //    order: 1,
-        //    section: "Effectiveness",
-        //  },
 
-      effectivenessLeft2: {
-        label: "Choose Left Side Value 2 for Effectiveness",
+      effectivenessLeft3: {
+        label: "Choose Subtitle for Effectiveness 1",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
-        values: fieldOptions0,
+        values: fieldOptions2,
         section: "Effectiveness",
         order: 2,
       },
 
-      dollar2: {
-       type: "boolean",
-       label: "Add $ Sign Left Side Value 2",
-       default: false,
-       order: 3,
-        section: "Effectiveness",
-     },
-     percentSign2: {
-       type: "boolean",
-       label: "Add % Sign Left Side Value 2",
-       default: false,
-       order: 4,
-      section: "Effectiveness",
-     },
-      effectivenessLeft3: {
-        label: "Choose Left Side Value 3 for Effectiveness",
+      effectivenessRight: {
+        label: "Choose Right Side Value for Effectiveness 1",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
         section: "Effectiveness",
-        order: 5,
+        order: 3,
+      },
+      right2: {
+        type: "boolean",
+        label: "Add % Sign Right Side Value for Effectiveness 1",
+        default: false,
+        order: 4,
+        section: "Effectiveness",
       },
 
-      write7: {
-         type: "string",
-         label: "Override Left Side Value 3 for Effectiveness",
-         default: "",
-         order: 6,
-         section: "Effectiveness",
-       },
+      iya2: {
+        type: "boolean",
+        label: "IYA for Effectiveness 1",
+        default: false,
+        order: 5,
+        section: "Effectiveness",
+      },
 
-      effectivenessRight: {
-        label: "Choose Right Side Value for Effectiveness",
+
+      effectiveness2Left1: {
+        label: "Choose Label for Effectiveness 2",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions2,
+        section: "Effectiveness",
+        order: 6,
+      },
+
+      effectiveness2Left2: {
+        label: "Choose Value for Effectiveness 2",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
@@ -265,32 +391,104 @@ looker.plugins.visualizations.add({
         order: 7,
       },
 
-
-      right2: {
-        type: "boolean",
-        label: "Add % Sign Right Side Value for Effectiveness",
-        default: false,
+      effectiveness2Left3: {
+        label: "Choose Subtitle for Effectiveness 2",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions2,
+        section: "Effectiveness",
         order: 8,
-        section: "Effectiveness",
       },
 
-
-      iya2: {
-        type: "boolean",
-        label: "IYA",
-        default: false,
+      effectiveness2Right: {
+        label: "Choose Right Side Value for Effectiveness 2",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions0,
+        section: "Effectiveness",
         order: 9,
+      },
+      effectiveness2right2: {
+        type: "boolean",
+        label: "% for Effectiveness 2",
+        default: false,
+        order: 10,
         section: "Effectiveness",
       },
 
+      effectiveness2iya2: {
+        type: "boolean",
+        label: "IYA for Effectiveness 2",
+        default: false,
+        order: 11,
+        section: "Effectiveness",
+      },
+
+
+      effectiveness3Left1: {
+        label: "Choose Label for Effectiveness 3",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions2,
+        section: "Effectiveness",
+        order: 12,
+      },
+
+      effectiveness3Left2: {
+        label: "Choose Value for Effectiveness 3",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions0,
+        section: "Effectiveness",
+        order: 13,
+      },
+
+      effectiveness3Left3: {
+        label: "Choose Subtitle for Effectiveness 3",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions2,
+        section: "Effectiveness",
+        order: 14,
+      },
+
+      effectiveness3Right: {
+        label: "Choose Right Side Value for Effectiveness 3",
+        type: "string",
+        display: "select",
+        default: kpiFieldDefault,
+        values: fieldOptions0,
+        section: "Effectiveness",
+        order: 15,
+      },
+      effectiveness3right2: {
+        type: "boolean",
+        label: "% for Effectiveness 3",
+        default: false,
+        order: 16,
+        section: "Effectiveness",
+      },
+
+      effectiveness3iya2: {
+        type: "boolean",
+        label: "IYA for Effectiveness 3",
+        default: false,
+        order: 17,
+        section: "Effectiveness",
+      },
 
 
               efficiencyLeft1: {
-              label: "Choose Left Side Value 1 for Efficiency",
+              label: "Choose Label for Efficiency 1",
               type: "string",
               display: "select",
               default: kpiFieldDefault,
-              values: fieldOptions0,
+              values: fieldOptions2,
               section: "Efficiency",
               order: 0,
             },
@@ -299,7 +497,7 @@ looker.plugins.visualizations.add({
 
 
             efficiencyLeft2: {
-              label: "Choose Left Side Value 2 for Efficiency",
+              label: "Choose Value for Efficiency 1",
               type: "string",
               display: "select",
               default: kpiFieldDefault,
@@ -308,43 +506,43 @@ looker.plugins.visualizations.add({
               order: 2,
             },
 
-            dollar3: {
-             type: "boolean",
-             label: "Add $ Sign Left Side Value 2",
-             default: false,
-             order: 3,
-              section: "Efficiency",
-           },
-           percentSign3: {
-             type: "boolean",
-             label: "Add % Sign Left Side Value 2",
-             default: false,
-             order: 4,
-              section: "Efficiency",
-           },
+           //  dollar3: {
+           //   type: "boolean",
+           //   label: "Add $ Sign Left Side Value 2",
+           //   default: false,
+           //   order: 3,
+           //    section: "Efficiency",
+           // },
+           // percentSign3: {
+           //   type: "boolean",
+           //   label: "Add % Sign Left Side Value 2",
+           //   default: false,
+           //   order: 4,
+           //    section: "Efficiency",
+           // },
 
 
 
             efficiencyLeft3: {
-              label: "Choose Left Side Value 3 for Efficiency",
+              label: "Choose Subtitle for Efficiency 1",
               type: "string",
               display: "select",
               default: kpiFieldDefault,
-              values: fieldOptions0,
+              values: fieldOptions2,
               section: "Efficiency",
               order: 5,
             },
 
-            write11: {
-               type: "string",
-               label: "Override Left Side Value 3 for Efficiency",
-               default: "",
-               order: 6,
-               section: "Efficiency"
-             },
+            // write11: {
+            //    type: "string",
+            //    label: "Override Left Side Value 3 for Efficiency",
+            //    default: "",
+            //    order: 6,
+            //    section: "Efficiency"
+            //  },
 
             efficiencyRight: {
-              label: "Choose Right Side Value for Efficiency",
+              label: "Choose Right Side Value for Efficiency 1",
               type: "string",
               display: "select",
               default: kpiFieldDefault,
@@ -356,7 +554,7 @@ looker.plugins.visualizations.add({
 
             right3: {
               type: "boolean",
-              label: "Add % Sign Right Side Value for Efficiency",
+              label: "% for Efficiency 1",
               default: false,
               order: 8,
               section: "Efficiency",
@@ -365,11 +563,134 @@ looker.plugins.visualizations.add({
 
             iya3: {
               type: "boolean",
-              label: "IYA",
+              label: "IYA for Efficiency 1",
               default: false,
               order: 9,
               section: "Efficiency",
             },
+
+
+
+                  efficiency2Left1: {
+                    label: "Choose Label for Efficiency 2",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions2,
+                    section: "Efficiency",
+                    order: 10,
+                  },
+
+                  efficiency2Left2: {
+                    label: "Choose Value for Efficiency 2",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions0,
+                    section: "Efficiency",
+                    order: 11,
+                  },
+
+                  efficiency2Left3: {
+                    label: "Choose Subtitle for Efficiency 2",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions2,
+                    section: "Efficiency",
+                    order: 12,
+                  },
+
+                  efficiency2Right: {
+                    label: "Choose Right Side Value for Efficiency 2",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions0,
+                    section: "Efficiency",
+                    order: 13,
+                  },
+                  efficiency2right2: {
+                    type: "boolean",
+                    label: "% for Efficiency 2",
+                    default: false,
+                    order: 14,
+                    section: "Efficiency",
+                  },
+
+                  efficiency2iya2: {
+                    type: "boolean",
+                    label: "IYA for Efficiency 2",
+                    default: false,
+                    order: 15,
+                    section: "Efficiency",
+                  },
+
+
+                  efficiency3Left1: {
+                    label: "Choose Label for Efficiency 3",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions2,
+                    section: "Efficiency",
+                    order: 16,
+                  },
+
+                  efficiency3Left2: {
+                    label: "Choose Value for Efficiency 3",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions0,
+                    section: "Efficiency",
+                    order: 17,
+                  },
+
+                  efficiency3Left3: {
+                    label: "Choose Subtitle for Efficiency 3",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions2,
+                    section: "Efficiency",
+                    order: 18,
+                  },
+
+                  efficiency3Right: {
+                    label: "Choose Right Side Value for Efficiency 3",
+                    type: "string",
+                    display: "select",
+                    default: kpiFieldDefault,
+                    values: fieldOptions0,
+                    section: "Efficiency",
+                    order: 19,
+                  },
+                  efficiency3right2: {
+                    type: "boolean",
+                    label: "% for Efficiency 3",
+                    default: false,
+                    order: 20,
+                    section: "Efficiency",
+                  },
+
+                  efficiency3iya2: {
+                    type: "boolean",
+                    label: "IYA for Efficiency 1",
+                    default: false,
+                    order: 21,
+                    section: "Efficiency",
+                  },
+
+
+
+
+
+
+
+
+
+
 
 
       color_title: {

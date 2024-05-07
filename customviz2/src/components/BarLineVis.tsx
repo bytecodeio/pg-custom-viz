@@ -218,7 +218,9 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     right2,
     iya2,
     right3,
-    iya3
+    iya3,
+    writeTitle2,
+    titleColor2
   } = config;
 
 
@@ -267,21 +269,6 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     (row) => row[dimensionName].rendered ?? row[dimensionName].value ?? "∅"
   );
 
-
-
-  //
-  // let tooltipMeasure = [];
-  //
-  // for (const [key, value] of Object.entries(firstData)) {
-  //   if (key.split(".")[1] === "count_orders") {
-  //   tooltipMeasure = firstData[key].value.split(",").map((e) => e.trim());
-  //
-  //   }
-  // }
-  // // let tooltipMeasure = tooltipMeasure.toString()
-  //
-  //
-  // console.log(tooltipMeasure, "count_orders")
 
 
   const colors = config.color_range
@@ -424,359 +411,118 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
   }
 
 
-  // const Content = config.textTitle.split(",").map((d, i) => ({
-  //   textTitle: d,
-  //   // textTitle:config.textTitle.split(",")[i],
+  // const Content = config.reachLeft2.split(",").map((d, i) => ({
+  //   reachLeft2: d,
+  //   // yAxisDropdown:config.yAxisDropdown.split(",")[i],
   //
-  //
+  //   // symbol:config.symbol.split(",")[i],
+  //   // yAxisLeftValues:config.yAxisLeftValues.split(",")[i],
   //
   //
   // }))
-//
-//   Content.map((val, i) => (
-//
-// console.log(val.yAxisDropdown, "seifuewbiviyewiwvew")
-//
-//   ))
-//
-//
+
+ let investment1 = data.map(item => item[reachLeft1].value)
 
 
- //
- // const yAxisValues = data.map(item => item[yAxisLeftValues].value)
+let investment1 = investment1[0]
+
+
+let spend1 = data.map(item => item[reachLeft3].value)
+
+let spend1 = spend1[0]
+
+let width = spend1 / investment1
+
+let width = Math.round(width).toFixed(0).toLocaleString()
+let label = data.map(item => item[reachLeft1].rendered)
+
+let label = label[0]
+
+
+
+
+let spend2 = data.map(item => item[reachLeft2].value)
+
+let spend2 = spend2[0]
+
+let label2 = data.map(item => item[write1].rendered)
+
+let label2 = label2[0]
+
+
+let investment2 = data.map(item => item[write1].value)
+
+let investment2 = investment2[0]
+
+
+let width2 = spend2 / investment2
+
+let width2 = Math.round(width2).toFixed(0).toLocaleString()
+
+
+
+
+let spend3 = data.map(item => item[dollar1].value)
+
+let spend3 = spend3[0]
+
+let label3 = data.map(item => item[percentSign1].rendered)
+
+let label3 = label3[0]
+
+
+let investment3 = data.map(item => item[percentSign1].value)
+
+let investment3 = investment3[0]
+
+
+let width3 = spend3 / investment3
+
+let width3 = Math.round(width3).toFixed(0).toLocaleString()
 
 
 
 
 
+let spend4 = data.map(item => item[write4].value)
+
+let spend4 = spend4[0]
+
+let label4 = data.map(item => item[reachRight].rendered)
+
+let label4 = label4[0]
 
 
-//
-//
-//
-//
-//
-//   var total = 0;
-//   for(var i = 0; i < yAxisValues.length; i++) {
-//       total += yAxisValues[i];
-//   }
-//   var avg = total / yAxisValues.length;
-//   let array = yAxisValues
-//
-// function calculateAverage(array) {
-// let num = 0;
-// for (let i = 0; i < yAxisValues.length; i++) {
-//    // console.log(yAxisValues[i]);
-//
-//  num += +yAxisValues[i];
-//    // console.log(yAxisValues.length)
-// }
-// return num / yAxisValues.length
-//
-// }
-//
-// var average = calculateAverage(array);
-//
-// var average =  percentSign ? Math.round(average * 100).toLocaleString() : Math.round(average * 1).toLocaleString();
-//
-//
-//   let title = Content.map(function(val, i){ return val.textTitle });
-//
-//   let title = title[0]
-//
-//
-//   let percent = Content.map(function(val, i){ return val.yAxisDropdown });
-//
-//   let percent = Math.round(percent[0] * 100)
-//
-//
-//   let result = data.map(item => item[symbol].value)
-//
-//
-//
-//   let target = percentSign ? Math.round(result[0]*100) : Math.round(result[0]) ;
-//
-//   let yAxisRightDropdownValues = Content.map(function(val, i){ return val.yAxisRightDropdown });
-//
-//
-//   let yAxisRightDropdownValues = Math.round(yAxisRightDropdownValues[0])
-//
-//
-//   const first = labels[0];
-//   const lastLabel = labels[labels.length - 1];
-//
-//
-//
-//   let array2 = yAxisDropdown.split(',').map(function(item) {
-//       return parseInt(item);
-//   });
-//
-//
-//   const yDrop = data.map(item => item[yAxisDropdown].value)
-//
-//   const last = yDrop[yDrop.length - 1];
-//
-//
-//   // const last = Math.round(last * 1).toLocaleString();
-//   //
-//   //
-//   // console.log(last)
-//
-// // var labels = [first, lastLabel]
-// // console.log(thing)
-// //
-// // console.log(labels)
-//
-//
-//
-// const percentDiff1 = percentSign ? Math.round(last / (target/100) * 100) : Math.round(last / target * 100)
-// const percentDiff2 =  Math.round(last / parseInt(writeTarget) * 100)
-//
-// const percentDiff3 = percentSign ? Math.round(last / (parseInt(average)/100) * 100) : Math.round(last / parseInt(average) * 100)
-//
-//
-//
-// console.log(last, percentDiff1, percentDiff2, percentDiff3 )
-//
-//
-//   const popoverHoverFocus = (
-//     <Popover
-//     className={toolOn ? "" : "hidden"}
-//     id="popover"
-//     >
-//     <p>{writeTooltip}</p>
-//     </Popover>
-//   );
-//
-//   const chartOptions: ChartOptions<"scatter" | "bar"> = useMemo(
-//     () => ({
-//       layout: {
-//         padding: {
-//           top: 30,
-//           right:10,
-//           left: 10,
-//           bottom:0
-//
-//         },
-//       },
-//
-//       onClick: (event, elements, chart) => {
-//
-//         if (!elements.length) {
-//           return;
-//         }
-//         const { datasetIndex, index: dataIndex } = elements[0];
-//
-//         if (hasPivot) {
-//
-//           const measureLinks = Object.values(data[dataIndex][measureName])[datasetIndex].links ?? [];
-//           const dimensionLinks = (data[dataIndex][dimensionName].links as Link[]) ?? [];
-//
-//         }
-//         else{
-//           const measureLinks = data[dataIndex][measureName].links ?? [];
-//
-//           const dimensionLinks = (data[dataIndex][dimensionName].links) ?? [];
-//         }
-//
-//         lookerCharts.Utils.openDrillMenu({
-//           links: [...measureLinks, ...dimensionLinks],
-//           event: event.native,
-//         });
-//       },
-//       maintainAspectRatio: false,
-//       responsive: true,
-//       plugins: {
-//         datalabels: {
-//
-//             // display:  showDatalabels ?  "auto" : false,
-//
-//           display: showDatalabels && !autoData ?  "auto" :  showDatalabels && autoData  ? true : !showDatalabels && autoData ? false : !showDatalabels && !autoData ? false : false,
-//           formatter: function(value: number) {
-//
-//            if (value > 0 && value <  1){
-//                 return `${percentSign ? (value*100).toFixed(0) + '%' : (value).toFixed(2)}`
-//             }
-//
-//            else if (value < 100){
-//
-//               return `${percentSign ? Math.round(value*100).toFixed(0) + '%' : Math.round(value*1)}`
-//             }
-//             else if (value < 1000){
-//
-//             return `${percentSign ? Math.round(value*100).toFixed(0) + '%' : Math.round(value*1)}`
-//           }
-//             else{
-//                 let percentage = (value) / 1000
-//                 return `${percentSign ? formatNumber(Math.round(percentage.toFixed(0) * 1000)) + '%' : formatNumber(Math.round(percentage.toFixed() * 1000))}`;
-//             }
-//         },
-//
-//           font: {
-//             size: 10,
-//             weight: '500',
-//             family: bodyStyle ? bodyStyle : "'Roboto'"
-//
-//           },
-//
-//           anchor: 'end',
-//           align: 'end',
-//
-//         },
-//         legend: {
-//           position: "bottom",
-//           labels:
-//
-//           {
-//             color:'#262D33',
-//             font: {
-//               size: `${legendSize ?  legendSize  : 10 }`,
-//               weight: '500',
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//
-//             },
-//             usePointStyle: true
-//           },
-//           align: "center" as const,
-//           display: `${showXGridLines ? hasNoPivot || hasPivot : ""}`
-//         },
-//
-//         tooltip: {
-//           enabled: false,
-//           position: "nearest",
-//           external: (context) =>
-//           tooltipHandler(context, setTooltip),
-//         },
-//       },
-//       scales: {
-//         x: {
-//           border: {
-//             display: false,
-//           },
-//
-//           grid: {
-//             display: false,
-//           },
-//           stacked: false,
-//           title: {
-//             display: false,
-//             // text: ` ${xAxisDropdown ?  xAxisDropdownValues  : dimensionLabel }`,
-//             font: {
-//               size: 10,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             }
-//           },
-//           ticks: {
-//
-//
-//             display: showTwo || showX ? true : false,
-//
-//             // `${showX  ? true : false  : showTwo  ? true : false : false}`,
-//
-//               autoSkip: `${diagonal ?  true : false }`,
-//               maxRotation: `${diagonal ?  60  : 0 }`,
-//               minRotation: `${diagonal ?  60  : 0 }`,
-//
-//               maxTicksLimit: `${showTwo ?  1 : 5000}`,
-//               autoSkip: `${showTwo ?  true : false}`,
-//               minRotation:`${showTwo ?  0 : 0}`,
-//
-//
-//             // callback: () => {
-//             //
-//             //   return labels[0];
-//             //   // return labels[labels.length - 1];
-//             // },
-//
-//
-//
-//             font: {
-//               size:`${xFontSize ?  xFontSize  : 10 }`,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             },
-//             color: 'black',
-//           },
-//         },
-//
-//         yLeft: {
-//           border: {
-//             display: false,
-//           },
-//           grid: {
-//             display: false,
-//           },
-//           position: "left" as const,
-//           stacked: false,
-//           ticks: {
-//             font: {
-//               size: `${yFontSize ?  yFontSize  : 10 }`,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             },
-//             display:showYGridLines,
-//             callback: function (value: number) {
-//               return `${percentSign ? formatNumber((value*100).toFixed(0)) + "%" :  formatNumber(value)}`;
-//             },
-//           },
-//           title: {
-//             display: false,
-//             // text: `${showYGridLines ?  yAxisRightDropdownValues  : measureLabel }`,
-//             font: {
-//               size: 10,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             }
-//           },
-//
-//         },
-//
-//         yRight: {
-//           legend: {
-//             display: true,
-//         },
-//         grid: {
-//           display: false,
-//         },
-//         position: "right" as const,
-//         display: false,
-//         ticks: {
-//
-//           display: false,
-//
-//
-//         },
-//
-//
-//       },
-//
-//       },
-//     }),
-//     []
-//   );
-//
-//   const kpiValue = data.reduce((total, currentRow) => {
-//     let newTotal = total;
-//     if (hasPivot) {
-//       const cellValues = Object.values(currentRow[measureName]).map(
-//         (cell) => cell.value
-//       );
-//       for (let i = 0; i < cellValues.length; i++) {
-//         newTotal += cellValues[i];
-//       }
-//     } else {
-//       newTotal += currentRow[measureName].value;
-//     }
-//
-//     return newTotal;
-//   }, 0);
-//
-//   function handleChartTypeSelection(newChartType: ChartType) {
-//     setSelectedChartType(newChartType);
-//     updateChartData(newChartType);
-//   }
+let investment4 = data.map(item => item[reachRight].value)
+
+let investment4 = investment4[0]
 
 
-console.log(data)
+let width4 = spend4 / investment4
 
-  // {item[reachLeft1].value.toLocaleString()}
+let width4 = Math.round(width4).toFixed(0).toLocaleString()
+
+
+
+let spend5 = data.map(item => item[write5].value)
+
+let spend5 = spend5[0]
+
+let label5 = data.map(item => item[effectivenessRight].rendered)
+
+let label5 = label5[0]
+
+
+let investment5 = data.map(item => item[effectivenessRight].value)
+
+let investment5 = investment5[0]
+
+
+let width5 = spend5 / investment5
+
+let width5 = Math.round(width5).toFixed(0).toLocaleString()
+
+
 
   return (
     <Fragment>
@@ -786,38 +532,44 @@ console.log(data)
     <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
     <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : '#f7f8f9'}}>
+  <Container fluid>
+    <Row>
     <div class="d-flex justify-content-between">
     <p class="white mb-4" style={{color: titleColor ? titleColor : '#14171c'}}>{writeTitle === "" ? "Total Media Spend and Investment" : writeTitle}</p>
 
 
-    <p className="gray">Total Investment</p>
+    <p className="gray" style={{color: titleColor2 ? titleColor2 : '#637087'}}>{writeTitle2 === "" ? "Total Investment" : writeTitle2}</p>
     </div>
-    <Container fluid>
+
+    </Row>
+
       <Row>
-      {data.map((item, i) =>(
-        <>
 
       <Col md={8}>
-      <p className="mb-0">{item[reachLeft2].value}</p>
-      <div className="position-relative">
+      <p className="mb-0">Programmatic & Video</p>
+
+      <div className="position-relative pv">
       <div className="progress">
         <div
         className="progress-bar"
         role="progressbar"
-        style={{ width:  Math.round(item[reachLeft1].value.toFixed(0))}}
+        style={{ width:  spend1 / investment1 > 0 && spend1 / investment1 < 6
+        ?  5 : spend1 / investment1 }}
         ></div>
         </div>
 
-          <span className="progress-label">
+          <span className={spend1 >= 0 && spend1 / investment1 < 20
+          ? "progress-label white" : "progress-label"}>
 
-          {Math.round(item[reachLeft1].value.toFixed(0))}%
+          {spend1 / investment1 > 0 && spend1 / investment1 < 1
+          ? `${parseFloat(spend1 * 1  / investment1  * 1 ).toFixed(2)}%` : `${width}%` }
+
 
           </span>
         </div>
 
 
       </Col>
-
 
       <Col md={3} className="offset-1">
        <p className="mb-0">&nbsp;</p>
@@ -826,27 +578,233 @@ console.log(data)
         <div
         className="progress-bar"
         role="progressbar"
-        style={{ width:  Math.round(item[reachLeft3].value.toFixed(0))}}
+
         ></div>
         </div>
 
           <span className="progress-label">
 
-          {Math.round(item[reachLeft3].value.toFixed(0))}
+          {label}
+
+          </span>
+        </div>
+
+        </Col>
+
+    </Row>
+
+
+    <Row>
+
+    <Col md={8}>
+    <p className="mb-0">Social</p>
+
+    <div className="position-relative social">
+    <div className="progress">
+      <div
+      className="progress-bar"
+      role="progressbar"
+      style={{ width:  spend2 / investment2 > 0 && spend2 / investment2 < 6
+      ?  5 : spend2 / investment2 }}
+      ></div>
+      </div>
+
+        <span className={spend2 >= 0 && spend2 / investment2 < 20
+        ? "progress-label white" : "progress-label"}>
+
+        {spend2 / investment2 > 0 && spend2 / investment2 < 1
+        ? `${parseFloat(spend2 * 1  / investment2  * 1 ).toFixed(2)}%` : `${width2}%` }
+
+
+        </span>
+      </div>
+
+
+    </Col>
+
+    <Col md={3} className="offset-1">
+     <p className="mb-0">&nbsp;</p>
+    <div className="position-relative">
+    <div className="progress">
+      <div
+      className="progress-bar"
+      role="progressbar"
+
+      ></div>
+      </div>
+
+        <span className="progress-label">
+
+        {label2}
+
+        </span>
+      </div>
+
+      </Col>
+
+    </Row>
+
+
+
+
+
+    <Row>
+
+    <Col md={8}>
+    <p className="mb-0">Search & Others</p>
+
+    <div className="position-relative search">
+    <div className="progress">
+      <div
+      className="progress-bar"
+      role="progressbar"
+      style={{ width:  spend3 / investment3 > 0 && spend3 / investment3 < 6
+      ?  5 : spend3 / investment3 }}
+      ></div>
+      </div>
+
+        <span className={spend3 >= 0 && spend3 / investment3 < 20
+        ? "progress-label white" : "progress-label"}>
+
+        {spend3 / investment3 > 0 && spend3 / investment3 < 1
+        ? `${parseFloat(spend3 * 1  / investment3  * 1 ).toFixed(2)}%` : `${width3}%` }
+
+
+        </span>
+      </div>
+
+
+    </Col>
+
+    <Col md={3} className="offset-1">
+     <p className="mb-0">&nbsp;</p>
+    <div className="position-relative">
+    <div className="progress">
+      <div
+      className="progress-bar"
+      role="progressbar"
+
+      ></div>
+      </div>
+
+        <span className="progress-label">
+
+        {label3}
+
+        </span>
+      </div>
+
+      </Col>
+
+  </Row>
+
+
+
+
+      <Row>
+
+      <Col md={8}>
+      <p className="mb-0">TV</p>
+
+      <div className="position-relative tv">
+      <div className="progress">
+        <div
+        className="progress-bar"
+        role="progressbar"
+        style={{ width:  spend4 / investment4 > 0 && spend4 / investment4 < 6
+        ?  5 : spend4 / investment4 }}
+        ></div>
+        </div>
+
+          <span className={spend4 >= 0 && spend4 / investment4 < 20
+          ? "progress-label white" : "progress-label"}>
+
+          {spend4 / investment4 > 0 && spend4 / investment4 < 1
+          ? `${parseFloat(spend4 * 1  / investment4  * 1 ).toFixed(2)}%` : `${width4}%` }
+
 
           </span>
         </div>
 
 
+      </Col>
 
+      <Col md={3} className="offset-1">
+       <p className="mb-0">&nbsp;</p>
+      <div className="position-relative">
+      <div className="progress">
+        <div
+        className="progress-bar"
+        role="progressbar"
+
+        ></div>
+        </div>
+
+          <span className="progress-label">
+
+          {label4}
+
+          </span>
+        </div>
 
         </Col>
 
-          </>
-    ))}
-
-
     </Row>
+
+
+
+
+          <Row>
+
+          <Col md={8}>
+          <p className="mb-0">Digital</p>
+
+          <div className="position-relative digital">
+          <div className="progress">
+            <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width:  spend5 / investment5 > 0 && spend5 / investment5 < 6
+            ?  5 : spend5 / investment5 }}
+            ></div>
+            </div>
+
+              <span className={spend5 >= 0 && spend5 / investment5 < 20
+              ? "progress-label white" : "progress-label"}>
+
+              {spend5 / investment5 > 0 && spend5 / investment5 < 1
+              ? `${parseFloat(spend5 * 1  / investment5  * 1 ).toFixed(2)}%` : `${width5}%` }
+
+
+              </span>
+            </div>
+
+
+          </Col>
+
+          <Col md={3} className="offset-1">
+           <p className="mb-0">&nbsp;</p>
+          <div className="position-relative">
+          <div className="progress">
+            <div
+            className="progress-bar"
+            role="progressbar"
+
+            ></div>
+            </div>
+
+              <span className="progress-label">
+
+              {label5}
+
+              </span>
+            </div>
+
+            </Col>
+
+        </Row>
+
+
     </Container>
     </div>
 
