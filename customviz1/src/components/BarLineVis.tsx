@@ -589,7 +589,7 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
 
               <i class="far fa-long-arrow-up"></i>
-                {item[effectivenessRight].rendered}{effectivenessright2 ? "%" : ""}&nbsp;&nbsp;{effectivenessiya2 ? "IYA" : ""}
+                {item[effectivenessRight].rendered}{right2 ? "%" : ""}&nbsp;&nbsp;{iya2 ? "IYA" : ""}
 
                </div>
               </div>
