@@ -214,28 +214,46 @@ p{
   color:#14171b !important
 }
 
- .pv .progress-bar,
- .dots p:nth-child(1) i{
+
+.col-md-12:nth-child(1) .dots p i{
   color: #12d465;
 }
 
- .social .progress-bar,
- .dots p:nth-child(2) i{
+
+ .col-md-12:nth-child(2) .dots p i{
   color: #ffda00;
 }
 
- .search .progress-bar,
- .dots p:nth-child(3) i{
+.col-md-12:nth-child(3) .dots p i{
 color: #0066ff;
 }
 
- .tv .progress-bar,
- .dots p:nth-child(4) i{
+ .col-md-12:nth-child(4) .dots p i{
   color: #e22bb7;
 }
 
-.digital .progress-bar ,
-.dots p:nth-child(5) i{
+.col-md-12:nth-child(5) .dots p i{
+ color: #6fd0e9;
+}
+
+.col-md-12:nth-child(6) .dots p i{
+  color: #12d465;
+}
+
+
+ .col-md-12:nth-child(7) .dots p i{
+  color: #ffda00;
+}
+
+.col-md-12::nth-child(8) .dots p i{
+color: #0066ff;
+}
+
+ .col-md-12:nth-child(9) .dots p i{
+  color: #e22bb7;
+}
+
+.col-md-12:nth-child(10) .dots p i{
  color: #6fd0e9;
 }
 

@@ -93,29 +93,11 @@ const Styles = styled.div`
 
 
 
-const chartPlugins = [
-  {
-    id: "padding-below-legend",
-    beforeInit(chart: any) {
-      // Get a reference to the original fit function
-      const originalFit = chart.legend.fit;
-
-      chart.legend.fit = function fit() {
-
-        originalFit.bind(chart.legend)();
-        this.height += 10;
-      };
-    },
-  },
-];
-
-
-// ChartJS.defaults.font.family = "Roboto";
-ChartJS.defaults.font.size = 13;
-ChartJS.defaults.color = "#262D33";
-
 
 function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptions, }: BarLineVisProps): JSX.Element {
+
+
+
 
 
   // config values
@@ -223,7 +205,10 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     right3,
     iya3,
     writeTitle2,
-    titleColor2
+    titleColor2,
+    chooseLabel,
+    spend,
+    investment
   } = config;
 
 
@@ -414,172 +399,7 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
   }
 
 
-  // const Content = config.reachLeft2.split(",").map((d, i) => ({
-  //   reachLeft2: d,
-  //   // yAxisDropdown:config.yAxisDropdown.split(",")[i],
-  //
-  //   // symbol:config.symbol.split(",")[i],
-  //   // yAxisLeftValues:config.yAxisLeftValues.split(",")[i],
-  //
-  //
-  // }))
 
- let investment1 = data.map(item => item[reachLeft1].value)
-
-
-let investment1 = investment1[0]
-
-
-let spend1 = data.map(item => item[reachLeft3].value)
-
-let spend1 = spend1[0]
-
-let width = spend1 / investment1
-
-let width = Math.round(width).toFixed(0).toLocaleString()
-let label = data.map(item => item[reachLeft1].rendered)
-
-let label = label[0]
-
-
-
-
-let spend2 = data.map(item => item[reachLeft2].value)
-
-let spend2 = spend2[0]
-
-let label2 = data.map(item => item[write1].rendered)
-
-let label2 = label2[0]
-
-
-let investment2 = data.map(item => item[write1].value)
-
-let investment2 = investment2[0]
-
-
-let width2 = spend2 / investment2
-
-let width2 = Math.round(width2).toFixed(0).toLocaleString()
-
-
-
-
-let spend3 = data.map(item => item[dollar1].value)
-
-let spend3 = spend3[0]
-
-let label3 = data.map(item => item[percentSign1].rendered)
-
-let label3 = label3[0]
-
-
-let investment3 = data.map(item => item[percentSign1].value)
-
-let investment3 = investment3[0]
-
-
-let width3 = spend3 / investment3
-
-let width3 = Math.round(width3).toFixed(0).toLocaleString()
-
-
-
-
-
-let spend4 = data.map(item => item[write4].value)
-
-let spend4 = spend4[0]
-
-let label4 = data.map(item => item[reachRight].rendered)
-
-let label4 = label4[0]
-
-
-let investment4 = data.map(item => item[reachRight].value)
-
-let investment4 = investment4[0]
-
-
-let width4 = spend4 / investment4
-
-let width4 = Math.round(width4).toFixed(0).toLocaleString()
-
-
-
-let spend5 = data.map(item => item[write5].value)
-
-let spend5 = spend5[0]
-
-let label5 = data.map(item => item[effectivenessRight].rendered)
-
-let label5 = label5[0]
-
-
-let investment5 = data.map(item => item[effectivenessRight].value)
-
-let investment5 = investment5[0]
-
-
-let width5 = spend5 / investment5
-
-let width5 = Math.round(width5).toFixed(0).toLocaleString()
-
-
-
-useLayoutEffect(() => {
-  const sets = [
-    { sets: ["A"], size: 20 },
-    { sets: ["B"], size: 10 },
-    { sets: ["A", "B"], size: 5 }
-  ];
-
-  const buildVenn = venn.VennDiagram().width(350).height(350);
-  // build venn diagram
-  const vennChart = d3.select("#venn").datum(sets).call(buildVenn);
-
-  vennChart
-    .selectAll("path")
-    .style("fill-opacity", "1")
-    .style("mix-blend-mode", "none");
-
-  // remove labels
-  d3.select("#venn").selectAll("text").remove();
-
-  let tooltip = d3.select("body").append("div").attr("class", "venntooltip");
-
-  d3.selectAll(".venn-area")
-    .on("mouseover", function (d, i) {
-      // sort all the areas relative to the current item
-      venn.sortAreas(vennChart, i);
-
-      let node = d3.select(this).transition();
-      node
-        .select("path")
-        .style("fill-opacity", 0.7)
-        .style("stroke", "red")
-        .style("stroke-width", "2");
-    })
-    .on("mousemove", function (event, d) {
-      // Display a tooltip with the current size
-      tooltip.transition().duration(400).style("opacity", "0.9");
-      tooltip.text(d.size + " users");
-      tooltip
-        .style("position", "absolute")
-        .style("left", event.pageX + "px")
-        .style("top", event.pageY - 28 + "px");
-    })
-    .on("mouseout", function (d, i) {
-      let node = d3.select(this).transition();
-      tooltip.transition().duration(400).style("opacity", "0");
-      d3.select(this).transition("tooltip").duration(400);
-      node.select("path").style("fill-opacity", 1).style("stroke-width", "0");
-      node
-        .select("text")
-        .style("font-weight", "100")
-        .style("font-size", "24px");
-    });
-}, []);
 
 
 
@@ -602,53 +422,29 @@ useLayoutEffect(() => {
 
 
       <Row>
+      {data.map((item, i) =>(
         <Col md={12}>
         <div className="d-flex justify-content-between">
 
         <div className="dots">
-        <p><i class="fas fa-circle"></i> Programmatic & Video</p>
-        <p><i class="fas fa-circle"></i> Social</p>
-        <p><i class="fas fa-circle"></i> Search & Others</p>
-        <p><i class="fas fa-circle"></i> TV</p>
-        <p><i class="fas fa-circle"></i> Digital</p>
+        <p><i class="fas fa-circle"></i> {item[chooseLabel].value}</p>
+
         </div>
 
 
         <div className="values">
         <p>
-        {spend1 / investment1 > 0 && spend1 / investment1 < 1
-                  ? `${parseFloat(spend1 * 1  / investment1  * 1 ).toFixed(2)}%` : `${width}%` }
-        </p>
-
-        <p>
-        {spend2 / investment2 > 0 && spend2 / investment2 < 1
-              ? `${parseFloat(spend2 * 1  / investment2  * 1 ).toFixed(2)}%` : `${width2}%` }
-
-        </p>
-
-        <p>
-        {spend3 / investment3 > 0 && spend3 / investment3 < 1
-                    ? `${parseFloat(spend3 * 1  / investment3  * 1 ).toFixed(2)}%` : `${width3}%` }
-          </p>
-
-          <p>
-
-          {spend4 / investment4 > 0 && spend4 / investment4 < 1
-          ? `${parseFloat(spend4 * 1  / investment4  * 1 ).toFixed(2)}%` : `${width4}%` }
-
-
-          </p>
-          <p>
-          {spend5 / investment5 > 0 && spend5 / investment5 < 1
-                ? `${parseFloat(spend5 * 1  / investment5  * 1 ).toFixed(2)}%` : `${width5}%` }
+        {item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
+        ? `${parseFloat(item[spend].value * 1  / item[investment].value  * 1 ).toFixed(2)}%` : `${Math.round(item[spend].value / item[investment].value).toFixed(0).toLocaleString()}%` }
 
             </p>
 
 
         </div>
-</div>
+        </div>
 
         </Col>
+      ))}
       </Row>
 
 

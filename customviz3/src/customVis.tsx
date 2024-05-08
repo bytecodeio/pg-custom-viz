@@ -131,139 +131,175 @@ looker.plugins.visualizations.add({
 
             },
 
-                titleColor2: {
-                  type: "string",
-                  label: "Subtitle Color",
-                  default: "#637087",
-                  display: "text",
-                  placeholder: "",
+      //           titleColor2: {
+      //             type: "string",
+      //             label: "Subtitle Color",
+      //             default: "#637087",
+      //             display: "text",
+      //             placeholder: "",
+      //
+      //             order: 3,
+      //               section: "Style",
+      //
+      //           },
+      //
+      //
+      //           reachLeft3: {
+      //             label: "Programmatic & Video Spend Value",
+      //             type: "string",
+      //             display: "select",
+      //             default: kpiFieldDefault,
+      //             values: fieldOptions0,
+      //
+      //             order: 4,
+      //               section: "Calc 1",
+      //           },
+      //
+      //
+      // reachLeft1: {
+      //   label: "Programmatic & Video Total Investment Value",
+      //   type: "string",
+      //   display: "select",
+      //   default: kpiFieldDefault,
+      //   values: fieldOptions0,
+      //
+      //   order: 5,
+      //   section: "Calc 1",
+      // },
+      //
+      //
+      // reachLeft2: {
+      //   label: "Social Spend Value",
+      //   type: "string",
+      //   display: "select",
+      //   default: kpiFieldDefault,
+      //   values: fieldOptions0,
+      //
+      //   order: 6,
+      //   section: "Calc 2",
+      // },
+      //
+      //
+      //       write1: {
+      //         label: "Social Investment Value",
+      //         type: "string",
+      //         display: "select",
+      //         default: kpiFieldDefault,
+      //         values: fieldOptions0,
+      //
+      //         order: 7,
+      //         section: "Calc 2",
+      //       },
+      //
+      //
+      //       dollar1: {
+      //         label: "Search Spend Value",
+      //         type: "string",
+      //         display: "select",
+      //         default: kpiFieldDefault,
+      //         values: fieldOptions0,
+      //
+      //         order: 6,
+      //         section: "Calc 3",
+      //       },
+      //
+      //
+      //             percentSign1: {
+      //               label: "Search Investment Value",
+      //               type: "string",
+      //               display: "select",
+      //               default: kpiFieldDefault,
+      //               values: fieldOptions0,
+      //
+      //               order: 7,
+      //               section: "Calc 3",
+      //             },
+      //
+      //             write4: {
+      //               label: "TV Spend Value",
+      //               type: "string",
+      //               display: "select",
+      //               default: kpiFieldDefault,
+      //               values: fieldOptions0,
+      //
+      //               order: 6,
+      //               section: "Calc 4",
+      //             },
+      //
+      //
+      //                   reachRight: {
+      //                     label: "TV Investment Value",
+      //                     type: "string",
+      //                     display: "select",
+      //                     default: kpiFieldDefault,
+      //                     values: fieldOptions0,
+      //
+      //                     order: 7,
+      //                     section: "Calc 4",
+      //                   },
+      //
+      //
+      //                   write5: {
+      //                     label: "Digital Spend Value",
+      //                     type: "string",
+      //                     display: "select",
+      //                     default: kpiFieldDefault,
+      //                     values: fieldOptions0,
+      //
+      //                     order: 6,
+      //                     section: "Calc 5",
+      //                   },
+      //
+      //
+      //                       effectivenessRight: {
+      //                           label: "Digital Investment Value",
+      //                           type: "string",
+      //                           display: "select",
+      //                           default: kpiFieldDefault,
+      //                           values: fieldOptions0,
+      //
+      //                           order: 7,
+      //                           section: "Calc 5",
+      //                         },
+      //
 
-                  order: 3,
-                    section: "Style",
-
-                },
 
 
-                reachLeft3: {
-                  label: "Programmatic & Video Spend Value",
-                  type: "string",
-                  display: "select",
-                  default: kpiFieldDefault,
-                  values: fieldOptions0,
-
-                  order: 4,
-                    section: "Calc 1",
-                },
-
-
-      reachLeft1: {
-        label: "Programmatic & Video Total Investment Value",
+      chooseLabel: {
+        label: "Choose Labels",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
 
-        order: 5,
-        section: "Calc 1",
+        order: 1,
+        section: "Values",
       },
 
 
-      reachLeft2: {
-        label: "Social Spend Value",
+
+      spend: {
+        label: "Choose Total Media Spend Value",
         type: "string",
         display: "select",
         default: kpiFieldDefault,
         values: fieldOptions0,
 
-        order: 6,
-        section: "Calc 2",
+        order: 2,
+        section: "Values",
       },
 
 
-            write1: {
-              label: "Social Investment Value",
-              type: "string",
-              display: "select",
-              default: kpiFieldDefault,
-              values: fieldOptions0,
+investment: {
+label: "Choose Total Investment Value",
+type: "string",
+display: "select",
+default: kpiFieldDefault,
+values: fieldOptions0,
 
-              order: 7,
-              section: "Calc 2",
-            },
-
-
-            dollar1: {
-              label: "Search Spend Value",
-              type: "string",
-              display: "select",
-              default: kpiFieldDefault,
-              values: fieldOptions0,
-
-              order: 6,
-              section: "Calc 3",
-            },
-
-
-                  percentSign1: {
-                    label: "Search Investment Value",
-                    type: "string",
-                    display: "select",
-                    default: kpiFieldDefault,
-                    values: fieldOptions0,
-
-                    order: 7,
-                    section: "Calc 3",
-                  },
-
-                  write4: {
-                    label: "TV Spend Value",
-                    type: "string",
-                    display: "select",
-                    default: kpiFieldDefault,
-                    values: fieldOptions0,
-
-                    order: 6,
-                    section: "Calc 4",
-                  },
-
-
-                        reachRight: {
-                          label: "TV Investment Value",
-                          type: "string",
-                          display: "select",
-                          default: kpiFieldDefault,
-                          values: fieldOptions0,
-
-                          order: 7,
-                          section: "Calc 4",
-                        },
-
-
-                        write5: {
-                          label: "Digital Spend Value",
-                          type: "string",
-                          display: "select",
-                          default: kpiFieldDefault,
-                          values: fieldOptions0,
-
-                          order: 6,
-                          section: "Calc 5",
-                        },
-
-
-                            effectivenessRight: {
-                                label: "Digital Investment Value",
-                                type: "string",
-                                display: "select",
-                                default: kpiFieldDefault,
-                                values: fieldOptions0,
-
-                                order: 7,
-                                section: "Calc 5",
-                              },
-
-
-
+order: 3,
+section: "Values",
+},
 
 
      //  dollar1: {
