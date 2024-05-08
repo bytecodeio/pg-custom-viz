@@ -333,16 +333,43 @@ export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
     var { investment, chooseLabel, spend, writeTitle, writeTitle2, titleColor,   bodyStyle,   color_title, } = config;
 
 
+var percentages = data.map((item, i) =>(
+    item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
+    ? `${parseFloat(item[spend].value * 1  / item[investment].value  * 1 ).toFixed(2)}%` : `${Math.round(item[spend].value / item[investment].value).toFixed(0).toLocaleString()}`
+
+))
+
+
+
+
+const doesItExist2 = percentages[2] == "" ||  percentages[2] == "undefined" || percentages[2] === undefined;
+const three = doesItExist2 ? 0 : percentages[2];
+
+
+
+const doesItExist3 = percentages[3] == "" ||  percentages[3] == "undefined" || percentages[3] === undefined;
+const four = doesItExist3 ? 0 : percentages[3];
+
+
+
+const doesItExist4 = percentages[4] == "" ||  percentages[4] == "undefined" || percentages[4] === undefined;
+const five = doesItExist4 ? 80 : percentages[4];
+
+
 
   useLayoutEffect(() => {
   const sets = [
-    { sets: ["program"], size: 15},
-    { sets: ["social"], size: 20 },
+    { sets: ["program"], size: percentages[0]},
+    { sets: ["social"], size: percentages[1] },
+    { sets: ["search"], size: `${three}`},
+    { sets: ["tv"], size: `${four}`},
+    { sets: ["digital"], size: `${five}`},
+
     { sets: ["program", "social"], size: 10 },
-    { sets: ["search"], size: 10 },
+
     { sets: ["search", "social"], size: 1 },
     { sets: ["search", "social", "program"], size: 2 },
-    { sets: ["digital"], size: 20 },
+
     { sets: ["digital", "search"], size: 2 },
     { sets: ["digital", "search", "program", "social"], size: 2 },
     { sets: ["digital", "search", "social"], size: 2 },
@@ -352,14 +379,14 @@ export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
     { sets: ["tv", "digital", "search"], size: 2 },
     { sets: ["tv", "digital"], size: 2 },
 
-    { sets: ["tv"], size: 20 },
+
   ];
 
   const buildVenn = venn.VennDiagram().width(700).height(300);
   // build venn diagram
   // const vennChart = d3.select("#venn").datum(sets).call(buildVenn);
 
-  const data2 = sets; 
+  const data2 = sets;
 
 const vennChart = d3.select("#venn")
 .datum(data2); // Bind data directly to the selection
@@ -392,7 +419,7 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
     .on("mousemove", function (event, d) {
       // Display a tooltip with the current size
       tooltip.transition().duration(400).style("opacity", "0.9");
-      tooltip.text(d.size);
+      tooltip.text(d.size + "%");
       tooltip
         .style("position", "absolute")
         .style("left", event.pageX + "px")
