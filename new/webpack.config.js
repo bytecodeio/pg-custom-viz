@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/customVis.js",
+  entry: ["regenerator-runtime/runtime", "./src/customVis.js"],
   devServer: {
     static: "./dist",
     https: true,

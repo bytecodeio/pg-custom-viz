@@ -2,6 +2,7 @@
 import React, { Fragment, useEffect, useMemo, useState, useLayoutEffect } from "react";
 import * as venn from "venn.js";
 import * as d3 from "d3";
+import 'regenerator-runtime/runtime';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Row, Col, Container, Button, Overlay, OverlayTrigger, Popover, PopoverBody, PopoverHeader, ProgressBar} from 'react-bootstrap';
@@ -274,36 +275,40 @@ const Styles = styled.div`
   }
 #venn{
   background: #f7f8f9;
-      display: flex;
-      justify-content: center;
-
-      padding:0em 0em 3em 0em
+  display:flex;
+  justify-content:center;
+      padding:0em 0em 3em 0em;
+      width:100%;
 }
 
-[data-venn-sets="program"] path{
+
+svg .venn-area.venn-circle:nth-child(1) path{
   fill: #12d465 !important
 }
 
-[data-venn-sets="social"] path{
+
+svg .venn-area.venn-circle:nth-child(2) path{
   fill: #ffda00 !important
 }
 
-[data-venn-sets="search"] path{
+svg .venn-area.venn-circle:nth-child(3) path{
   fill: #0066ff !important
 }
 
 
-[data-venn-sets="tv"] path{
+svg .venn-area.venn-circle:nth-child(4) path{
   fill: #e22bb7 !important
 }
 
-[data-venn-sets="digital"] path{
+svg .venn-area.venn-circle:nth-child(5) path{
   fill: #6fd0e9 !important
 }
 
 .venn-intersection path{
   fill-opacity: .3 !important;
 }
+
+
 
 .overlap{
   background:#002169;
@@ -330,66 +335,121 @@ margin-bottom: 3em;
 export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
 
 
-    var { investment, chooseLabel, spend, writeTitle, writeTitle2, titleColor,   bodyStyle,   color_title, } = config;
+var { investment, chooseLabel, spend, writeTitle, writeTitle2, titleColor,   bodyStyle,   color_title, } = config;
 
+
+// var percentages = data.map((item, i) =>(
+//     item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
+//     ? `${Math.round(item[spend].value * 1  / item[investment].value  * 1 ).toFixed(2)}` : `${Math.round(item[spend].value / item[investment].value).toFixed(0)}`
+//
+// ))
 
 var percentages = data.map((item, i) =>(
-    item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
-    ? `${parseFloat(item[spend].value * 1  / item[investment].value  * 1 ).toFixed(2)}%` : `${Math.round(item[spend].value / item[investment].value).toFixed(0).toLocaleString()}`
+    item[spend].value / item[investment].value
 
 ))
 
+// console.log(percentages)
+
+// const doesItExist0 = percentages[0] == "" ||  percentages[0] == "undefined" || percentages[0] === undefined;
+// const one = doesItExist0 ? 0 : percentages[0];
+//
+// const doesItExist1 = percentages[1] == "" ||  percentages[1] == "undefined" || percentages[1] === undefined;
+// const two = doesItExist1 ? 0 : percentages[1];
+//
+//
+// const doesItExist2 = percentages[2] == "" ||  percentages[2] == "undefined" || percentages[2] === undefined;
+// const three = doesItExist2 ? 0 : percentages[2];
+//
+//
+//
+// const doesItExist3 = percentages[3] == "" ||  percentages[3] == "undefined" || percentages[3] === undefined;
+// const four = doesItExist3 ? 0 : percentages[3];
+//
+//
+//
+// const doesItExist4 = percentages[4] == "" ||  percentages[4] == "undefined" || percentages[4] === undefined;
+// const five = doesItExist4 ? 0 : percentages[4];
+
+
+  useEffect(() => {
+
+const myObject = Object.fromEntries(percentages.map((value, index) => [index, value]));
+
+
+const newObject = Object.fromEntries(
+  Object.entries(myObject).map(([key, value], index) => [
+    index === 0 ? `key_${index}` : `key_${index}`, // Customize the word for the first key
+    value
+  ])
+);
 
 
 
-const doesItExist2 = percentages[2] == "" ||  percentages[2] == "undefined" || percentages[2] === undefined;
-const three = doesItExist2 ? 0 : percentages[2];
+
+let newArray = Object.entries(myObject).map(([key, value]) => ({
+  sets: [`key_${key}`],
+  size: value
+}));
+
+
+newArray = newArray.sort()
+
+
+//
+// var array1 = ["Lorem", "ipsum", "dolor"],
+//     array2 = ["Lorem", "ipsum", "quick", "brown", "foo"],
+//     array3 = ["Jumps", "Over", "Lazy", "Lorem"],
+//     array4 = [1337, 420, 666, "Lorem"],
+//     data = [array1, array2, array3, array4],
+//     result = data.reduce((a, b) => a.filter(c => b.includes(c)));
+//
+// console.log(result);
 
 
 
-const doesItExist3 = percentages[3] == "" ||  percentages[3] == "undefined" || percentages[3] === undefined;
-const four = doesItExist3 ? 0 : percentages[3];
-
-
-
-const doesItExist4 = percentages[4] == "" ||  percentages[4] == "undefined" || percentages[4] === undefined;
-const five = doesItExist4 ? 80 : percentages[4];
-
-
-
-  useLayoutEffect(() => {
   const sets = [
-    { sets: ["program"], size: percentages[0]},
-    { sets: ["social"], size: percentages[1] },
-    { sets: ["search"], size: `${three}`},
-    { sets: ["tv"], size: `${four}`},
-    { sets: ["digital"], size: `${five}`},
+    // { sets: ["program"], size: `${one}`},
+    // { sets: ["social"], size: `${two}` },
+    // { sets: ["search"], size: `${three}`},
+    // { sets: ["tv"], size: `${four}`},
+    // { sets: ["digital"], size: `${five}`},
 
-    { sets: ["program", "social"], size: 10 },
 
-    { sets: ["search", "social"], size: 1 },
-    { sets: ["search", "social", "program"], size: 2 },
-
-    { sets: ["digital", "search"], size: 2 },
-    { sets: ["digital", "search", "program", "social"], size: 2 },
-    { sets: ["digital", "search", "social"], size: 2 },
-    { sets: ["digital", "search", "program"], size: 2 },
-    { sets: ["tv", "digital", "search", "program", "social"], size: 2 },
-    { sets: ["tv", "digital", "search", "social"], size: 2 },
-    { sets: ["tv", "digital", "search"], size: 2 },
-    { sets: ["tv", "digital"], size: 2 },
+    //
+    // { sets: ["program", "social"], size: 0 },
+    // { sets: ["search", "social", "program"], size: 0 },
+    // { sets: ["search", "social", "program", "tv"], size: 0 },
+    //
+    // { sets: ["search", "social"], size: 1 },
+    // { sets: ["search", "social", "tv"], size: 1 },
+    //
+    //
+    // { sets: ["digital", "search"], size: 0 },
+    // { sets: ["digital", "search", "program", "social"], size: 0 },
+    // { sets: ["digital", "search", "social"], size: 0 },
+    // { sets: ["digital", "search", "program"], size: 0 },
+    // { sets: ["tv", "digital", "search", "program", "social"], size: 0 },
+    // { sets: ["tv", "digital", "search", "social"], size: 2 },
+    // { sets: ["tv", "digital", "search"], size: 2 },
+    // { sets: ["tv", "digital"], size: 2 },
 
 
   ];
 
-  const buildVenn = venn.VennDiagram().width(700).height(300);
+
+  console.log(newArray.sort());
+  console.log(sets);
+
+
+  const buildVenn = venn.VennDiagram().height(350);
   // build venn diagram
   // const vennChart = d3.select("#venn").datum(sets).call(buildVenn);
 
-  const data2 = sets;
+const data2 = newArray;
 
 const vennChart = d3.select("#venn")
-.datum(data2); // Bind data directly to the selection
+.datum(newArray); // Bind data directly to the selection
 
 buildVenn(vennChart); // Call buildVenn with the data-bound selection
 
@@ -407,21 +467,22 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
   d3.selectAll(".venn-area")
     .on("mouseover", function (d, i) {
       // sort all the areas relative to the current item
-      venn.sortAreas(vennChart, i);
-
+      // venn.sortAreas(vennChart, i);
+      //
       let node = d3.select(this).transition();
       node
         .select("path")
         .style("fill-opacity", 0.7)
-        .style("stroke", "transparent")
+        .style("stroke", "#efefef")
         .style("stroke-width", "2");
     })
     .on("mousemove", function (event, d) {
       // Display a tooltip with the current size
       tooltip.transition().duration(400).style("opacity", "0.9");
-      tooltip.text(d.size + "%");
+      tooltip.text(Math.round(d.size).toFixed(0) + "%");
       tooltip
         .style("position", "absolute")
+
         .style("left", event.pageX + "px")
         .style("top", event.pageY - 28 + "px");
     })
@@ -439,9 +500,6 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
 return (
   <>
   <Styles>
-
-
-
 
         <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
