@@ -175,6 +175,7 @@ display: none
 
 }
  .progress-bar {
+    color: transparent !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -182,9 +183,21 @@ display: none
     color: blue;
     text-align: center;
     white-space: nowrap;
-    border-radius: 100px
+    border-radius: 100px;
+
 }
 .progress-label {
+  color: #14171b;
+  font-size: 17px;
+    font-weight: 500;
+
+    z-index: 999;
+
+    width: 100% !important
+}
+
+
+.progress-span {
   color: #14171b;
   font-size: 17px;
     font-weight: 500;
@@ -195,7 +208,7 @@ display: none
 
 }
 
-.progress-label.white {
+.progress-span.white {
   color: white;
   font-size: 17px;
     font-weight: 500;

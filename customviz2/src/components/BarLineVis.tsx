@@ -779,7 +779,6 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
 console.log(data)
 
-  // {item[reachLeft1].value.toLocaleString()}
 
   return (
     <Fragment>
@@ -803,23 +802,42 @@ console.log(data)
       <Col md={8}>
       <p className="mb-0">{item[chooseLabel].value}</p>
       <div className="position-relative">
-      <div className="progress">
+
+      <ProgressBar
+            key={item.id} // Assuming each item has a unique ID
+            now={item[spend].value / item[investment].value} // Assuming 'value' property holds the progress value
+            className={item[spend].value >= 0 && item[spend].value / item[investment].value < 13
+        ? "progress-label white" : "progress-label"}
+            label={`${item[spend].value / item[investment].value}%`} // Update label with calculated percentage
+            style={{ width: `${item[spend].value / item[investment].value > 100 ? 100 : item[spend].value / item[investment].value}%` }} // Ternary for percentage
+          />
+
+      <span className={item[spend].value >= 0 && item[spend].value / item[investment].value < 13
+      ? "progress-span white" : "progress-span"}>
+
+      {item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
+      ? `${parseFloat(item[spend].value * 1  / item[investment].value  * 1 ).toFixed(2)}%` : `${Math.round(item[spend].value / item[investment].value).toFixed(0).toLocaleString()}%` }
+
+
+      </span>
+
+      {/*<div className="progress">
         <div
         className="progress-bar"
         role="progressbar"
-        style={{ width:  item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 6
-      ?  9 : item[spend].value / item[investment].value}}
+        style={{ width:  item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
+      ?  5 : item[spend].value / item[investment].value }}
       ></div>
         </div>
 
-        <span className={item[spend].value >= 0 && item[spend].value / item[investment].value < 20
+        <span className={item[spend].value >= 0 && item[spend].value / item[investment].value < 13
     ? "progress-label white" : "progress-label"}>
 
     {item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
     ? `${parseFloat(item[spend].value * 1  / item[investment].value  * 1 ).toFixed(2)}%` : `${Math.round(item[spend].value / item[investment].value).toFixed(0).toLocaleString()}%` }
 
 
-    </span>
+    </span>*/}
         </div>
 
 

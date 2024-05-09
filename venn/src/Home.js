@@ -367,6 +367,7 @@ var percentages = data.map((item, i) =>(
 ))
 
 
+ const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
 useEffect(() => {
 
 const myObject = Object.fromEntries(percentages.map((value, index) => [index, value]));
@@ -387,10 +388,16 @@ let bigObject = Object.entries(myObject).map(([key, value]) => ({
 
 bigObject = bigObject.sort()
 
+console.log(bigObject, "bigObject")
+
+let allMatchingSetsCount = 0;
 
 function generateUniqueCombinations(sets) {
   const combinations = [];
-  const seenSets = new Set(); // Track seen sets to avoid duplicates
+  const seenSets = new Set();
+
+
+  let totalIntersectionCount = 0;
 
   function generateCombinationsHelper(currentSet, index) {
     if (currentSet.length > 1 && !seenSets.has(currentSet.join())) { // Check for unique combination
@@ -411,75 +418,26 @@ function generateUniqueCombinations(sets) {
   }
 
   generateCombinationsHelper([], 0);
-  return combinations;
+
+  // Calculate intersection size of all sets after generating combinations
+  totalIntersectionCount = calculateIntersectionCount(bigObject.map(obj => obj.sets[0]));
+
+  return { combinations, totalIntersectionCount }; // Return both combinations and total intersection size
 }
 
 function calculateIntersectionCount(combination) {
   return bigObject.filter(obj => combination.every(set => obj.sets.includes(set))).length;
 }
 
-const allCombinations = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
+const { combinations, totalIntersectionCount } = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
 
-const extendedData = [...bigObject, ...allCombinations];
+const extendedData = [...bigObject, ...combinations];
 
 console.log(extendedData);
 
+console.log(`Intersection size of all matching sets: ${totalIntersectionCount}`);
 
-
-
-// function generateUniqueCombinations(sets) {
-//   const combinations = [];
-//   const seenSets = new Set(); // Track seen sets to avoid duplicates
-//
-//   function generateCombinationsHelper(currentSet, index) {
-//     if (currentSet.length > 1 && !seenSets.has(currentSet.join())) { // Check for unique combination
-//       combinations.push(currentSet.slice()); // Add unique combination (copy)
-//       seenSets.add(currentSet.join()); // Mark combination as seen
-//     }
-//
-//     if (index === sets.length) {
-//       return;
-//     }
-//
-//     for (let i = index; i < sets.length; i++) {
-//       currentSet.push(sets[i]);
-//       generateCombinationsHelper(currentSet, i + 1); // Recursive call with next element
-//       currentSet.pop();
-//     }
-//   }
-//
-//   generateCombinationsHelper([], 0);
-//   return combinations;
-// }
-//
-//
-//
-//
-// const allCombinations = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
-//
-// const extendedData = [...bigObject, ...allCombinations.map(set => ({ sets: set, size: 0 }))];
-
-
-
-//
-//
-// var comboData = allCombinations,
-// result = comboData.reduce((a, b) => a.filter(c => b.includes(c)));
-//
-// console.log(result);
-//
-// console.log(allCombinations);
-//
-// console.log(extendedData);
-//
-
-
-
-
-
-
-
-
+setTotalIntersectionCount(totalIntersectionCount);
 
 
 
@@ -538,6 +496,11 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
         .style("font-size", "24px");
     });
 }, []);
+
+
+
+console.log(totalIntersectionCount, "khgbdvsbkusdv")
+
 return (
   <>
   <Styles>
@@ -567,7 +530,7 @@ return (
         <div className="overlap">
         <p className="mb-0">Total Overlap</p>
 
-          <h3 className="mb-0">25.6%</h3>
+          <h3 className="mb-0">{totalIntersectionCount}</h3>
         </div>
 
           </Row>

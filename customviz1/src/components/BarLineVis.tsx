@@ -473,7 +473,9 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
      {item[reachLeft2].rendered}
       </p>
       <p className="mb-0 small">
-      {reachLeft3}
+
+
+      {item[reachLeft3].rendered}
 
       </p>
       </div>
@@ -500,7 +502,9 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
      {item[reach2Left2].rendered}
       </p>
       <p className="mb-0 small">
-      {reach2Left3}
+
+
+    {item[reach2Left3].rendered}
 
       </p>
       </div>
@@ -527,7 +531,7 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
      {item[reach3Left2].rendered}
       </p>
       <p className="mb-0 small">
-      {reach3Left3}
+    {item[reach3Left3].rendered}
 
       </p>
       </div>
@@ -576,7 +580,9 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
               <p className="mb-0 small">
 
-              {effectivenessLeft3}
+                 {item[effectivenessLeft3].rendered}
+
+
 
 
 
@@ -610,7 +616,9 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
               <p className="mb-0 small">
 
-              {effectiveness2Left3}
+               {item[effectiveness2Left3].rendered}
+
+
 
 
 
@@ -645,7 +653,9 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
               <p className="mb-0 small">
 
-              {effectiveness3Left3}
+              {item[effectiveness3Left3].rendered}
+
+
 
 
 
@@ -700,7 +710,9 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
                       <p className="mb-0 small">
 
-                      {efficiencyLeft3}
+                       {item[efficiencyLeft3].rendered}
+
+
 
 
 
@@ -736,7 +748,7 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
                       <p className="mb-0 small">
 
-                      {efficiency2Left3}
+                       {item[efficiency2Left3].rendered}
 
 
 
@@ -771,9 +783,10 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
 
                       <p className="mb-0 small">
 
-                      {efficiency3Left3}
 
+                      {item[efficiency3Left3].rendered}
 
+              
 
                       </p>
                       </div>
