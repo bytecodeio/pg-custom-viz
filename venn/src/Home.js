@@ -304,6 +304,29 @@ svg .venn-area.venn-circle:nth-child(5) path{
   fill: #6fd0e9 !important
 }
 
+
+svg .venn-area.venn-circle:nth-child(6) path{
+  fill: #12d465 !important
+}
+
+
+svg .venn-area.venn-circle:nth-child(7) path{
+  fill: #ffda00 !important
+}
+
+svg .venn-area.venn-circle:nth-child(8) path{
+  fill: #0066ff !important
+}
+
+
+svg .venn-area.venn-circle:nth-child(9) path{
+  fill: #e22bb7 !important
+}
+
+svg .venn-area.venn-circle:nth-child(10) path{
+  fill: #6fd0e9 !important
+}
+
 .venn-intersection path{
   fill-opacity: .3 !important;
 }
@@ -344,26 +367,25 @@ var percentages = data.map((item, i) =>(
 ))
 
 
-
-  useEffect(() => {
+useEffect(() => {
 
 const myObject = Object.fromEntries(percentages.map((value, index) => [index, value]));
 
 
 const newObject = Object.fromEntries(
   Object.entries(myObject).map(([key, value], index) => [
-    index === 0 ? `key_${index}` : `key_${index}`, // Customize the word for the first key
+    index === 0 ? `key_${index}` : `key_${index}`,
     value
   ])
 );
 
-let newArray = Object.entries(myObject).map(([key, value]) => ({
+let bigObject = Object.entries(myObject).map(([key, value]) => ({
   sets: [`key_${key}`],
   size: value
 }));
 
 
-newArray = newArray.sort()
+bigObject = bigObject.sort()
 
 
 function generateUniqueCombinations(sets) {
@@ -372,7 +394,8 @@ function generateUniqueCombinations(sets) {
 
   function generateCombinationsHelper(currentSet, index) {
     if (currentSet.length > 1 && !seenSets.has(currentSet.join())) { // Check for unique combination
-      combinations.push(currentSet.slice()); // Add unique combination (copy)
+      const intersectionCount = calculateIntersectionCount(currentSet); // Calculate intersection size
+      combinations.push({ sets: currentSet.slice(), size: intersectionCount }); // Add unique combination with size
       seenSets.add(currentSet.join()); // Mark combination as seen
     }
 
@@ -391,69 +414,73 @@ function generateUniqueCombinations(sets) {
   return combinations;
 }
 
-const allCombinations = generateUniqueCombinations(newArray.map(obj => obj.sets[0])); // Extract set elements
+function calculateIntersectionCount(combination) {
+  return bigObject.filter(obj => combination.every(set => obj.sets.includes(set))).length;
+}
 
-const extendedData = [...newArray, ...allCombinations.map(set => ({ sets: set, size: 0 }))];
+const allCombinations = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
+
+const extendedData = [...bigObject, ...allCombinations];
 
 console.log(extendedData);
 
 
 
 
-// const originalData = [
-//   { sets: ["key_0"], size: 6 },
-//   { sets: ["key_1"], size: 15 },
-//   { sets: ["key_2"], size: 1.033 },
-//   { sets: ["key_3"], size: 0.18 },
-//   { sets: ["key_4"], size: 43 },
-// ];
+// function generateUniqueCombinations(sets) {
+//   const combinations = [];
+//   const seenSets = new Set(); // Track seen sets to avoid duplicates
 //
-
-
-
-// const originalData = [
-//   { sets: ["key_0"], size: variable },
-//   { sets: ["key_1"], size: variable },
-//   { sets: ["key_2"], size: variable },
-//   { sets: ["key_3"], size: variable },
-//   { sets: ["key_4"], size: variable },
-//   { sets: ['key_0', 'key_1'], variable },
-//        { sets: ['key_2', 'key_1', 'key_0'], size: variable },
-//        { sets: ['key_2', 'key_1', 'key_0', 'key_3'], size: variable },
+//   function generateCombinationsHelper(currentSet, index) {
+//     if (currentSet.length > 1 && !seenSets.has(currentSet.join())) { // Check for unique combination
+//       combinations.push(currentSet.slice()); // Add unique combination (copy)
+//       seenSets.add(currentSet.join()); // Mark combination as seen
+//     }
 //
-//        { sets: ['key_2', 'key_1'], size: variable },
-//        { sets: ['key_2', 'key_1', 'key_3'], size: variable },
+//     if (index === sets.length) {
+//       return;
+//     }
+//
+//     for (let i = index; i < sets.length; i++) {
+//       currentSet.push(sets[i]);
+//       generateCombinationsHelper(currentSet, i + 1); // Recursive call with next element
+//       currentSet.pop();
+//     }
+//   }
+//
+//   generateCombinationsHelper([], 0);
+//   return combinations;
+// }
 //
 //
-//        { sets: ['key_4', 'key_2'], size: variable },
-//        { sets: ['key_4', 'key_2', 'key_0', 'key_1'], size: variable },
-//        { sets: ['key_4', 'key_2', 'key_1'], size: variable },
-//        { sets: ['key_4', 'key_2', 'key_0'], size: variable },
-//        { sets: ['key_3', 'key_4', 'key_2', 'key_0', 'key_1'], size: variable },
-//        { sets: ['key_3', 'key_4', 'key_2', 'key_1'], size: variable },
-//        { sets: ['key_3', 'key_4', 'key_2'], size: variable },
-//        { sets: ['key_3', 'key_4'], size: variable },
-// ];
+//
+//
+// const allCombinations = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
+//
+// const extendedData = [...bigObject, ...allCombinations.map(set => ({ sets: set, size: 0 }))];
 
 
 
-
-
-// var array1 = ["Lorem", "ipsum", "dolor"],
-//     array2 = ["Lorem", "ipsum", "quick", "brown", "foo"],
-//     array3 = ["Jumps", "Over", "Lazy", "Lorem"],
-//     array4 = [1337, 420, 666, "Lorem"],
-//     data = [array1, array2, array3, array4],
-//     result = data.reduce((a, b) => a.filter(c => b.includes(c)));
+//
+//
+// var comboData = allCombinations,
+// result = comboData.reduce((a, b) => a.filter(c => b.includes(c)));
 //
 // console.log(result);
+//
+// console.log(allCombinations);
+//
+// console.log(extendedData);
+//
 
 
 
 
 
-  console.log(newArray.sort());
-  // console.log(sets);
+
+
+
+
 
 
   const buildVenn = venn.VennDiagram().height(350);

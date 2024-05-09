@@ -56,9 +56,9 @@ looker.plugins.visualizations.add({
           [all.label]: all.name
         }));
 
-        console.log(fieldOptions)
-        console.log(fieldOptions0)
-        console.log(fieldOptions2)
+        // console.log(fieldOptions)
+        // console.log(fieldOptions0)
+        // console.log(fieldOptions2)
 
     const options = {
 
@@ -162,7 +162,7 @@ const fields = {
   pivots: pivots?.map((p) => p.name),
 };
 
-console.log(fields, "fields")
+// console.log(fields, "fields")
 
     ReactDOM.render(
       <Home
