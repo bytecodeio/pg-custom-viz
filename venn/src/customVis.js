@@ -63,7 +63,7 @@ looker.plugins.visualizations.add({
     const options = {
 
       chooseLabel: {
-        label: "Choose Labels",
+        label: "Choose 5 Labels",
         type: "string",
         display: "select",
         default: "",
@@ -75,8 +75,8 @@ looker.plugins.visualizations.add({
 
 
 
-      spend: {
-        label: "Choose Total Media Spend Value",
+      reachPercentage: {
+        label: "Choose 5 Reach Percentage",
         type: "string",
         display: "select",
         default: "",
@@ -88,13 +88,25 @@ looker.plugins.visualizations.add({
 
 
 investment: {
-label: "Choose Total Investment Value",
+label: "Choose Reach Overlap String Values",
 type: "string",
 display: "select",
 default: "",
 values: fieldOptions0,
 
 order: 3,
+section: "Values",
+},
+
+
+numbers: {
+label: "Choose Reach Overlap Number Values",
+type: "string",
+display: "select",
+default: "",
+values: fieldOptions0,
+
+order: 4,
 section: "Values",
 },
 

@@ -358,87 +358,181 @@ margin-bottom: 3em;
 export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
 
 
-var { investment, chooseLabel, spend, writeTitle, writeTitle2, titleColor,   bodyStyle,   color_title, } = config;
+var { investment, chooseLabel,  numbers, reachPercentage, writeTitle, writeTitle2, titleColor,   bodyStyle,   color_title, } = config;
+
+//
+// console.log(data)
 
 
-var percentages = data.map((item, i) =>(
-    item[spend].value / item[investment].value
+
+const filteredEntries = Object.entries(data)
+  .slice(5);
+
+
+const filteredObject = Object.fromEntries(filteredEntries);
+
+// console.log(filteredObject, "hi")
+
+const firstFive = data.slice(0, 5);
+
+
+const arrayOfObjects = data
+
+const filteredArray = arrayOfObjects.filter((_, index) => index >= 5); // Keep objects from index 5 onwards
+
+// console.log(filteredArray);
+
+
+
+
+
+var setStrings = filteredArray.map((item, i) =>(
+    item[investment].value
 
 ))
 
 
- const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
+var setNumbers = filteredArray.map((item, i) =>(
+    item[numbers].value
+
+))
+
+//
+//
+// console.log(setStrings, "setStrings")
+//
+// console.log(setNumbers, "setNumbers")
+
+// const myObject = Object.fromEntries(setStrings.map((value, index) => [index, value]));
+//
+// let bigObject = Object.entries(myObject).map(([key, value]) => ({
+//   sets: [`key_${key}`],
+//   size: value
+// }));
 useEffect(() => {
 
-const myObject = Object.fromEntries(percentages.map((value, index) => [index, value]));
+function combineArraysToObject(array1, array2) {
+  if (!Array.isArray(array1) || !Array.isArray(array2)) {
+    throw new Error('Both arguments must be arrays');
+  }
+
+  if (array1.length !== array2.length) {
+    throw new Error('Arrays must have the same length');
+  }
+
+  return array1.map((value1, index) => {
+    return { sets: [value1], size: array2[index] };
+  });
+}
+
+const array1 = setStrings;
+const array2 = setNumbers;
+
+const combinedObject = combineArraysToObject(array1, array2);
 
 
-const newObject = Object.fromEntries(
-  Object.entries(myObject).map(([key, value], index) => [
-    index === 0 ? `key_${index}` : `key_${index}`,
-    value
-  ])
-);
-
-let bigObject = Object.entries(myObject).map(([key, value]) => ({
-  sets: [`key_${key}`],
-  size: value
-}));
+console.log(combinedObject)
 
 
-bigObject = bigObject.sort()
+var bigObject = combinedObject.sort()
 
 console.log(bigObject, "bigObject")
 
-let allMatchingSetsCount = 0;
 
-function generateUniqueCombinations(sets) {
-  const combinations = [];
-  const seenSets = new Set();
+// const extendedData = [
+//      { sets: ["A"], size: 20 },
+//      { sets: ["B"], size: 10 },
+//      { sets: ["A", "B"], size: 5 }
+//    ];
+
+const extendedData = [
+    { sets: ['Social', 'Other Digital', 'Prog', 'Other'], size: 8 },
+    { sets: ['Other Digital', 'Other'], size: 7 },
+    { sets: ['TV', 'Social', 'Other'], size: 4 },
+    {sets: ['Social' , 'Prog'], size: 5},
+    {sets: ['Social' ], size: 4},
+    {sets: ['TV'], size: 3},
+    {sets: ['Other Digital' ], size: 4},
+    {sets: ['Prog'], size: 3},
+    {sets: ['Other'], size: 13}
+  ];
+
+console.log(extendedData)
 
 
-  let totalIntersectionCount = 0;
 
-  function generateCombinationsHelper(currentSet, index) {
-    if (currentSet.length > 1 && !seenSets.has(currentSet.join())) { // Check for unique combination
-      const intersectionCount = calculateIntersectionCount(currentSet); // Calculate intersection size
-      combinations.push({ sets: currentSet.slice(), size: intersectionCount }); // Add unique combination with size
-      seenSets.add(currentSet.join()); // Mark combination as seen
-    }
-
-    if (index === sets.length) {
-      return;
-    }
-
-    for (let i = index; i < sets.length; i++) {
-      currentSet.push(sets[i]);
-      generateCombinationsHelper(currentSet, i + 1); // Recursive call with next element
-      currentSet.pop();
-    }
-  }
-
-  generateCombinationsHelper([], 0);
-
-  // Calculate intersection size of all sets after generating combinations
-  totalIntersectionCount = calculateIntersectionCount(bigObject.map(obj => obj.sets[0]));
-
-  return { combinations, totalIntersectionCount }; // Return both combinations and total intersection size
-}
-
-function calculateIntersectionCount(combination) {
-  return bigObject.filter(obj => combination.every(set => obj.sets.includes(set))).length;
-}
-
-const { combinations, totalIntersectionCount } = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
-
-const extendedData = [...bigObject, ...combinations];
-
-console.log(extendedData);
-
-console.log(`Intersection size of all matching sets: ${totalIntersectionCount}`);
-
-setTotalIntersectionCount(totalIntersectionCount);
-
+//  const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
+// useEffect(() => {
+//
+// const myObject = Object.fromEntries(percentages.map((value, index) => [index, value]));
+//
+//
+// const newObject = Object.fromEntries(
+//   Object.entries(myObject).map(([key, value], index) => [
+//     index === 0 ? `key_${index}` : `key_${index}`,
+//     value
+//   ])
+// );
+//
+// let bigObject = Object.entries(myObject).map(([key, value]) => ({
+//   sets: [`key_${key}`],
+//   size: value
+// }));
+//
+//
+// bigObject = bigObject.sort()
+//
+// console.log(bigObject, "bigObject")
+//
+// let allMatchingSetsCount = 0;
+//
+// function generateUniqueCombinations(sets) {
+//   const combinations = [];
+//   const seenSets = new Set();
+//
+//
+//   let totalIntersectionCount = 0;
+//
+//   function generateCombinationsHelper(currentSet, index) {
+//     if (currentSet.length > 1 && !seenSets.has(currentSet.join())) { // Check for unique combination
+//       const intersectionCount = calculateIntersectionCount(currentSet); // Calculate intersection size
+//       combinations.push({ sets: currentSet.slice(), size: intersectionCount }); // Add unique combination with size
+//       seenSets.add(currentSet.join()); // Mark combination as seen
+//     }
+//
+//     if (index === sets.length) {
+//       return;
+//     }
+//
+//     for (let i = index; i < sets.length; i++) {
+//       currentSet.push(sets[i]);
+//       generateCombinationsHelper(currentSet, i + 1); // Recursive call with next element
+//       currentSet.pop();
+//     }
+//   }
+//
+//   generateCombinationsHelper([], 0);
+//
+//   // Calculate intersection size of all sets after generating combinations
+//   totalIntersectionCount = calculateIntersectionCount(bigObject.map(obj => obj.sets[0]));
+//
+//   return { combinations, totalIntersectionCount }; // Return both combinations and total intersection size
+// }
+//
+// function calculateIntersectionCount(combination) {
+//   return bigObject.filter(obj => combination.every(set => obj.sets.includes(set))).length;
+// }
+//
+// const { combinations, totalIntersectionCount } = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
+//
+// const extendedData = [...bigObject, ...combinations];
+//
+// console.log(extendedData);
+//
+// console.log(`Intersection size of all matching sets: ${totalIntersectionCount}`);
+//
+// setTotalIntersectionCount(totalIntersectionCount);
+//
 
 
   const buildVenn = venn.VennDiagram().height(350);
@@ -499,7 +593,7 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
 
 
 
-console.log(totalIntersectionCount, "khgbdvsbkusdv")
+
 
 return (
   <>
@@ -530,14 +624,14 @@ return (
         <div className="overlap">
         <p className="mb-0">Total Overlap</p>
 
-          <h3 className="mb-0">{totalIntersectionCount}</h3>
+          <h3 className="mb-0">7</h3>
         </div>
 
           </Row>
 
 
           <Row>
-          {data.map((item, i) =>(
+          {firstFive.map((item, i) =>(
             <Col md={12}>
 
             <div className="d-flex justify-content-between">
@@ -550,8 +644,8 @@ return (
 
             <div className="values">
             <p>
-            {item[spend].value / item[investment].value > 0 && item[spend].value / item[investment].value < 1
-            ? `${parseFloat(item[spend].value * 1  / item[investment].value  * 1 ).toFixed(2)}%` : `${Math.round(item[spend].value / item[investment].value).toFixed(0).toLocaleString()}%` }
+            {item[reachPercentage].value  > 0 && item[reachPercentage].value  < 1
+            ? `${parseFloat(item[reachPercentage].value  * 1 ).toFixed(2)}%` : `${Math.round(item[reachPercentage].value).toFixed(0).toLocaleString()}%` }
 
                 </p>
 
