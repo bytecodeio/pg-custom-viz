@@ -787,33 +787,30 @@ console.log(data)
 
     <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
-    <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : '#f7f8f9'}}>
+    <div style={{ backgroundColor: color_title ? background[0] : '#fff'}}>
 
     <Container fluid>
 
-
-    <div class="topWords">
-        {/*<h2 class="burntOrange">Reach</h2>
-        <p class="burntOrange">Reach as many consumers as are in the category, on a continuous basis</p>*/}
-      </div>
       <div className="thisDiv">
-      <div className="topTriangle"><p>REACH</p></div>
+      <div className="topTriangle"><p>Reach</p></div>
       <div className="topTriangle2"></div>
       </div>
-     <div className="rightTriangle"><p>EFFICIENCY</p></div>
+
+      <div className="thisDiv">
+
+     <div className="rightTriangle"><p>Efficiency</p></div>
 
 
-     <div class="leftWords">
-       {/*<h2 class="salmon">Effectiveness</h2>
-       <p class="salmon">Build and maintain relevant memory structures</p>*/}
+      <div className="rightTriangle3"></div>
      </div>
-    <div className="leftTriangle"><p>EFFECTIVENESS</p></div>
+  <div className="thisDiv">
+    <div className="leftTriangle"><p>Effectiveness</p></div>
+  <div className="leftTriangle2"></div>
+</div>
 
-
-
-
-
-
+      <Row>
+<div class="grayBar"></div>
+  </Row>
       <Row>
       {data.map((item, i) =>(
         <>

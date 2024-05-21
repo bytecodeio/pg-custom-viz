@@ -699,66 +699,111 @@ h2{
 }
 
 .topTriangle{
-  z-index: 99999999;
+  z-index: 0;
   width: 0;
   height: 0;
   // border-style: solid;
   // border-width: 0 150px 220px 150px;
   // border-color: transparent transparent #0162ff;
-  left: calc(50% - 180px);
-  position: absolute;
-  top: 155px;
-  transition: all .2s ease-in-out;
+  // left: calc(50% - 180px);
+  // position: absolute;
+  // top: 35px;
+  // transition: all .2s ease-in-out;
+  //
+  //
+  // border: 0 solid transparent;
+  //   border-top-width: 208px;
+  //   border-bottom-width: 110px;
+  //   border-right: 173px solid #0162ff;
 
-
-  border: 0 solid transparent;
-    border-top-width: 101px;
-    border-bottom-width: 99px;
-    border-right: 173px solid #0162ff;
-
-
+  left: calc(50% - 138px);
+    position: absolute;
+    top: 35px;
+    transition: all 0.2s ease-in-out;
+    border: 0 solid transparent;
+    border-top-width: 211px;
+    border-bottom-width: 70px;
+    border-right: 138px solid #0162ff;
 }
 
 .topTriangle2{
-  z-index: 99999999;
+  z-index: -1;
   width: 0;
   height: 0;
   // border-style: solid;
   // border-width: 0 150px 220px 150px;
   // border-color: transparent transparent #0162ff;
-  left: calc(50% - 7px);
+  left: calc(50% - 0px);
   position: absolute;
-  top: 155px;
+  top: 35px;
   transition: all .2s ease-in-out;
 
 
     border: 0 solid transparent;
-    border-bottom-width: 101px;
-    border-top-width: 99px;
-    border-left: 173px solid #0162ff;
+    border-bottom-width: 110px;
+  border-top-width: 208px;
+  border-left: 160px solid #0162ff;
+
+
+  border-bottom-width: 73px;
+border-top-width: 208px;
+border-left: 139px solid #0162ff;
 }
 
 
 .topTriangle p{
   color: white !important;
   position: absolute;
-  top: 122px;
+  top: -46px;
   font-size: 24px;
-  left: -42px;
-  font-weight: 600;
+  left: calc(50% + 103px);
+  font-weight: 400;
+  z-index: 99999999999999;
 }
 
+.grayBar{
+  background: #cbcfd9;
+  padding: 1em;
+  border-radius: 4px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      /* bottom: 169px; */
+      top: 575px;
+      margin: 0 auto;
+      width: 655px !important;
+  
+
+}
 
 .rightTriangle{
-  z-index: 99999999;
+  z-index: 0;
   position: absolute;
-  top: 453px;
+  top: 326px;
   width: 313px;
   height: 216px;
   background: #041e51;
   clip-path: polygon(0% 100%, 0% -200%, 56.5% 0%, 100% 100%);
-  right: calc(50% - 320px);
+  right: calc(50% - 321px);
   transition: all .2s ease-in-out;
+
+}
+
+.rightTriangle2{
+  z-index: -1;
+
+
+background: #041e51;
+position: absolute;
+    top: 250px;
+    width: 93px;
+    height: 166px;
+    clip-path: polygon(0% 93%, -200% -216%, 120% -8%, 157% 57%);
+    right: calc(50% - 140px);
+    transition: all 0.2s ease-in-out;
+    transform: rotate(61deg);
+
+
 
 }
 
@@ -766,18 +811,19 @@ h2{
 .rightTriangle p{
   color: white !important;
   position: absolute;
-  top: 97px;
-  font-size: 30px;
-  left: 44px;
-  font-weight: 600;
+  top: 150px;
+  font-size: 25px;
+  left: 78px;
+  font-weight: 400;
+
 }
 
 
 
 .leftTriangle{
-  z-index: 99999999;
+  z-index: 0;
   position: absolute;
-  top: 453px;
+  top: 326px;
   width: 313px;
   height: 216px;
   background: #0b3389;
@@ -787,13 +833,47 @@ h2{
 }
 
 
+.leftTriangle2{
+  z-index: -1;
+      position: absolute;
+      top: 293px;
+      width: 305px;
+      height: 182px;
+      background: #0b3389;
+      clip-path: polygon(56% 123%, 9% 75%, 80.5% -177%, 69% 35%);
+      left: calc(50% - 250px);
+      transition: all 0.2s ease-in-out;
+      transform: rotate(91deg);
+
+}
+
+
+
+.rightTriangle3{
+  z-index: -1;
+      position: absolute;
+
+        top: 296px;
+        width: 262px;
+        height: 191px;
+        background: #041e51;
+        clip-path: polygon(56% 96%, -111% 75%, 80.5% -212%, 60% -10%);
+        left: calc(50% - 60px);
+        transition: all 0.2s ease-in-out;
+        transform: rotate(148deg);
+
+
+}
+
+
 .leftTriangle p{
   color: white !important;
   position: absolute;
-  top: 97px;
-  font-size: 30px;
-  left: 90px;
-  font-weight: 600;
+  top: 150px;
+  font-size: 25px;
+  left: 108px;
+  font-weight: 400;
+
 }
 
 
