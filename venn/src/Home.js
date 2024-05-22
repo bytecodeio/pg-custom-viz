@@ -380,8 +380,6 @@ const arrayOfObjects = data
 
 const filteredArray = arrayOfObjects.filter((_, index) => index >= 5); // Keep objects from index 5 onwards
 
-// console.log(filteredArray);
-
 
 
 
@@ -392,16 +390,29 @@ var setStrings = filteredArray.map((item, i) =>(
 ))
 
 
+
 var setNumbers = filteredArray.map((item, i) =>(
     item[numbers].value
 
 ))
 
-//
-//
+
+
+
+
+const originalArray = ["var, var, var", "another string"];
+
+const fixedArray = setStrings.map(item =>
+  item.split(',') // Split on commas
+    .map(subItem => `${subItem.trim()}`) // Add quotes and trim each item
+);
+
+// console.log(fixedArray);
+
+
+
+
 // console.log(setStrings, "setStrings")
-//
-// console.log(setNumbers, "setNumbers")
 
 // const myObject = Object.fromEntries(setStrings.map((value, index) => [index, value]));
 //
@@ -421,17 +432,19 @@ function combineArraysToObject(array1, array2) {
   }
 
   return array1.map((value1, index) => {
-    return { sets: [value1], size: array2[index] };
+    return { sets: value1, size: array2[index] };
   });
 }
 
-const array1 = setStrings;
+const array1 = fixedArray;
 const array2 = setNumbers;
 
-const combinedObject = combineArraysToObject(array1, array2);
 
 
-console.log(combinedObject)
+
+var combinedObject = combineArraysToObject(array1, array2);
+
+
 
 
 var bigObject = combinedObject.sort()
@@ -444,7 +457,7 @@ console.log(bigObject, "bigObject")
 //      { sets: ["B"], size: 10 },
 //      { sets: ["A", "B"], size: 5 }
 //    ];
-
+//
 const extendedData = [
     { sets: ['Social', 'Other Digital', 'Prog', 'Other'], size: 8 },
     { sets: ['Other Digital', 'Other'], size: 7 },
@@ -456,6 +469,9 @@ const extendedData = [
     {sets: ['Prog'], size: 3},
     {sets: ['Other'], size: 13}
   ];
+
+
+
 
 console.log(extendedData)
 

@@ -18,10 +18,10 @@ $text-color: #ffffff;
 }
 
 #vis {
-    height: 100%;
-    width: 100% !important;
-    margin: 0 !important;
-    border: none;
+  height: 100%;
+  width: 100% !important;
+  margin: 0 !important;
+  border: none;
 }
 
 // body, html{
@@ -35,8 +35,12 @@ $text-color: #ffffff;
   display: flex;
 
   flex-direction: column;
-min-width:100%;
+  min-width:100%;
 
+}
+
+.thisDiv{
+  position: relative;
 }
 
 p{
@@ -62,7 +66,7 @@ p.small{
   box-shadow: 0px 30px 60px rgba(0, 19, 87, 0.04);
   padding:.6em;
   margin-bottom:1em;
-    align-items: center;
+  align-items: center;
 }
 
 .whiteAcross p{
@@ -79,7 +83,7 @@ p.small{
   margin: 2em auto 0 auto;
   // min-height: 380px;
 
-max-height: 498px;
+  max-height: 498px;
 
 }
 
@@ -87,13 +91,13 @@ max-height: 498px;
 .varianceBubble.positive{
   color:black;
   font-size: 11px;
-      border: 2px solid #009c38;
-      border-radius: 1rem;
-      padding: 0.3em 1em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-height: 30px;
+  border: 2px solid #009c38;
+  border-radius: 1rem;
+  padding: 0.3em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 30px;
 }
 
 .varianceBubble.positive i{
@@ -103,13 +107,13 @@ max-height: 498px;
 .varianceBubble.negative{
   color:black;
   font-size: 11px;
-border: 2px solid #ff1003;
-border-radius: 1rem;
-padding: 0.3em 1em;
-display: flex;
-justify-content: center;
-align-items: center;
-max-height: 30px;
+  border: 2px solid #ff1003;
+  border-radius: 1rem;
+  padding: 0.3em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 30px;
 }
 
 
@@ -122,100 +126,100 @@ max-height: 30px;
 .varianceBubble.neutral{
   color:black;
   font-size: 11px;
-border: 2px solid #ffda00;
-border-radius: 1rem;
-padding: 0.3em 1em;
-display: flex;
-justify-content: center;
-align-items: center;
-max-height: 30px;
+  border: 2px solid #ffda00;
+  border-radius: 1rem;
+  padding: 0.3em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 30px;
 }
 
 .varianceBubble.neutral i{
-display: none
+  display: none
 
 }
 
 .upDown.unsetWidth{
-    max-width: 100%;
+  max-width: 100%;
 }
 
 :-webkit-scrollbar-track {
- border-radius: 0.125rem;
- background-color: lightgray;
- height: 0px;
+  border-radius: 0.125rem;
+  background-color: lightgray;
+  height: 0px;
 }
 ::-webkit-scrollbar {
- width: 0;
- border-radius: 0;
-   height: 0px;
+  width: 0;
+  border-radius: 0;
+  height: 0px;
 }
 ::-webkit-scrollbar-thumb {
 
 
-    height: 0px;
+  height: 0px;
 }
 
 
 .progress {
-    --bs-progress-height: 30px !important;
-    --bs-progress-font-size: 0.1rem !important;
-    --bs-progress-bg: transparent;
-    --bs-progress-border-radius: 2px !important;
-    --bs-progress-bar-color: #fff;
-    --bs-progress-bar-bg: #6253da !important;
-    max-width: 100% !important;
+  --bs-progress-height: 30px !important;
+  --bs-progress-font-size: 0.1rem !important;
+  --bs-progress-bg: transparent;
+  --bs-progress-border-radius: 2px !important;
+  --bs-progress-bar-color: #fff;
+  --bs-progress-bar-bg: #6253da !important;
+  max-width: 100% !important;
 }
- .progress {
-    --bs-progress-height: 36px !important;
-    --bs-progress-font-size: 0.1rem !important;
-    --bs-progress-bg: #002169 !important;
-    --bs-progress-border-radius: 100px !important;
-    margin-bottom: 30px;
+.progress {
+  --bs-progress-height: 36px !important;
+  --bs-progress-font-size: 0.1rem !important;
+  --bs-progress-bg: #002169 !important;
+  --bs-progress-border-radius: 100px !important;
+  margin-bottom: 30px;
 
 }
- .progress-bar {
-    color: transparent !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    color: blue;
-    text-align: center;
-    white-space: nowrap;
-    border-radius: 100px;
+.progress-bar {
+  color: transparent !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: blue;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 100px;
 
 }
 .progress-label {
   color: #14171b;
   font-size: 17px;
-    font-weight: 500;
+  font-weight: 500;
 
-    z-index: 999;
+  z-index: 999;
 
-    width: 100% !important
+  width: 100% !important
 }
 
 
 .progress-span {
   color: #14171b;
   font-size: 17px;
-    font-weight: 500;
-    position: absolute;
-    z-index: 999;
-    top: 5px;
-    left: 13px;
+  font-weight: 500;
+  position: absolute;
+  z-index: 999;
+  top: 5px;
+  left: 13px;
 
 }
 
 .progress-span.white {
   color: white;
   font-size: 17px;
-    font-weight: 500;
-    position: absolute;
-    z-index: 999;
-    top: 5px;
-    left: 13px;
+  font-weight: 500;
+  position: absolute;
+  z-index: 999;
+  top: 5px;
+  left: 13px;
 
 }
 
@@ -223,7 +227,7 @@ p{
   color:#14171b !important
 }
 
- .col-md-8:nth-child(1)  .progress-bar{
+.col-md-8:nth-child(1)  .progress-bar{
   background: #12d465;
 }
 
@@ -240,12 +244,12 @@ p{
 }
 
 .col-md-8:nth-child(9) .progress-bar {
- background: #6fd0e9;
+  background: #6fd0e9;
 }
 
 
 .col-md-3 .progress-bar{
-    --bs-progress-bar-bg: #002169 !important;
+  --bs-progress-bar-bg: #002169 !important;
 }
 
 .col-md-3 .progress-label{
@@ -257,7 +261,7 @@ p{
   right: unset;
   position: relative;
   margin-top: -60px;
-top: unset;
+  top: unset;
 
 }
 
@@ -402,7 +406,7 @@ h1{
 
 .popover .popover-arrow::after {
 
-    margin-left: -1px;
+  margin-left: -1px;
 }
 
 .showFirstLast{
@@ -415,11 +419,11 @@ h1{
   font-size: 10px;
   color:black;
   padding:0px 7px;
-position: relative;
+  position: relative;
 }
 
 
- p.leftP{
+p.leftP{
   position: absolute;
   bottom: 20px;
   left: 44px;
@@ -427,15 +431,15 @@ position: relative;
 
 }
 
- p.rightP{
+p.rightP{
   position: absolute;
   bottom: 30px;
   right: 4%;
   width: auto;
 }
 
-  p.leftP.moveDown,
-  p.rightP.moveDown{
+p.leftP.moveDown,
+p.rightP.moveDown{
   bottom: 0px;
 }
 
@@ -509,8 +513,8 @@ position: relative;
     visibility: hidden;
   }
   .tallerBox{
-      height: 400px !important;
-      margin-top:-10px;
+    height: 400px !important;
+    margin-top:-10px;
   }
 
   .tallerBox canvas{
@@ -521,15 +525,15 @@ position: relative;
   .tallerBox.highUp canvas {
     height: 330px !important;
     margin-top: -30px;
-}
+  }
 
-.noHeight{
-  height: 0px !important;
-  margin-top: -5px;
-}
-.allHeight{
-  min-height: 100px
-}
+  .noHeight{
+    height: 0px !important;
+    margin-top: -5px;
+  }
+  .allHeight{
+    min-height: 100px
+  }
 
 
 
@@ -651,15 +655,15 @@ position: relative;
 }
 
 @media (min-width: 300px) {
-    .col-md-8 {
-        flex: 0 0 auto;
-        width: 66.66666667% !important;
-    }
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 66.66666667% !important;
+  }
 
-    .col-md-3 {
-        flex: 0 0 auto;
-        width: 25% !important;
-    }
+  .col-md-3 {
+    flex: 0 0 auto;
+    width: 25% !important;
+  }
 
 
 }
@@ -685,8 +689,8 @@ color:#bc4d59
 }
 
 .purpleClick {
-    background: #bc4d59;
-    color: white !important;
+background: #bc4d59;
+color: white !important;
 } */
 
 
@@ -717,13 +721,13 @@ h2{
   //   border-right: 173px solid #0162ff;
 
   left: calc(50% - 138px);
-    position: absolute;
-    top: 35px;
-    transition: all 0.2s ease-in-out;
-    border: 0 solid transparent;
-    border-top-width: 211px;
-    border-bottom-width: 70px;
-    border-right: 138px solid #0162ff;
+  position: absolute;
+  top: 35px;
+  transition: all 0.2s ease-in-out;
+  border: 0 solid transparent;
+  border-top-width: 211px;
+  border-bottom-width: 70px;
+  border-right: 138px solid #0162ff;
 }
 
 .topTriangle2{
@@ -739,24 +743,24 @@ h2{
   transition: all .2s ease-in-out;
 
 
-    border: 0 solid transparent;
-    border-bottom-width: 110px;
+  border: 0 solid transparent;
+  border-bottom-width: 110px;
   border-top-width: 208px;
   border-left: 160px solid #0162ff;
 
 
-  border-bottom-width: 73px;
-border-top-width: 208px;
-border-left: 139px solid #0162ff;
+  border-bottom-width: 70px;
+  border-top-width: 211px;
+  border-left: 138px solid #0162ff;
 }
 
 
-.topTriangle p{
+.one p{
   color: white !important;
   position: absolute;
-  top: -46px;
+  top: 200px;
   font-size: 24px;
-  left: calc(50% + 103px);
+
   font-weight: 400;
   z-index: 99999999999999;
 }
@@ -765,15 +769,22 @@ border-left: 139px solid #0162ff;
   background: #cbcfd9;
   padding: 1em;
   border-radius: 4px;
-      position: absolute;
-      left: 0;
-      right: 0;
-      /* bottom: 169px; */
-      top: 575px;
-      margin: 0 auto;
-      width: 655px !important;
-  
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 560px;
+  margin: 0 auto;
+  width: 655px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+
+
+}
+
+.grayBar p{
+  margin-bottom: 0 !important
 }
 
 .rightTriangle{
@@ -793,29 +804,29 @@ border-left: 139px solid #0162ff;
   z-index: -1;
 
 
-background: #041e51;
-position: absolute;
-    top: 250px;
-    width: 93px;
-    height: 166px;
-    clip-path: polygon(0% 93%, -200% -216%, 120% -8%, 157% 57%);
-    right: calc(50% - 140px);
-    transition: all 0.2s ease-in-out;
-    transform: rotate(61deg);
+  background: #041e51;
+  position: absolute;
+  top: 250px;
+  width: 93px;
+  height: 166px;
+  clip-path: polygon(0% 93%, -200% -216%, 120% -8%, 157% 57%);
+  right: calc(50% - 140px);
+  transition: all 0.2s ease-in-out;
+  transform: rotate(61deg);
 
 
 
 }
 
 
-.rightTriangle p{
+.two p{
   color: white !important;
   position: absolute;
-  top: 150px;
+  top: 485px;
   font-size: 25px;
-  left: 78px;
+  right: -100px;
   font-weight: 400;
-
+  z-index: 99999999999999;
 }
 
 
@@ -835,15 +846,15 @@ position: absolute;
 
 .leftTriangle2{
   z-index: -1;
-      position: absolute;
-      top: 293px;
-      width: 305px;
-      height: 182px;
-      background: #0b3389;
-      clip-path: polygon(56% 123%, 9% 75%, 80.5% -177%, 69% 35%);
-      left: calc(50% - 250px);
-      transition: all 0.2s ease-in-out;
-      transform: rotate(91deg);
+  position: absolute;
+  top: 293px;
+  width: 305px;
+  height: 182px;
+  background: #0b3389;
+  clip-path: polygon(56% 123%, 9% 75%, 80.5% -177%, 69% 35%);
+  left: calc(50% - 250px);
+  transition: all 0.2s ease-in-out;
+  transform: rotate(91deg);
 
 }
 
@@ -851,27 +862,27 @@ position: absolute;
 
 .rightTriangle3{
   z-index: -1;
-      position: absolute;
+  position: absolute;
 
-        top: 296px;
-        width: 262px;
-        height: 191px;
-        background: #041e51;
-        clip-path: polygon(56% 96%, -111% 75%, 80.5% -212%, 60% -10%);
-        left: calc(50% - 60px);
-        transition: all 0.2s ease-in-out;
-        transform: rotate(148deg);
+  top: 296px;
+  width: 262px;
+  height: 191px;
+  background: #041e51;
+  clip-path: polygon(56% 96%, -111% 75%, 80.5% -212%, 60% -10%);
+  left: calc(50% - 60px);
+  transition: all 0.2s ease-in-out;
+  transform: rotate(148deg);
 
 
 }
 
 
-.leftTriangle p{
+.three p{
   color: white !important;
   position: absolute;
-  top: 150px;
+  top: 485px;
   font-size: 25px;
-  left: 108px;
+  left: -100px;
   font-weight: 400;
 
 }

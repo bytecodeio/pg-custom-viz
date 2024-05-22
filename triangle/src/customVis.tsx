@@ -85,13 +85,13 @@ looker.plugins.visualizations.add({
     }));
 
 
-
-
-
-    const kpiFieldDefault = dimensions[0].name;
-    const comparisonFieldDefault = measures.length > 1 ? measures[1].name : "";
-    const gaugeFieldDefault = measures.length > 2 ? measures[2].name : "";
-
+    //
+    //
+    //
+    // const kpiFieldDefault = dimensions[0].name;
+    // const comparisonFieldDefault = measures.length > 1 ? measures[1].name : "";
+    // const gaugeFieldDefault = measures.length > 2 ? measures[2].name : "";
+    //
 
 
 
@@ -100,54 +100,46 @@ looker.plugins.visualizations.add({
 
 
 
-            writeTitle: {
-              type: "string",
-              label: "Title Override",
-              default: "",
-              order: 0,
-              section: "Style",
-
-            },
-
-
-            writeTitle2: {
-              type: "string",
-              label: "Subtitle Override",
-              default: "",
-              order: 1,
-              section: "Style",
-
-            },
-
-            titleColor: {
-              type: "string",
-              label: "Title Color",
-              default: "#14171c",
-              display: "text",
-              placeholder: "",
-
-              order: 2,
-              section: "Style",
-
-            },
-
-                titleColor2: {
-                  type: "string",
-                  label: "Subtitle Color",
-                  default: "#637087",
-                  display: "text",
-                  placeholder: "",
-
-                  order: 3,
-                    section: "Style",
-
-                },
+            //
+            //
+            // writeTitle2: {
+            //   type: "string",
+            //   label: "Subtitle Override",
+            //   default: "",
+            //   order: 1,
+            //   section: "Style",
+            //
+            // },
+            //
+            // titleColor: {
+            //   type: "string",
+            //   label: "Title Color",
+            //   default: "#14171c",
+            //   display: "text",
+            //   placeholder: "",
+            //
+            //   order: 2,
+            //   section: "Style",
+            //
+            // },
+            //
+            //     titleColor2: {
+            //       type: "string",
+            //       label: "Subtitle Color",
+            //       default: "#637087",
+            //       display: "text",
+            //       placeholder: "",
+            //
+            //       order: 3,
+            //         section: "Style",
+            //
+            //     },
 
                 chooseLabel: {
-                  label: "Choose Labels",
+                  label: "Choose Top Triangle Value",
                   type: "string",
                   display: "select",
-                  default: kpiFieldDefault,
+                  default: "",
                   values: fieldOptions0,
 
                   order: 1,
@@ -157,10 +149,10 @@ looker.plugins.visualizations.add({
 
 
                 spend: {
-                  label: "Choose Total Media Spend Value",
+                  label: "Choose Left Triangle Value",
                   type: "string",
                   display: "select",
-                  default: kpiFieldDefault,
+                  default: "",
                   values: fieldOptions0,
 
                   order: 2,
@@ -169,39 +161,39 @@ looker.plugins.visualizations.add({
 
 
       investment: {
-        label: "Choose Total Investment Value",
+        label: "Choose Right Triangle Value",
         type: "string",
         display: "select",
-        default: kpiFieldDefault,
+        default: "",
         values: fieldOptions0,
 
         order: 3,
         section: "Values",
       },
-      //
-      //
-      // reachLeft2: {
-      //   label: "Social Spend Value",
-      //   type: "string",
-      //   display: "select",
-      //   default: kpiFieldDefault,
-      //   values: fieldOptions0,
-      //
-      //   order: 6,
-      //   section: "Bar 2",
-      // },
-      //
-      //
-      //       write1: {
-      //         label: "Social Investment Value",
-      //         type: "string",
-      //         display: "select",
-      //         default: kpiFieldDefault,
-      //         values: fieldOptions0,
-      //
-      //         order: 7,
-      //         section: "Bar 2",
-      //       },
+
+
+      reachLeft2: {
+        label: "Choose ROI Value",
+        type: "string",
+        display: "select",
+        default: "",
+        values: fieldOptions0,
+
+        order: 6,
+          section: "Values",
+      },
+
+
+            // write1: {
+            //   label: "Override Bar Text",
+            //   type: "string",
+            //   display: "select",
+            //   default: "",
+            //   values: fieldOptions0,
+            //
+            //   order: 7,
+            //   section: "Values",
+            // },
       //
       //
       //       dollar1: {
@@ -523,6 +515,21 @@ looker.plugins.visualizations.add({
 
 
 
+                  writeTitle: {
+                    type: "string",
+                    label: "Scale Triangle Size",
+                    display: "select",
+                    default:"",
+                    order: 0,
+                    section: "Style",
+                    values: [
+                      {"Normal": "scale(1)"},
+                      {"Larger": "scale(1.1)"},
+                      {"Smaller": "scale(.9)"}
+
+                    ],
+
+                  },
 
 
 
@@ -535,7 +542,7 @@ looker.plugins.visualizations.add({
 
       default: "'Roboto', sans-serif",
       order: 7,
-        section: "Style",
+      section: "Style",
     },
 
 

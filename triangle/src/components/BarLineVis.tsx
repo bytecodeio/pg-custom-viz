@@ -265,10 +265,10 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     }
   }
 
-
-  const labels = data.map(
-    (row) => row[dimensionName].rendered ?? row[dimensionName].value ?? "∅"
-  );
+  //
+  // const labels = data.map(
+  //   (row) => row[dimensionName].rendered ?? row[dimensionName].value ?? "∅"
+  // );
 
 
 
@@ -310,7 +310,7 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
   (number | Point | [number, number] | BubbleDataPoint)[],
   any
   > = {
-    labels,
+    // labels,
     datasets: [],
   };
   const [chartData, setChartData] = useState(defaultChartData);
@@ -785,43 +785,57 @@ console.log(data)
     <Styles>
 
 
-    <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+    <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'", transform: writeTitle ? writeTitle : ""}}>
 
     <div style={{ backgroundColor: color_title ? background[0] : '#fff'}}>
 
     <Container fluid>
-
-      <div className="thisDiv">
-      <div className="topTriangle"><p>Reach</p></div>
-      <div className="topTriangle2"></div>
-      </div>
-
-      <div className="thisDiv">
-
-     <div className="rightTriangle"><p>Efficiency</p></div>
-
-
-      <div className="rightTriangle3"></div>
-     </div>
-  <div className="thisDiv">
-    <div className="leftTriangle"><p>Effectiveness</p></div>
-  <div className="leftTriangle2"></div>
-</div>
-
+  {data.map((item, i) =>(
+      <>
       <Row>
-<div class="grayBar"></div>
-  </Row>
-      <Row>
-      {data.map((item, i) =>(
-        <>
 
 
 
-          </>
-    ))}
+
+              <div className="thisDiv one">
+
+              <div className="topTriangle"></div>
+                <p>{item[chooseLabel].rendered}</p>
+              <div className="topTriangle2"></div>
+              </div>
+
+              <div className="thisDiv two">
+
+             <div className="rightTriangle">
+             </div>
+
+              <p>{item[investment].rendered}</p>
+              <div className="rightTriangle3"></div>
+             </div>
+          <div className="thisDiv three">
+            <div className="leftTriangle"></div>
+            <p>{item[spend].rendered}</p>
+          <div className="leftTriangle2"></div>
+        </div>
+
+
+
+
+
+
 
 
     </Row>
+
+
+
+    <Row>
+<div class="grayBar"><p>Integrated to Deliver Profitable Return of Investment: {item[reachLeft2].rendered}</p></div>
+</Row>
+
+    </>
+
+  ))}
     </Container>
     </div>
 
