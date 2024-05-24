@@ -328,9 +328,25 @@ svg .venn-area.venn-circle:nth-child(10) path{
 }
 
 .venn-intersection path{
-  fill-opacity: .3 !important;
+  fill-opacity: .02 !important;
 }
 
+
+
+svg path {
+    stroke: white;
+    stroke-width: 0px;
+}
+
+svg text {
+    fill: white;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+[data-venn-sets="Prog"]   { fill: orange; }
+[data-venn-sets="Other"]   { fill: blue; }
+[data-venn-sets="A_B"] { fill: brown; }
 
 
 .overlap{
@@ -555,10 +571,10 @@ console.log(extendedData)
   // build venn diagram
   // const vennChart = d3.select("#venn").datum(sets).call(buildVenn);
 
-const data2 = extendedData;
+const data2 = bigObject;
 
 const vennChart = d3.select("#venn")
-.datum(extendedData); // Bind data directly to the selection
+.datum(bigObject); // Bind data directly to the selection
 
 buildVenn(vennChart); // Call buildVenn with the data-bound selection
 
@@ -640,7 +656,7 @@ return (
         <div className="overlap">
         <p className="mb-0">Total Overlap</p>
 
-          <h3 className="mb-0">7</h3>
+          <h3 className="mb-0"></h3>
         </div>
 
           </Row>
