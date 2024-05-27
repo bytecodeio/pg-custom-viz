@@ -436,6 +436,10 @@ const fixedArray = setStrings.map(item =>
 //   sets: [`key_${key}`],
 //   size: value
 // }));
+
+ const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
+
+
 useEffect(() => {
 
 function combineArraysToObject(array1, array2) {
@@ -465,8 +469,47 @@ var combinedObject = combineArraysToObject(array1, array2);
 
 var bigObject = combinedObject.sort()
 
-console.log(bigObject, "bigObject")
+// console.log(bigObject, "bigObject")
 
+
+
+var intersection = "";
+var total_intersection_count = '';
+
+
+
+function calculate_total_intersection(venn_data) {
+
+
+  // Combine all sets into a single set for efficient intersection calculation
+  const all_sets = new Set(); // Declare all_sets here
+  for (const item of venn_data) {
+    for (const set of item.sets) {
+      all_sets.add(set);
+    }
+  }
+
+  // Initialize intersection with the first set (or an empty set if none provided)
+ intersection = new Set(venn_data[0]?.sets || []);
+
+  // Iterate through remaining elements and update intersection using set operations
+  for (let i = 1; i < venn_data.length; i++) {
+    intersection = new Set([...intersection].filter(x => venn_data[i].sets.includes(x)));
+  }
+
+  return intersection.size;
+}
+
+// Example usage with the provided object
+var bigObject = bigObject
+
+// total_intersection_count = calculate_total_intersection(bigObject);
+// console.log("Total Intersection Count:", total_intersection_count);
+
+
+
+const intersectionCount = calculate_total_intersection(bigObject);
+setTotalIntersectionCount(intersectionCount);
 
 // const extendedData = [
 //      { sets: ["A"], size: 20 },
@@ -474,97 +517,23 @@ console.log(bigObject, "bigObject")
 //      { sets: ["A", "B"], size: 5 }
 //    ];
 //
-const extendedData = [
-    { sets: ['Social', 'Other Digital', 'Prog', 'Other'], size: 8 },
-    { sets: ['Other Digital', 'Other'], size: 7 },
-    { sets: ['TV', 'Social', 'Other'], size: 4 },
-    {sets: ['Social' , 'Prog'], size: 5},
-    {sets: ['Social' ], size: 4},
-    {sets: ['TV'], size: 3},
-    {sets: ['Other Digital' ], size: 4},
-    {sets: ['Prog'], size: 3},
-    {sets: ['Other'], size: 13}
-  ];
+// const extendedData = [
+//     { sets: ['Social', 'Other Digital', 'Prog', 'Other'], size: 8 },
+//     { sets: ['Other Digital', 'Other'], size: 7 },
+//     { sets: ['TV', 'Social', 'Other'], size: 4 },
+//     {sets: ['Social' , 'Prog'], size: 5},
+//     {sets: ['Social' ], size: 4},
+//     {sets: ['TV'], size: 3},
+//     {sets: ['Other Digital' ], size: 4},
+//     {sets: ['Prog'], size: 3},
+//     {sets: ['Other'], size: 13}
+//   ];
+//
+//
+//
+//
+// console.log(extendedData)
 
-
-
-
-console.log(extendedData)
-
-
-
-//  const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
-// useEffect(() => {
-//
-// const myObject = Object.fromEntries(percentages.map((value, index) => [index, value]));
-//
-//
-// const newObject = Object.fromEntries(
-//   Object.entries(myObject).map(([key, value], index) => [
-//     index === 0 ? `key_${index}` : `key_${index}`,
-//     value
-//   ])
-// );
-//
-// let bigObject = Object.entries(myObject).map(([key, value]) => ({
-//   sets: [`key_${key}`],
-//   size: value
-// }));
-//
-//
-// bigObject = bigObject.sort()
-//
-// console.log(bigObject, "bigObject")
-//
-// let allMatchingSetsCount = 0;
-//
-// function generateUniqueCombinations(sets) {
-//   const combinations = [];
-//   const seenSets = new Set();
-//
-//
-//   let totalIntersectionCount = 0;
-//
-//   function generateCombinationsHelper(currentSet, index) {
-//     if (currentSet.length > 1 && !seenSets.has(currentSet.join())) { // Check for unique combination
-//       const intersectionCount = calculateIntersectionCount(currentSet); // Calculate intersection size
-//       combinations.push({ sets: currentSet.slice(), size: intersectionCount }); // Add unique combination with size
-//       seenSets.add(currentSet.join()); // Mark combination as seen
-//     }
-//
-//     if (index === sets.length) {
-//       return;
-//     }
-//
-//     for (let i = index; i < sets.length; i++) {
-//       currentSet.push(sets[i]);
-//       generateCombinationsHelper(currentSet, i + 1); // Recursive call with next element
-//       currentSet.pop();
-//     }
-//   }
-//
-//   generateCombinationsHelper([], 0);
-//
-//   // Calculate intersection size of all sets after generating combinations
-//   totalIntersectionCount = calculateIntersectionCount(bigObject.map(obj => obj.sets[0]));
-//
-//   return { combinations, totalIntersectionCount }; // Return both combinations and total intersection size
-// }
-//
-// function calculateIntersectionCount(combination) {
-//   return bigObject.filter(obj => combination.every(set => obj.sets.includes(set))).length;
-// }
-//
-// const { combinations, totalIntersectionCount } = generateUniqueCombinations(bigObject.map(obj => obj.sets[0]));
-//
-// const extendedData = [...bigObject, ...combinations];
-//
-// console.log(extendedData);
-//
-// console.log(`Intersection size of all matching sets: ${totalIntersectionCount}`);
-//
-// setTotalIntersectionCount(totalIntersectionCount);
-//
 
 
   const buildVenn = venn.VennDiagram().height(350);
@@ -598,8 +567,8 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
       node
         .select("path")
         .style("fill-opacity", 0.7)
-        .style("stroke", "#efefef")
-        .style("stroke-width", "2");
+        // .style("stroke", "#efefef")
+        // .style("stroke-width", "2");
     })
     .on("mousemove", function (event, d) {
       // Display a tooltip with the current size
@@ -622,7 +591,6 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
         .style("font-size", "24px");
     });
 }, []);
-
 
 
 
@@ -656,7 +624,7 @@ return (
         <div className="overlap">
         <p className="mb-0">Total Overlap</p>
 
-          <h3 className="mb-0"></h3>
+          <h3 className="mb-0">{totalIntersectionCount}</h3>
         </div>
 
           </Row>
