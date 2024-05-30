@@ -755,15 +755,30 @@ h2{
 }
 
 
-.one p{
+.one p.first{
   color: white !important;
   position: absolute;
-  top: 200px;
-  font-size: 24px;
 
   font-weight: 400;
   z-index: 99999999999999;
+  top: 200px;
+      font-size: 25px;
+      left: 0px;
+
 }
+
+.one p.second{
+  color: white !important;
+  position: absolute;
+  top: 229px;
+  font-size: 24px;
+    left: 3px;
+  font-weight: 400;
+  z-index: 99999999999999;
+}
+
+
+
 
 .grayBar{
   background: #cbcfd9;
@@ -824,7 +839,7 @@ h2{
   position: absolute;
   top: 485px;
   font-size: 25px;
-  right: -100px;
+  right: -190px;
   font-weight: 400;
   z-index: 99999999999999;
 }
@@ -882,7 +897,7 @@ h2{
   position: absolute;
   top: 485px;
   font-size: 25px;
-  left: -100px;
+  left: -220px;
   font-weight: 400;
 
 }

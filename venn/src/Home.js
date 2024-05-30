@@ -282,25 +282,24 @@ const Styles = styled.div`
 }
 
 
-svg .venn-area.venn-circle:nth-child(1) path{
+[data-venn-sets="'TV'"] path{
   fill: #12d465 !important
 }
 
-
-svg .venn-area.venn-circle:nth-child(2) path{
+[data-venn-sets="'Social'"] path{
   fill: #ffda00 !important
 }
 
-svg .venn-area.venn-circle:nth-child(3) path{
+[data-venn-sets="'Prog'"] path{
   fill: #0066ff !important
 }
 
 
-svg .venn-area.venn-circle:nth-child(4) path{
+[data-venn-sets="'Other Digital'"] path{
   fill: #e22bb7 !important
 }
 
-svg .venn-area.venn-circle:nth-child(5) path{
+[data-venn-sets="'Other'"] path{
   fill: #6fd0e9 !important
 }
 
@@ -414,10 +413,6 @@ var setNumbers = filteredArray.map((item, i) =>(
 
 
 
-
-
-const originalArray = ["var, var, var", "another string"];
-
 const fixedArray = setStrings.map(item =>
   item.split(',') // Split on commas
     .map(subItem => `${subItem.trim()}`) // Add quotes and trim each item
@@ -503,6 +498,9 @@ function calculate_total_intersection(venn_data) {
 // Example usage with the provided object
 var bigObject = bigObject
 
+
+console.log(bigObject, "data object")
+
 // total_intersection_count = calculate_total_intersection(bigObject);
 // console.log("Total Intersection Count:", total_intersection_count);
 
@@ -517,17 +515,17 @@ setTotalIntersectionCount(intersectionCount);
 //      { sets: ["A", "B"], size: 5 }
 //    ];
 //
-// const extendedData = [
-//     { sets: ['Social', 'Other Digital', 'Prog', 'Other'], size: 8 },
-//     { sets: ['Other Digital', 'Other'], size: 7 },
-//     { sets: ['TV', 'Social', 'Other'], size: 4 },
-//     {sets: ['Social' , 'Prog'], size: 5},
-//     {sets: ['Social' ], size: 4},
-//     {sets: ['TV'], size: 3},
-//     {sets: ['Other Digital' ], size: 4},
-//     {sets: ['Prog'], size: 3},
-//     {sets: ['Other'], size: 13}
-//   ];
+const extendedData = [
+    { sets: ['Social', 'Other Digital', 'Prog', 'Other'], size: 8 },
+    { sets: ['Other Digital', 'Other'], size: 7 },
+    { sets: ['TV', 'Social', 'Other'], size: 4 },
+    {sets: ['Social' , 'Prog'], size: 5},
+    {sets: ['Social' ], size: 4},
+    {sets: ['TV'], size: 3},
+    {sets: ['Other Digital' ], size: 4},
+    {sets: ['Prog'], size: 3},
+    {sets: ['Other'], size: 13}
+  ];
 //
 //
 //
@@ -573,7 +571,7 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
     .on("mousemove", function (event, d) {
       // Display a tooltip with the current size
       tooltip.transition().duration(400).style("opacity", "0.9");
-      tooltip.text(Math.round(d.size).toFixed(0) + "%");
+      tooltip.text(`${d.sets}, ${Math.round(d.size).toFixed(0)}%`);
       tooltip
         .style("position", "absolute")
 

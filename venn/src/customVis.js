@@ -121,14 +121,14 @@ writeTitle: {
 },
 
 
-writeTitle2: {
-  type: "string",
-  label: "Subtitle Override",
-  default: "",
-  order: 1,
-  section: "Style",
-
-},
+// writeTitle2: {
+//   type: "string",
+//   label: "Subtitle Override",
+//   default: "",
+//   order: 1,
+//   section: "Style",
+//
+// },
 
 titleColor: {
   type: "string",

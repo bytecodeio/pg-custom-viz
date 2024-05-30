@@ -525,7 +525,8 @@ looker.plugins.visualizations.add({
                     values: [
                       {"Normal": "scale(1)"},
                       {"Larger": "scale(1.1)"},
-                      {"Smaller": "scale(.9)"}
+                      {"Small": "scale(.9)"},
+                      {"X-Small": "scale(.7)"}
 
                     ],
 

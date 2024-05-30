@@ -800,7 +800,8 @@ console.log(data)
               <div className="thisDiv one">
 
               <div className="topTriangle"></div>
-                <p>{item[chooseLabel].rendered}</p>
+                <p className="first">Reach</p>
+                <p className="second">{item[chooseLabel].rendered}</p>
               <div className="topTriangle2"></div>
               </div>
 
@@ -809,12 +810,12 @@ console.log(data)
              <div className="rightTriangle">
              </div>
 
-              <p>{item[investment].rendered}</p>
+              <p>Efficiency {item[investment].rendered}</p>
               <div className="rightTriangle3"></div>
              </div>
           <div className="thisDiv three">
             <div className="leftTriangle"></div>
-            <p>{item[spend].rendered}</p>
+            <p>Effectiveness {item[spend].rendered}</p>
           <div className="leftTriangle2"></div>
         </div>
 
