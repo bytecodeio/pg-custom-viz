@@ -210,30 +210,43 @@ const Styles = styled.div`
   }
 
 
-  .col-md-12:nth-child(1) .dots p i{
+
+
+   .dots p:nth-child(1) i{
     color: #12d465;
   }
 
 
-   .col-md-12:nth-child(2) .dots p i{
+
+
+
+  .dots p:nth-child(2) i{
     color: #ffda00;
-  }
+ }
 
-  .col-md-12:nth-child(3) .dots p i{
-  color: #0066ff;
-  }
 
-   .col-md-12:nth-child(4) .dots p i{
+
+  .dots p:nth-child(3) i{
+    color: #0066ff;
+ }
+
+
+
+    .dots p:nth-child(4) i{
     color: #e22bb7;
-  }
+   }
 
-  .col-md-12:nth-child(5) .dots p i{
+
+
+  .dots p:nth-child(5) i{
    color: #6fd0e9;
-  }
+ }
 
-  .col-md-12:nth-child(6) .dots p i{
-    color: #12d465;
-  }
+
+
+    .dots p:nth-child(6) i{
+      color: #12d465;
+   }
 
 
    .col-md-12:nth-child(7) .dots p i{
@@ -283,51 +296,25 @@ const Styles = styled.div`
 
 
 
-
-#venn .venn-area.venn-circle:nth-child(1) path{
+.secondary-class:nth-child(1) path{
     fill: #12d465 !important
 }
 
-#venn .venn-area.venn-circle:nth-child(2) path{
+.secondary-class:nth-child(2) path{
     fill: #ffda00 !important
 }
 
-#venn .venn-area.venn-circle:nth-child(3) path{
+.secondary-class:nth-child(3) path{
   fill: #0066ff !important
 }
-
-
-
-#venn .venn-area.venn-circle:nth-child(4) path{
+.secondary-class:nth-child(4) path{
   fill: #e22bb7 !important
 }
-
-#venn .venn-area.venn-circle:nth-child(5) path{
+.secondary-class:nth-child(5) path{
 fill: #6fd0e9 !important
 }
 
 
-svg .venn-area.venn-circle:nth-child(6) path{
-  fill: #12d465 !important
-}
-
-
-svg .venn-area.venn-circle:nth-child(7) path{
-  fill: #ffda00 !important
-}
-
-svg .venn-area.venn-circle:nth-child(8) path{
-  fill: #0066ff !important
-}
-
-
-svg .venn-area.venn-circle:nth-child(9) path{
-  fill: #e22bb7 !important
-}
-
-svg .venn-area.venn-circle:nth-child(10) path{
-  fill: #6fd0e9 !important
-}
 
 .venn-intersection path{
   fill-opacity: .2 !important;
@@ -346,9 +333,6 @@ svg text {
     font-size: 14px;
 }
 
-[data-venn-sets="Prog"]   { fill: orange; }
-[data-venn-sets="Other"]   { fill: blue; }
-[data-venn-sets="A_B"] { fill: brown; }
 
 
 .overlap{
@@ -395,24 +379,17 @@ var { investment, chooseLabel,  numbers, reachPercentage, writeTitle, writeTitle
 
 
 
-
-
 const filteredEntries = Object.entries(data)
-  // .slice(3);
 
 
 const filteredObject = Object.fromEntries(filteredEntries);
 
-// console.log(filteredObject, "hi")
-
-// const firstFive = data.slice(0, 5);
-
 const firstThree = data.slice(0, 3);
+
+const findSingleValues = data
 
 
 const arrayOfObjects = data
-
-// const filteredArray = arrayOfObjects.filter((_, index) => index >= 3); // Keep objects from index 5 onwards
 
 
 const filteredArray = arrayOfObjects
@@ -423,6 +400,9 @@ var setStrings = filteredArray.map((item, i) =>(
 
 ))
 
+
+const filteredArray2 = setStrings.map(item => item)
+  .filter(item => !item.includes(","));
 
 
 var setNumbers = filteredArray.map((item, i) =>(
@@ -437,7 +417,7 @@ const fixedArray = setStrings.map(item =>
     .map(subItem => `${subItem.trim()}`) // Add quotes and trim each item
 );
 
-// console.log(fixedArray);
+console.log(filteredArray2, "bubbles");
 
 
 
@@ -453,8 +433,7 @@ const fixedArray = setStrings.map(item =>
 
  const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
 
-
-
+ const [sizes, setSizes] = useState([]);
 
 
 useEffect(() => {
@@ -477,19 +456,17 @@ const array1 = fixedArray;
 const array2 = setNumbers;
 
 
-
-
 var combinedObject = combineArraysToObject(array1, array2);
-
-
-
 
 var bigObject = combinedObject.sort()
 
 
 
+
+
+
 const findBiggestSetAndSize = (data) => {
-  // Initialize variables
+
   let biggestSet = [];
   let biggestSetSize = 0;
 
@@ -504,38 +481,45 @@ const findBiggestSetAndSize = (data) => {
   return { biggestSet, biggestSetSize };
 };
 
-// Example usage
 const result = findBiggestSetAndSize(bigObject);
+//
+// console.log("Biggest set:", result.biggestSet);
+// console.log("Matching size value:", result.biggestSetSize);
 
-console.log("Biggest set:", result.biggestSet);
-console.log("Matching size value:", result.biggestSetSize);
 
 
-
-const intersectionCount = result.biggestSetSize < 1 ? result.biggestSetSize.toFixed(2) : result.biggestSetSize;
+const intersectionCount = result.biggestSetSize < 1 ? result.biggestSetSize.toFixed(2) : result.biggestSetSize.toFixed(0);
 
 
 setTotalIntersectionCount(intersectionCount);
 
-
-
-// Example usage with the provided object
 var bigObject = bigObject
 
 
 console.log(bigObject, "data object")
 
-// total_intersection_count = calculate_total_intersection(bigObject);
-// console.log("Total Intersection Count:", total_intersection_count);
+
+const singleSetSizes = bigObject.filter(obj => obj.sets.length === 1)
+  .map(obj => obj.size);
+
+setSizes(singleSetSizes)
+
+
+
+d3.selectAll('g.venn-area.venn-circle')
+  .each(function(d) {
+    const dataVennSets = d.getAttribute('data-venn-sets').split(','); // Get attribute value
+    const matchingValues = filteredArray2.filter(value => dataVennSets.includes(value));
+
+    matchingValues.forEach(value => {
+      d3.select(this).classed(value, true); // Add class for each matching value
+    });
+  });
 
 
 
 
-
-
-
-
-  const buildVenn = venn.VennDiagram().height(350);
+const buildVenn = venn.VennDiagram().height(350);
 
 const data2 = bigObject;
 
@@ -550,6 +534,10 @@ buildVenn(vennChart);
     .style("fill-opacity", "1")
     .style("mix-blend-mode", "none");
 
+    const secondClass = 'secondary-class'; // Replace with your desired class name
+
+    d3.selectAll('.venn-circle')
+      .classed(secondClass, true);
 
 
   // d3.select("#venn").selectAll("text").remove();
@@ -653,30 +641,31 @@ return (
 
 
           <Row>
-          {firstThree.map((item, i) =>(
+
             <Col md={12}>
 
             <div className="d-flex justify-content-between">
 
             <div className="dots">
-            <p><i class="fas fa-circle"></i> {item[chooseLabel].value}</p>
-
+             {filteredArray2.map((val, index) => (
+            <p key={index}><i class="fas fa-circle"></i> {val}</p>
+              ))}
             </div>
+
 
 
             <div className="values">
-            <p>
-            {item[reachPercentage].value  > 0 && item[reachPercentage].value  < 1
-            ? `${parseFloat(item[reachPercentage].value  * 1 ).toFixed(2)}%` : `${Math.round(item[reachPercentage].value).toFixed(0).toLocaleString()}%` }
-
-                </p>
-
+          {sizes.map((val, index) =>(
+            <p key={index}>
+            {val > 0 && val  < 1 ? `${parseFloat(val * 1 ).toFixed(2)}%` : `${Math.round(val).toFixed(0).toLocaleString()}%`}</p>
+          ))}
 
             </div>
+
             </div>
 
             </Col>
-          ))}
+
           </Row>
 
 

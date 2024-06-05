@@ -708,6 +708,18 @@ console.log(data)
       order: 29,
     },
 
+
+
+                      scrollDiv: {
+                        type: "boolean",
+                        label: "Scroll Instead of Stacking",
+                        default: false,
+                        order: 30,
+                        section: "Style",
+                      },
+
+
+
     //
     // hide1: {
     //   type: "boolean",

@@ -103,6 +103,29 @@ console.log(data, "data api response")
       section: "Style",
     },
 
+
+    topFont: {
+    type: "string",
+    label: "Top Font Size",
+    default: "19px",
+    display: "text",
+    placeholder: "19px",
+
+    order: 6,
+    section: "Style",
+  },
+
+  bottomFont: {
+  type: "string",
+  label: "Bottom Font Size",
+  default: "24px",
+  display: "text",
+  placeholder: "24px",
+
+  order: 6,
+  section: "Style",
+},
+
      //  tableBordered: {
      //   type: "boolean",
      //   label: "Hide Header",

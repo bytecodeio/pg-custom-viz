@@ -36,7 +36,7 @@ import { TablePagination } from "@mui/material";
 
 
 const Styles = ({ children, config }) => {
-  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor } = config;
+  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor, topFont, bottomFont } = config;
 
   const StyledWrapper = styled.div`
 
@@ -915,7 +915,7 @@ word-break: break-all !important
   width:${short ? `${short} !important` : "200px !important"};
   word-break: unset !important;
   height: auto !important;
- min-height: 90px !important;
+
 
 }
 
@@ -963,20 +963,21 @@ td a {
 .th {
   border-top-right-radius:8px;
   border-top-left-radius:8px;
-  padding-top:1.5em
+  padding-top:26px
 }
 
 .td  {
   border-bottom-right-radius:8px;
   border-bottom-left-radius:8px;
-  padding-bottom:1.5em;
-  font-size: 24px !important;
+  padding-bottom:1em;
+    font-size: ${bottomFont ? `${bottomFont} !important` : "24px !important"};
+
     font-weight: 600;
 
 }
 
 #height{
-padding: 3em 1em;
+padding: 0em 1em;
 border-radius:8px;
 display: flex;
 justify-content: center;
@@ -990,8 +991,10 @@ background:${backgroundViz ? `${backgroundViz[0]} !important` : "#06f !important
 
 .th,
 table .th{
-  font-size:19px !important;
-  margin-bottom:0px !important
+
+  font-size: ${topFont ? `${topFont} !important` : "19px !important"};
+
+  margin-bottom:-13px !important
 }
 
 thead th {
@@ -1092,7 +1095,7 @@ function Table({ columns, data, config }) {
 
 
     <Container fluid className={`${config.removeBars ? "scrunch" : "padding-0 second"}`} id="height">
- <h5 className={config.hideTitle ?  "transparentText mb-2"  : "mb-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
+ <h5 className={config.hideTitle ?  "transparentText mb-2 mt-2"  : "mb-2 mt-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
 
 
       <div className={`${config.short ? "short" : ""}`}>

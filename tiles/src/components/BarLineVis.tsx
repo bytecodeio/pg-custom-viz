@@ -267,7 +267,8 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     efficiency3iya2,
     toHide1,
     toHide2,
-    toHide3
+    toHide3,
+    scrollDiv
   } = config;
 
 
@@ -362,7 +363,7 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     <Styles>
 
 
-    <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+    <div id="vis-wrapper" className={scrollDiv? "scrollDiv" : ""} style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
     <div className="blueBubble reach" style={{ backgroundColor: color_title ? background[0] : '#2960f6'}}>
     <div class="d-flex justify-content-start">
