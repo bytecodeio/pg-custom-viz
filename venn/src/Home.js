@@ -339,7 +339,7 @@ svg path {
 
 svg text {
     fill: white;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
     font-size: 14px;
 }
 
@@ -366,6 +366,21 @@ margin-bottom: 3em;
 .overlap h3{
   color:white !important
 }
+
+.black-text{
+
+  font-size:17px !important;
+  fill:black !important
+}
+
+.venn-intersection .black-text{
+  display:none
+}
+
+.venn-intersection:hover .black-text{
+
+}
+
 
   `;
 
@@ -516,15 +531,13 @@ console.log(bigObject, "data object")
 
 
   const buildVenn = venn.VennDiagram().height(350);
-  // build venn diagram
-  // const vennChart = d3.select("#venn").datum(sets).call(buildVenn);
 
 const data2 = bigObject;
 
 const vennChart = d3.select("#venn")
-.datum(bigObject); // Bind data directly to the selection
+.datum(bigObject);
 
-buildVenn(vennChart); // Call buildVenn with the data-bound selection
+buildVenn(vennChart);
 
 
   vennChart
@@ -532,27 +545,51 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
     .style("fill-opacity", "1")
     .style("mix-blend-mode", "none");
 
-  // remove labels
-  d3.select("#venn").selectAll("text").remove();
+
+
+  // d3.select("#venn").selectAll("text").remove();
+
+
+  d3.selectAll(".venn-area").selectAll("text")
+    // Filter based on data property (adjust as needed)
+    .filter(function(d) {
+      return !d.isIntersection; // Assuming data has an "isIntersection" property
+    })
+    .attr("class", function(d, i) {
+      let className = "";
+      if (d.category === "A") {
+        className = "black-text";  // Assign color class
+      } else {
+        className = "black-text";  // Adjust class name if needed
+      }
+      return className;
+    })
+    .text(function(d, i) {
+      const tooltipText = `${Math.round(d.size).toFixed(0)}%`;
+      return tooltipText;
+    });
+
 
   let tooltip = d3.select("body").append("div").attr("class", "venntooltip");
 
+
   d3.selectAll(".venn-area")
     .on("mouseover", function (d, i) {
-      // sort all the areas relative to the current item
-      // venn.sortAreas(vennChart, i);
-      //
+
       let node = d3.select(this).transition();
       node
         .select("path")
         .style("fill-opacity", 0.7)
-        // .style("stroke", "#efefef")
-        // .style("stroke-width", "2");
+
     })
     .on("mousemove", function (event, d) {
-      // Display a tooltip with the current size
-      tooltip.transition().duration(400).style("opacity", "0.9");
-      tooltip.text(`${d.sets}, ${Math.round(d.size).toFixed(0)}%`);
+
+      tooltip
+         .transition()
+         .duration(400)
+         .style("opacity", 1)
+         .style("display", "inline-block")
+         .text(`${d.sets}, ${Math.round(d.size).toFixed(0)}%`);
 
       tooltip
         .style("position", "absolute")
