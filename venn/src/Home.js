@@ -282,25 +282,28 @@ const Styles = styled.div`
 }
 
 
-[data-venn-sets='TV'] path{
-  fill: #12d465 !important
+
+
+#venn .venn-area.venn-circle:nth-child(1) path{
+    fill: #12d465 !important
 }
 
-[data-venn-sets='Social'] path{
-  fill: #ffda00 !important
+#venn .venn-area.venn-circle:nth-child(2) path{
+    fill: #ffda00 !important
 }
 
-[data-venn-sets='Programmatic'] path{
-  fill: #ffda00 !important
-}
-
-
-[data-venn-sets='Digital'] path{
+#venn .venn-area.venn-circle:nth-child(3) path{
   fill: #0066ff !important
 }
 
-[data-venn-sets='Other'] path{
-  fill: #6fd0e9 !important
+
+
+#venn .venn-area.venn-circle:nth-child(4) path{
+  fill: #e22bb7 !important
+}
+
+#venn .venn-area.venn-circle:nth-child(5) path{
+fill: #6fd0e9 !important
 }
 
 
@@ -509,7 +512,9 @@ console.log("Matching size value:", result.biggestSetSize);
 
 
 
-const intersectionCount = result.biggestSetSize;
+const intersectionCount = result.biggestSetSize < 1 ? result.biggestSetSize.toFixed(2) : result.biggestSetSize;
+
+
 setTotalIntersectionCount(intersectionCount);
 
 

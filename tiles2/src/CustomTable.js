@@ -36,7 +36,7 @@ import { TablePagination } from "@mui/material";
 
 
 const Styles = ({ children, config }) => {
-  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title } = config;
+  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor } = config;
 
   const StyledWrapper = styled.div`
 
@@ -595,7 +595,7 @@ width: 99%;
 
 }
           text-align: left;
-          border-right: 1px solid white;
+            border-right: none;
           font-weight: 700;
      }
       .td {
@@ -935,16 +935,17 @@ word-break: break-all !important
 table .th,
 .td,
 tr:nth-child(odd) td {
-    font-size: 15px !important;
+
     text-transform: capitalize;
 
 
-    background:${color_title ? `${color_title[0]} !important` : "#06f !important"};
-    color: white;
+    background:${color_title ? `${color_title[0]} !important` : "#fff !important"};
+    color: ${fontColor ? `${fontColor} !important` : "#000 !important"};
     justify-content: center;
     text-align: center;
-    margin: 0px 1px;
+    margin: 0px 8px;
 }
+
  tr {
     border-bottom: none;
 }
@@ -956,35 +957,40 @@ tr:nth-child(odd) td {
 }
 
 td a {
-    font-size: 15px !important;
+  font-size: 22px !important;
 }
 
 .th {
   border-top-right-radius:8px;
   border-top-left-radius:8px;
-  padding-top:1em
+  padding-top:1.5em
 }
 
 .td  {
   border-bottom-right-radius:8px;
   border-bottom-left-radius:8px;
-  padding-bottom:1em
+  padding-bottom:1.5em;
+  font-size: 24px !important;
+    font-weight: 600;
+
 }
 
 #height{
-padding-top: 4em;
+padding: 3em 1em;
+border-radius:8px;
 display: flex;
 justify-content: center;
 
 flex-wrap: wrap;
 margin:0;
-flex-direction:column
+flex-direction:column;
+background:${backgroundViz ? `${backgroundViz[0]} !important` : "#06f !important"};
 }
 
 
 .th,
 table .th{
-  font-size:18px !important;
+  font-size:19px !important;
   margin-bottom:0px !important
 }
 
@@ -1000,7 +1006,7 @@ thead th {
 function Table({ columns, data, config }) {
 
 
-  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short } = config;
+  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor } = config;
 
   const defaultColumn = React.useMemo(
      () => ({
@@ -1086,10 +1092,7 @@ function Table({ columns, data, config }) {
 
 
     <Container fluid className={`${config.removeBars ? "scrunch" : "padding-0 second"}`} id="height">
-
-
-
-               <h5 className={config.hideTitle ?  "transparentText mb-2"  : "mb-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
+ <h5 className={config.hideTitle ?  "transparentText mb-2"  : "mb-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
 
 
       <div className={`${config.short ? "short" : ""}`}>

@@ -787,7 +787,7 @@ console.log(data)
 
     <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
-    <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : '#f7f8f9'}}>
+    <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : '#fff'}}>
     <div class="d-flex justify-content-between">
     <p class="white mb-4" style={{color: titleColor ? titleColor : '#14171c'}}>{writeTitle === "" ? "Total Media Spend and Investment" : writeTitle}</p>
 

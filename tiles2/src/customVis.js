@@ -46,8 +46,17 @@ console.log(data, "data api response")
         display: "select",
         placeholder: "Please Select",
         values: fieldOptions,
-        order: 1,
+        order: 0,
         default:"Please Select",
+        section: "Style",
+      },
+
+      backgroundViz: {
+        type: 'array',
+        label: 'Background Color',
+        display: 'colors',
+        default: ['#06f', '#00363d', '#17494d', '#498283', '#bdd9d7', '#aecfc2', '#d1e8df', '#edf8f4', '#f5fcfc'],
+        order: 1,
         section: "Style",
       },
 
@@ -55,17 +64,20 @@ console.log(data, "data api response")
         type: 'array',
         label: 'Tiles Background Color',
         display: 'colors',
-        default: ['#06f', '#00363d', '#17494d', '#498283', '#bdd9d7', '#aecfc2', '#d1e8df', '#edf8f4', '#f5fcfc'],
+        default: ['#fff','#06f', '#00363d', '#17494d', '#498283', '#bdd9d7', '#aecfc2', '#d1e8df', '#edf8f4', '#f5fcfc'],
         order: 2,
         section: "Style",
       },
 
+
+
+
       titleColor: {
       type: "string",
       label: "Title Color",
-      default: "#000",
+      default: "#fff",
       display: "text",
-      placeholder: "#000",
+      placeholder: "#fff",
 
       order: 3,
       section: "Style",
@@ -78,6 +90,18 @@ console.log(data, "data api response")
         order: 4,
         section: "Style",
       },
+
+
+      fontColor: {
+      type: "string",
+      label: "Font Color",
+      default: "#000",
+      display: "text",
+      placeholder: "#000",
+
+      order: 5,
+      section: "Style",
+    },
 
      //  tableBordered: {
      //   type: "boolean",
