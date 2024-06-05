@@ -274,7 +274,7 @@ const Styles = styled.div`
     color:#637087 !important
   }
 #venn{
-  background: #f7f8f9;
+  background: white;
   display:flex;
   justify-content:center;
       padding:0em 0em 3em 0em;
@@ -282,24 +282,24 @@ const Styles = styled.div`
 }
 
 
-[data-venn-sets="'TV'"] path{
+[data-venn-sets='TV'] path{
   fill: #12d465 !important
 }
 
-[data-venn-sets="'Social'"] path{
+[data-venn-sets='Social'] path{
   fill: #ffda00 !important
 }
 
-[data-venn-sets="'Prog'"] path{
+[data-venn-sets='Programmatic'] path{
+  fill: #ffda00 !important
+}
+
+
+[data-venn-sets='Digital'] path{
   fill: #0066ff !important
 }
 
-
-[data-venn-sets="'Other Digital'"] path{
-  fill: #e22bb7 !important
-}
-
-[data-venn-sets="'Other'"] path{
+[data-venn-sets='Other'] path{
   fill: #6fd0e9 !important
 }
 
@@ -327,7 +327,7 @@ svg .venn-area.venn-circle:nth-child(10) path{
 }
 
 .venn-intersection path{
-  fill-opacity: .02 !important;
+  fill-opacity: .2 !important;
 }
 
 
@@ -375,28 +375,29 @@ export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
 
 var { investment, chooseLabel,  numbers, reachPercentage, writeTitle, writeTitle2, titleColor,   bodyStyle,   color_title, } = config;
 
-//
-// console.log(data)
+
 
 
 
 const filteredEntries = Object.entries(data)
-  .slice(5);
+  // .slice(3);
 
 
 const filteredObject = Object.fromEntries(filteredEntries);
 
 // console.log(filteredObject, "hi")
 
-const firstFive = data.slice(0, 5);
+// const firstFive = data.slice(0, 5);
+
+const firstThree = data.slice(0, 3);
 
 
 const arrayOfObjects = data
 
-const filteredArray = arrayOfObjects.filter((_, index) => index >= 5); // Keep objects from index 5 onwards
+// const filteredArray = arrayOfObjects.filter((_, index) => index >= 3); // Keep objects from index 5 onwards
 
 
-
+const filteredArray = arrayOfObjects
 
 
 var setStrings = filteredArray.map((item, i) =>(
@@ -435,6 +436,9 @@ const fixedArray = setStrings.map(item =>
  const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
 
 
+
+
+
 useEffect(() => {
 
 function combineArraysToObject(array1, array2) {
@@ -464,36 +468,36 @@ var combinedObject = combineArraysToObject(array1, array2);
 
 var bigObject = combinedObject.sort()
 
-// console.log(bigObject, "bigObject")
 
 
+const findBiggestSetAndSize = (data) => {
+  // Initialize variables
+  let biggestSet = [];
+  let biggestSetSize = 0;
 
-var intersection = "";
-var total_intersection_count = '';
-
-
-
-function calculate_total_intersection(venn_data) {
-
-
-  // Combine all sets into a single set for efficient intersection calculation
-  const all_sets = new Set(); // Declare all_sets here
-  for (const item of venn_data) {
-    for (const set of item.sets) {
-      all_sets.add(set);
+  for (const item of data) {
+    // Check if the current set is larger than the biggestSet
+    if (item.sets.length > biggestSet.length) {
+      biggestSet = item.sets;
+      biggestSetSize = item.size;
     }
   }
 
-  // Initialize intersection with the first set (or an empty set if none provided)
- intersection = new Set(venn_data[0]?.sets || []);
+  return { biggestSet, biggestSetSize };
+};
 
-  // Iterate through remaining elements and update intersection using set operations
-  for (let i = 1; i < venn_data.length; i++) {
-    intersection = new Set([...intersection].filter(x => venn_data[i].sets.includes(x)));
-  }
+// Example usage
+const result = findBiggestSetAndSize(bigObject);
 
-  return intersection.size;
-}
+console.log("Biggest set:", result.biggestSet);
+console.log("Matching size value:", result.biggestSetSize);
+
+
+
+const intersectionCount = result.biggestSetSize;
+setTotalIntersectionCount(intersectionCount);
+
+
 
 // Example usage with the provided object
 var bigObject = bigObject
@@ -506,31 +510,8 @@ console.log(bigObject, "data object")
 
 
 
-const intersectionCount = calculate_total_intersection(bigObject);
-setTotalIntersectionCount(intersectionCount);
 
-// const extendedData = [
-//      { sets: ["A"], size: 20 },
-//      { sets: ["B"], size: 10 },
-//      { sets: ["A", "B"], size: 5 }
-//    ];
-//
-const extendedData = [
-    { sets: ['Social', 'Other Digital', 'Prog', 'Other'], size: 8 },
-    { sets: ['Other Digital', 'Other'], size: 7 },
-    { sets: ['TV', 'Social', 'Other'], size: 4 },
-    {sets: ['Social' , 'Prog'], size: 5},
-    {sets: ['Social' ], size: 4},
-    {sets: ['TV'], size: 3},
-    {sets: ['Other Digital' ], size: 4},
-    {sets: ['Prog'], size: 3},
-    {sets: ['Other'], size: 13}
-  ];
-//
-//
-//
-//
-// console.log(extendedData)
+
 
 
 
@@ -572,6 +553,7 @@ buildVenn(vennChart); // Call buildVenn with the data-bound selection
       // Display a tooltip with the current size
       tooltip.transition().duration(400).style("opacity", "0.9");
       tooltip.text(`${d.sets}, ${Math.round(d.size).toFixed(0)}%`);
+
       tooltip
         .style("position", "absolute")
 
@@ -599,7 +581,7 @@ return (
 
         <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
-        <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : '#f7f8f9'}}>
+        <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : 'white'}}>
       <Container fluid>
         <Row>
         <div class="d-flex justify-content-between">
@@ -622,14 +604,14 @@ return (
         <div className="overlap">
         <p className="mb-0">Total Overlap</p>
 
-          <h3 className="mb-0">{totalIntersectionCount}</h3>
+          <h3 className="mb-0">{totalIntersectionCount}%</h3>
         </div>
 
           </Row>
 
 
           <Row>
-          {firstFive.map((item, i) =>(
+          {firstThree.map((item, i) =>(
             <Col md={12}>
 
             <div className="d-flex justify-content-between">

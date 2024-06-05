@@ -834,12 +834,23 @@ h2{
 }
 
 
-.two p{
+.two p.second{
   color: white !important;
   position: absolute;
-  top: 485px;
-  font-size: 25px;
-  right: -190px;
+  top: 500px;
+  font-size: 22px;
+  right: -47px;
+  font-weight: 400;
+  z-index: 99999999999999;
+}
+
+
+.two p.first{
+  color: white !important;
+  position: absolute;
+  top: 470px;
+  font-size: 24px;
+  right: -104px;
   font-weight: 400;
   z-index: 99999999999999;
 }
@@ -892,12 +903,26 @@ h2{
 }
 
 
-.three p{
+
+
+
+.three p.first{
   color: white !important;
   position: absolute;
-  top: 485px;
-  font-size: 25px;
-  left: -220px;
+  top: 470px;
+  font-size: 24px;
+  left: -145px;
+  font-weight: 400;
+
+}
+
+
+.three p.second{
+  color: white !important;
+  position: absolute;
+  top: 500px;
+  font-size: 22px;
+  left: -47px;
   font-weight: 400;
 
 }

@@ -810,12 +810,14 @@ console.log(data)
              <div className="rightTriangle">
              </div>
 
-              <p>Efficiency {item[investment].rendered}</p>
+              <p className="first">Efficiency</p>
+               <p className="second">{item[investment].rendered}</p>
               <div className="rightTriangle3"></div>
              </div>
           <div className="thisDiv three">
             <div className="leftTriangle"></div>
-            <p>Effectiveness {item[spend].rendered}</p>
+            <p className="first">Effectiveness</p>
+            <p className="second">{item[spend].rendered}</p>
           <div className="leftTriangle2"></div>
         </div>
 

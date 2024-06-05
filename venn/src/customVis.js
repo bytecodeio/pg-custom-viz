@@ -55,7 +55,7 @@ looker.plugins.visualizations.add({
         const fieldOptions0 = [...dimensions, ...measures].map((all) => ({
           [all.label]: all.name
         }));
-
+        // 
         // console.log(fieldOptions)
         // console.log(fieldOptions0)
         // console.log(fieldOptions2)
