@@ -296,20 +296,24 @@ const Styles = styled.div`
 
 
 
-.secondary-class:nth-child(1) path{
+#venn .venn-area.venn-circle.secondary-class:nth-child(1) path{
     fill: #12d465 !important
 }
 
-.secondary-class:nth-child(2) path{
+#venn .venn-area.venn-circle.secondary-class:nth-child(2) path{
     fill: #ffda00 !important
 }
 
-.secondary-class:nth-child(3) path{
+#venn .venn-area.venn-circle.secondary-class:nth-child(4) path{
+    fill: #0066ff !important
+}
+
+#venn .venn-area.venn-circle.secondary-class:nth-child(3) path,
+[data-venn-sets="Programmatic"]{
   fill: #0066ff !important
 }
-.secondary-class:nth-child(4) path{
-  fill: #e22bb7 !important
-}
+
+
 .secondary-class:nth-child(5) path{
 fill: #6fd0e9 !important
 }
@@ -503,18 +507,6 @@ const singleSetSizes = bigObject.filter(obj => obj.sets.length === 1)
   .map(obj => obj.size);
 
 setSizes(singleSetSizes)
-
-
-
-d3.selectAll('g.venn-area.venn-circle')
-  .each(function(d) {
-    const dataVennSets = d.getAttribute('data-venn-sets').split(','); // Get attribute value
-    const matchingValues = filteredArray2.filter(value => dataVennSets.includes(value));
-
-    matchingValues.forEach(value => {
-      d3.select(this).classed(value, true); // Add class for each matching value
-    });
-  });
 
 
 
