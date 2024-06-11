@@ -55,7 +55,7 @@ looker.plugins.visualizations.add({
         const fieldOptions0 = [...dimensions, ...measures].map((all) => ({
           [all.label]: all.name
         }));
-        // 
+        //
         // console.log(fieldOptions)
         // console.log(fieldOptions0)
         // console.log(fieldOptions2)
@@ -121,14 +121,15 @@ writeTitle: {
 },
 
 
-// writeTitle2: {
-//   type: "string",
-//   label: "Subtitle Override",
-//   default: "",
-//   order: 1,
-//   section: "Style",
-//
-// },
+hideTitle: {
+  type: "boolean",
+  label: "Hide Title",
+  default: false,
+  order: 1,
+  section: "Style",
+
+},
+
 
 titleColor: {
   type: "string",
@@ -154,6 +155,16 @@ titleColor: {
       order: 7,
         section: "Style",
     },
+
+
+    across: {
+      type: "boolean",
+      label: "Change Layout to Horizontal",
+      default: false,
+      order: 9,
+      section: "Style",
+    },
+
 
 
 

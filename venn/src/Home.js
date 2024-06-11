@@ -72,7 +72,7 @@ const Styles = styled.div`
     border: 1px solid black;
     max-width: 490px;
     margin: 2em auto 0 auto;
-    // min-height: 380px;
+
 
   max-height: 498px;
 
@@ -209,61 +209,69 @@ const Styles = styled.div`
     color:#14171b !important
   }
 
-
-
-
    .dots p:nth-child(1) i{
     color: #12d465;
   }
-
-
-
-
 
   .dots p:nth-child(2) i{
     color: #ffda00;
  }
 
-
-
   .dots p:nth-child(3) i{
     color: #0066ff;
  }
 
-
-
-    .dots p:nth-child(4) i{
+  .dots p:nth-child(4) i{
     color: #e22bb7;
    }
-
-
 
   .dots p:nth-child(5) i{
    color: #6fd0e9;
  }
 
 
+ .dots p:nth-child(6) i{
+  color: #12d465;
+}
 
-    .dots p:nth-child(6) i{
-      color: #12d465;
-   }
+.dots p:nth-child(7) i{
+  color: #ffda00;
+}
 
-
-   .col-md-12:nth-child(7) .dots p i{
-    color: #ffda00;
-  }
-
-  .col-md-12::nth-child(8) .dots p i{
+.dots p:nth-child(8) i{
   color: #0066ff;
-  }
+}
 
-   .col-md-12:nth-child(9) .dots p i{
-    color: #e22bb7;
-  }
+.dots p:nth-child(9) i{
+  color: #e22bb7;
+ }
 
-  .col-md-12:nth-child(10) .dots p i{
-   color: #6fd0e9;
-  }
+.dots p:nth-child(10) i{
+ color: #6fd0e9;
+}
+
+
+.dots p:nth-child(11) i{
+ color: #12d465;
+}
+
+.dots p:nth-child(12) i{
+ color: #ffda00;
+}
+
+.dots p:nth-child(13) i{
+ color: #0066ff;
+}
+
+.dots p:nth-child(14) i{
+ color: #e22bb7;
+}
+
+.dots p:nth-child(15) i{
+color: #6fd0e9;
+}
+
+
 
 
   .col-md-3 .progress-bar{
@@ -290,28 +298,10 @@ const Styles = styled.div`
   background: white;
   display:flex;
   justify-content:center;
-      padding:0em 0em 3em 0em;
-      width:100%;
+  padding:0em 0em 3em 0em;
+  width:100%;
 }
 
-
-
-#venn .venn-area.venn-circle.secondary-class:nth-child(1) path{
-    fill: #12d465 !important
-}
-
-#venn .venn-area.venn-circle.secondary-class:nth-child(2) path{
-    fill: #ffda00 !important
-}
-
-#venn .venn-area.venn-circle.secondary-class:nth-child(4) path{
-    fill: #0066ff !important
-}
-
-#venn .venn-area.venn-circle.secondary-class:nth-child(3) path,
-[data-venn-sets="Programmatic"]{
-  fill: #0066ff !important
-}
 
 
 .secondary-class:nth-child(5) path{
@@ -372,6 +362,29 @@ margin-bottom: 3em;
 
 }
 
+.across{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:3%;
+  margin-left:-3vw !important
+}
+
+
+.across .halfWidth{
+  width:50%;
+  display:flex;
+  flex-direction:column-reverse;
+}
+
+
+.across .halfWidth .overlap{
+  margin-bottom:0em
+}
+
+.across #venn{
+  padding-bottom:0em !important
+}
 
   `;
 
@@ -379,8 +392,7 @@ margin-bottom: 3em;
 export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
 
 
-var { investment, chooseLabel,  numbers, reachPercentage, writeTitle, writeTitle2, titleColor,   bodyStyle,   color_title, } = config;
-
+var { investment, chooseLabel,  numbers, reachPercentage, writeTitle, writeTitle2, titleColor, bodyStyle, color_title, across, hideTitle } = config;
 
 
 const filteredEntries = Object.entries(data)
@@ -392,9 +404,7 @@ const firstThree = data.slice(0, 3);
 
 const findSingleValues = data
 
-
 const arrayOfObjects = data
-
 
 const filteredArray = arrayOfObjects
 
@@ -403,6 +413,9 @@ var setStrings = filteredArray.map((item, i) =>(
     item[investment].value
 
 ))
+
+
+console.log(setStrings, "strings that are picked")
 
 
 const filteredArray2 = setStrings.map(item => item)
@@ -420,10 +433,6 @@ const fixedArray = setStrings.map(item =>
   item.split(',') // Split on commas
     .map(subItem => `${subItem.trim()}`) // Add quotes and trim each item
 );
-
-console.log(filteredArray2, "bubbles");
-
-
 
 
 // console.log(setStrings, "setStrings")
@@ -500,9 +509,6 @@ setTotalIntersectionCount(intersectionCount);
 var bigObject = bigObject
 
 
-console.log(bigObject, "data object")
-
-
 const singleSetSizes = bigObject.filter(obj => obj.sets.length === 1)
   .map(obj => obj.size);
 
@@ -521,12 +527,17 @@ const vennChart = d3.select("#venn")
 buildVenn(vennChart);
 
 
+const circleColors = ["#12d465", "#ffda00", "#0066ff", "#e22bb7", "#6fd0e9"];
+d3.selectAll(".venn-area.venn-circle path")
+  .style("fill", (d, i) => circleColors[i % circleColors.length]);
+
+
   vennChart
     .selectAll("path")
     .style("fill-opacity", "1")
     .style("mix-blend-mode", "none");
 
-    const secondClass = 'secondary-class'; // Replace with your desired class name
+    const secondClass = 'secondary-class';
 
     d3.selectAll('.venn-circle')
       .classed(secondClass, true);
@@ -600,12 +611,10 @@ buildVenn(vennChart);
 return (
   <>
   <Styles>
-
-        <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
-
-        <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : 'white'}}>
-      <Container fluid>
-        <Row>
+      <div id="vis-wrapper" style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+      <div className="lightBubble" style={{ backgroundColor: color_title ? background[0] : 'white'}}>
+      <Container fluid className={across ? "across" : ""}>
+        <Row style={{display: hideTitle ? "none" : "unset"}}>
         <div class="d-flex justify-content-between">
         <p class="white" style={{color: titleColor ? titleColor : '#14171c'}}>{writeTitle === "" ? "Reach Overlap" : writeTitle}</p>
 
@@ -621,6 +630,9 @@ return (
             </div>
 
         </Row>
+
+
+        <div className="halfWidth">
 
         <Row>
         <div className="overlap">
@@ -639,7 +651,7 @@ return (
             <div className="d-flex justify-content-between">
 
             <div className="dots">
-             {filteredArray2.map((val, index) => (
+             {setStrings.map((val, index) => (
             <p key={index}><i class="fas fa-circle"></i> {val}</p>
               ))}
             </div>
@@ -647,7 +659,7 @@ return (
 
 
             <div className="values">
-          {sizes.map((val, index) =>(
+          {setNumbers.map((val, index) =>(
             <p key={index}>
             {val > 0 && val  < 1 ? `${parseFloat(val * 1 ).toFixed(2)}%` : `${Math.round(val).toFixed(0).toLocaleString()}%`}</p>
           ))}
@@ -659,6 +671,8 @@ return (
             </Col>
 
           </Row>
+
+          </div>
 
 
 
