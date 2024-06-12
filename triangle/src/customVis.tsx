@@ -159,6 +159,35 @@ looker.plugins.visualizations.add({
                   section: "Values",
                 },
 
+                leftOn: {
+                  type: "boolean",
+                  label: "Turn on Left Label",
+                  default: false,
+                  order: 3,
+                    section: "Values",
+                },
+
+
+                labelLeft: {
+                  label: "Choose Left Label",
+                  type: "string",
+                  display: "select",
+                  default: "",
+                  values: fieldOptions2,
+
+                  order: 4,
+                  section: "Values",
+                },
+
+                writeTarget: {
+                  type: "string",
+                  label: "Left Label Override",
+                  default: "",
+                  order: 5,
+                  section: "Values",
+
+                },
+
 
       investment: {
         label: "Choose Right Triangle Value",
@@ -167,9 +196,41 @@ looker.plugins.visualizations.add({
         default: "",
         values: fieldOptions0,
 
-        order: 3,
+        order: 6,
         section: "Values",
       },
+
+
+
+      rightOn: {
+        type: "boolean",
+        label: "Turn on Right Label",
+        default: false,
+        order: 7,
+          section: "Values",
+      },
+
+
+      labelRight: {
+        label: "Choose Right Label",
+        type: "string",
+        display: "select",
+        default: "",
+        values: fieldOptions2,
+
+        order: 8,
+        section: "Values",
+      },
+
+      writeTarget2: {
+        type: "string",
+        label: "Right Label Override",
+        default: "",
+        order: 9,
+        section: "Values",
+
+      },
+
 
 
       reachLeft2: {
@@ -179,339 +240,12 @@ looker.plugins.visualizations.add({
         default: "",
         values: fieldOptions0,
 
-        order: 6,
-          section: "Values",
+        order: 10,
+        section: "Values",
       },
 
 
-            // write1: {
-            //   label: "Override Bar Text",
-            //   type: "string",
-            //   display: "select",
-            //   default: "",
-            //   values: fieldOptions0,
-            //
-            //   order: 7,
-            //   section: "Values",
-            // },
-      //
-      //
-      //       dollar1: {
-      //         label: "Search Spend Value",
-      //         type: "string",
-      //         display: "select",
-      //         default: kpiFieldDefault,
-      //         values: fieldOptions0,
-      //
-      //         order: 6,
-      //         section: "Bar 3",
-      //       },
-      //
-      //
-      //             percentSign1: {
-      //               label: "Search Investment Value",
-      //               type: "string",
-      //               display: "select",
-      //               default: kpiFieldDefault,
-      //               values: fieldOptions0,
-      //
-      //               order: 7,
-      //               section: "Bar 3",
-      //             },
-      //
-      //             write4: {
-      //               label: "TV Spend Value",
-      //               type: "string",
-      //               display: "select",
-      //               default: kpiFieldDefault,
-      //               values: fieldOptions0,
-      //
-      //               order: 6,
-      //               section: "Bar 4",
-      //             },
-      //
-      //
-      //                   reachRight: {
-      //                     label: "TV Investment Value",
-      //                     type: "string",
-      //                     display: "select",
-      //                     default: kpiFieldDefault,
-      //                     values: fieldOptions0,
-      //
-      //                     order: 7,
-      //                     section: "Bar 4",
-      //                   },
-      //
-      //
-      //                   write5: {
-      //                     label: "Digital Spend Value",
-      //                     type: "string",
-      //                     display: "select",
-      //                     default: kpiFieldDefault,
-      //                     values: fieldOptions0,
-      //
-      //                     order: 6,
-      //                     section: "Bar 5",
-      //                   },
-      //
-      //
-      //                       effectivenessRight: {
-      //                           label: "Digital Investment Value",
-      //                           type: "string",
-      //                           display: "select",
-      //                           default: kpiFieldDefault,
-      //                           values: fieldOptions0,
-      //
-      //                           order: 7,
-      //                           section: "Bar 5",
-      //                         },
 
-
-
-
-
-     //  dollar1: {
-     //   type: "boolean",
-     //   label: "Add $ Sign Left Side Value 2",
-     //   default: false,
-     //   order: 3,
-     //  section: "Reach",
-     // },
-     // percentSign1: {
-     //   type: "boolean",
-     //   label: "Add % Sign Left Side Value 2",
-     //   default: false,
-     //   order: 4,
-     //  section: "Reach",
-     // },
-
-
-
-      //
-      // write4: {
-      //    type: "string",
-      //    label: "Override Left Side Value 3 for Reach",
-      //    default: "",
-      //    order: 6,
-      //    section: "Reach",
-      //  },
-      //
-      //
-      //
-      // reachRight: {
-      //   label: "Choose Right Side Value for Reach",
-      //   type: "string",
-      //   display: "select",
-      //   default: kpiFieldDefault,
-      //   values: fieldOptions0,
-      //   section: "Reach",
-      //   order: 7,
-      // },
-      //
-      // right1: {
-      //   type: "boolean",
-      //   label: "Add % Sign Right Side Value for Reach",
-      //   default: false,
-      //   order: 8,
-      //  section: "Reach",
-      // },
-      //
-      //
-      // iya1: {
-      //   type: "boolean",
-      //   label: "IYA",
-      //   default: false,
-      //   order: 9,
-      //  section: "Reach",
-      // },
-      //
-      //
-      //
-      // effectivenessLeft1: {
-      //   label: "Choose Left Side Value 1 for Effectiveness",
-      //   type: "string",
-      //   display: "select",
-      //   default: kpiFieldDefault,
-      //   values: fieldOptions0,
-      //   section: "Effectiveness",
-      //   order: 0,
-      // },
-        //
-        // write5: {
-        //    type: "string",
-        //    label: "Override Left Side Value 1 for Effectiveness",
-        //    default: "",
-        //    order: 1,
-        //    section: "Effectiveness",
-        //  },
-
-     //  effectivenessLeft2: {
-     //    label: "Choose Left Side Value 2 for Effectiveness",
-     //    type: "string",
-     //    display: "select",
-     //    default: kpiFieldDefault,
-     //    values: fieldOptions0,
-     //    section: "Effectiveness",
-     //    order: 2,
-     //  },
-     //
-     //  dollar2: {
-     //   type: "boolean",
-     //   label: "Add $ Sign Left Side Value 2",
-     //   default: false,
-     //   order: 3,
-     //    section: "Effectiveness",
-     // },
-     // percentSign2: {
-     //   type: "boolean",
-     //   label: "Add % Sign Left Side Value 2",
-     //   default: false,
-     //   order: 4,
-     //  section: "Effectiveness",
-     // },
-     //  effectivenessLeft3: {
-     //    label: "Choose Left Side Value 3 for Effectiveness",
-     //    type: "string",
-     //    display: "select",
-     //    default: kpiFieldDefault,
-     //    values: fieldOptions0,
-     //    section: "Effectiveness",
-     //    order: 5,
-     //  },
-     //
-     //  write7: {
-     //     type: "string",
-     //     label: "Override Left Side Value 3 for Effectiveness",
-     //     default: "",
-     //     order: 6,
-     //     section: "Effectiveness",
-     //   },
-     //
-     //  effectivenessRight: {
-     //    label: "Choose Right Side Value for Effectiveness",
-     //    type: "string",
-     //    display: "select",
-     //    default: kpiFieldDefault,
-     //    values: fieldOptions0,
-     //    section: "Effectiveness",
-     //    order: 7,
-     //  },
-     //
-     //
-     //  right2: {
-     //    type: "boolean",
-     //    label: "Add % Sign Right Side Value for Effectiveness",
-     //    default: false,
-     //    order: 8,
-     //    section: "Effectiveness",
-     //  },
-     //
-     //
-     //  iya2: {
-     //    type: "boolean",
-     //    label: "IYA",
-     //    default: false,
-     //    order: 9,
-     //    section: "Effectiveness",
-     //  },
-     //
-     //
-     //
-     //          efficiencyLeft1: {
-     //          label: "Choose Left Side Value 1 for Efficiency",
-     //          type: "string",
-     //          display: "select",
-     //          default: kpiFieldDefault,
-     //          values: fieldOptions0,
-     //          section: "Efficiency",
-     //          order: 0,
-     //        },
-     //
-     //
-     //
-     //
-     //        efficiencyLeft2: {
-     //          label: "Choose Left Side Value 2 for Efficiency",
-     //          type: "string",
-     //          display: "select",
-     //          default: kpiFieldDefault,
-     //          values: fieldOptions0,
-     //          section: "Efficiency",
-     //          order: 2,
-     //        },
-     //
-     //        dollar3: {
-     //         type: "boolean",
-     //         label: "Add $ Sign Left Side Value 2",
-     //         default: false,
-     //         order: 3,
-     //          section: "Efficiency",
-     //       },
-     //       percentSign3: {
-     //         type: "boolean",
-     //         label: "Add % Sign Left Side Value 2",
-     //         default: false,
-     //         order: 4,
-     //          section: "Efficiency",
-     //       },
-     //
-     //
-     //
-     //        efficiencyLeft3: {
-     //          label: "Choose Left Side Value 3 for Efficiency",
-     //          type: "string",
-     //          display: "select",
-     //          default: kpiFieldDefault,
-     //          values: fieldOptions0,
-     //          section: "Efficiency",
-     //          order: 5,
-     //        },
-     //
-     //        write11: {
-     //           type: "string",
-     //           label: "Override Left Side Value 3 for Efficiency",
-     //           default: "",
-     //           order: 6,
-     //           section: "Efficiency"
-     //         },
-     //
-     //        efficiencyRight: {
-     //          label: "Choose Right Side Value for Efficiency",
-     //          type: "string",
-     //          display: "select",
-     //          default: kpiFieldDefault,
-     //          values: fieldOptions0,
-     //          section: "Efficiency",
-     //          order: 7,
-     //        },
-     //
-     //
-     //        right3: {
-     //          type: "boolean",
-     //          label: "Add % Sign Right Side Value for Efficiency",
-     //          default: false,
-     //          order: 8,
-     //          section: "Efficiency",
-     //        },
-     //
-     //
-     //        iya3: {
-     //          type: "boolean",
-     //          label: "IYA",
-     //          default: false,
-     //          order: 9,
-     //          section: "Efficiency",
-     //        },
-
-      //
-      // color_title: {
-      //   type: 'array',
-      //   label: 'Background Color',
-      //   display: 'colors',
-      //   default: ['#f7f8f9','#0066ff', '#a2c4c9', '#00363d', '#dd3333', '#80ce5d', '#f78131', '#369dc1', '#c572d3', '#36c1b3', '#b57052', '#ed69af'],
-      //   order: 4,
-      //   section: "Style",
-      // },
 
 
 
@@ -547,7 +281,13 @@ looker.plugins.visualizations.add({
     },
 
 
-
+          hideBottom: {
+            type: "boolean",
+            label: "Hide Bottom Bar",
+            default: false,
+            order: 8,
+            section: "Style",
+          },
 
 
 

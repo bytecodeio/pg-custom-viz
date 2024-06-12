@@ -221,7 +221,13 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     iya3,
     chooseLabel,
     spend,
-    investment
+    investment,
+    hideBottom,
+    labelLeft,
+    leftOn,
+    rightOn,
+    labelRight,
+    writeTarget2
   } = config;
 
 
@@ -794,9 +800,6 @@ console.log(data)
       <>
       <Row>
 
-
-
-
               <div className="thisDiv one">
 
               <div className="topTriangle"></div>
@@ -811,16 +814,15 @@ console.log(data)
              </div>
 
               <p className="first">Efficiency</p>
-               <p className="second">{item[investment].rendered}</p>
+            <p className="second" style={{fontSize: rightOn ? "20px" : "22px", right: rightOn ? "-125px" : "-100px"}}><span style={{display:rightOn ? "inline-flex" : "none"}}>{writeTarget2 === "" ? `${labelRight}:` : `${writeTarget2}:`}</span> {item[investment].rendered}</p>
               <div className="rightTriangle3"></div>
              </div>
           <div className="thisDiv three">
             <div className="leftTriangle"></div>
             <p className="first">Effectiveness</p>
-            <p className="second">{item[spend].rendered}</p>
+            <p className="second" style={{fontSize: leftOn ? "20px" : "22px", left: leftOn ? "-143px" : "-115px"}}><span style={{display:leftOn ? "inline-flex" : "none"}}>{writeTarget === "" ? `${labelLeft}:` : `${writeTarget}:`}</span> {item[spend].rendered}</p>
           <div className="leftTriangle2"></div>
         </div>
-
 
 
 
@@ -832,9 +834,9 @@ console.log(data)
 
 
 
-    <Row>
-<div class="grayBar"><p>Integrated to Deliver Profitable Return of Investment: {item[reachLeft2].rendered}</p></div>
-</Row>
+    <Row style={{display: hideBottom ? "none" : ""}}>
+    <div class="grayBar"><p>Integrated to Deliver Profitable Return of Investment: {item[reachLeft2].rendered}</p></div>
+    </Row>
 
     </>
 
