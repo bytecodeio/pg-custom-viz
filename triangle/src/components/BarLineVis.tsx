@@ -222,12 +222,22 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     chooseLabel,
     spend,
     investment,
+
+    spend2,
+    investment2,
+
     hideBottom,
     labelLeft,
     leftOn,
     rightOn,
     labelRight,
-    writeTarget2
+    writeTarget2,
+    labelLeft2,
+    leftOn2,
+    rightOn2,
+    labelRight2,
+    writeTargetSecond,
+    writeTargetFirst
   } = config;
 
 
@@ -433,359 +443,6 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
   }
 
 
-  // const Content = config.textTitle.split(",").map((d, i) => ({
-  //   textTitle: d,
-  //   // textTitle:config.textTitle.split(",")[i],
-  //
-  //
-  //
-  //
-  // }))
-//
-//   Content.map((val, i) => (
-//
-// console.log(val.yAxisDropdown, "seifuewbiviyewiwvew")
-//
-//   ))
-//
-//
-
-
- //
- // const yAxisValues = data.map(item => item[yAxisLeftValues].value)
-
-
-
-
-
-
-
-//
-//
-//
-//
-//
-//   var total = 0;
-//   for(var i = 0; i < yAxisValues.length; i++) {
-//       total += yAxisValues[i];
-//   }
-//   var avg = total / yAxisValues.length;
-//   let array = yAxisValues
-//
-// function calculateAverage(array) {
-// let num = 0;
-// for (let i = 0; i < yAxisValues.length; i++) {
-//    // console.log(yAxisValues[i]);
-//
-//  num += +yAxisValues[i];
-//    // console.log(yAxisValues.length)
-// }
-// return num / yAxisValues.length
-//
-// }
-//
-// var average = calculateAverage(array);
-//
-// var average =  percentSign ? Math.round(average * 100).toLocaleString() : Math.round(average * 1).toLocaleString();
-//
-//
-//   let title = Content.map(function(val, i){ return val.textTitle });
-//
-//   let title = title[0]
-//
-//
-//   let percent = Content.map(function(val, i){ return val.yAxisDropdown });
-//
-//   let percent = Math.round(percent[0] * 100)
-//
-//
-//   let result = data.map(item => item[symbol].value)
-//
-//
-//
-//   let target = percentSign ? Math.round(result[0]*100) : Math.round(result[0]) ;
-//
-//   let yAxisRightDropdownValues = Content.map(function(val, i){ return val.yAxisRightDropdown });
-//
-//
-//   let yAxisRightDropdownValues = Math.round(yAxisRightDropdownValues[0])
-//
-//
-//   const first = labels[0];
-//   const lastLabel = labels[labels.length - 1];
-//
-//
-//
-//   let array2 = yAxisDropdown.split(',').map(function(item) {
-//       return parseInt(item);
-//   });
-//
-//
-//   const yDrop = data.map(item => item[yAxisDropdown].value)
-//
-//   const last = yDrop[yDrop.length - 1];
-//
-//
-//   // const last = Math.round(last * 1).toLocaleString();
-//   //
-//   //
-//   // console.log(last)
-//
-// // var labels = [first, lastLabel]
-// // console.log(thing)
-// //
-// // console.log(labels)
-//
-//
-//
-// const percentDiff1 = percentSign ? Math.round(last / (target/100) * 100) : Math.round(last / target * 100)
-// const percentDiff2 =  Math.round(last / parseInt(writeTarget) * 100)
-//
-// const percentDiff3 = percentSign ? Math.round(last / (parseInt(average)/100) * 100) : Math.round(last / parseInt(average) * 100)
-//
-//
-//
-// console.log(last, percentDiff1, percentDiff2, percentDiff3 )
-//
-//
-//   const popoverHoverFocus = (
-//     <Popover
-//     className={toolOn ? "" : "hidden"}
-//     id="popover"
-//     >
-//     <p>{writeTooltip}</p>
-//     </Popover>
-//   );
-//
-//   const chartOptions: ChartOptions<"scatter" | "bar"> = useMemo(
-//     () => ({
-//       layout: {
-//         padding: {
-//           top: 30,
-//           right:10,
-//           left: 10,
-//           bottom:0
-//
-//         },
-//       },
-//
-//       onClick: (event, elements, chart) => {
-//
-//         if (!elements.length) {
-//           return;
-//         }
-//         const { datasetIndex, index: dataIndex } = elements[0];
-//
-//         if (hasPivot) {
-//
-//           const measureLinks = Object.values(data[dataIndex][measureName])[datasetIndex].links ?? [];
-//           const dimensionLinks = (data[dataIndex][dimensionName].links as Link[]) ?? [];
-//
-//         }
-//         else{
-//           const measureLinks = data[dataIndex][measureName].links ?? [];
-//
-//           const dimensionLinks = (data[dataIndex][dimensionName].links) ?? [];
-//         }
-//
-//         lookerCharts.Utils.openDrillMenu({
-//           links: [...measureLinks, ...dimensionLinks],
-//           event: event.native,
-//         });
-//       },
-//       maintainAspectRatio: false,
-//       responsive: true,
-//       plugins: {
-//         datalabels: {
-//
-//             // display:  showDatalabels ?  "auto" : false,
-//
-//           display: showDatalabels && !autoData ?  "auto" :  showDatalabels && autoData  ? true : !showDatalabels && autoData ? false : !showDatalabels && !autoData ? false : false,
-//           formatter: function(value: number) {
-//
-//            if (value > 0 && value <  1){
-//                 return `${percentSign ? (value*100).toFixed(0) + '%' : (value).toFixed(2)}`
-//             }
-//
-//            else if (value < 100){
-//
-//               return `${percentSign ? Math.round(value*100).toFixed(0) + '%' : Math.round(value*1)}`
-//             }
-//             else if (value < 1000){
-//
-//             return `${percentSign ? Math.round(value*100).toFixed(0) + '%' : Math.round(value*1)}`
-//           }
-//             else{
-//                 let percentage = (value) / 1000
-//                 return `${percentSign ? formatNumber(Math.round(percentage.toFixed(0) * 1000)) + '%' : formatNumber(Math.round(percentage.toFixed() * 1000))}`;
-//             }
-//         },
-//
-//           font: {
-//             size: 10,
-//             weight: '500',
-//             family: bodyStyle ? bodyStyle : "'Roboto'"
-//
-//           },
-//
-//           anchor: 'end',
-//           align: 'end',
-//
-//         },
-//         legend: {
-//           position: "bottom",
-//           labels:
-//
-//           {
-//             color:'#262D33',
-//             font: {
-//               size: `${legendSize ?  legendSize  : 10 }`,
-//               weight: '500',
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//
-//             },
-//             usePointStyle: true
-//           },
-//           align: "center" as const,
-//           display: `${showXGridLines ? hasNoPivot || hasPivot : ""}`
-//         },
-//
-//         tooltip: {
-//           enabled: false,
-//           position: "nearest",
-//           external: (context) =>
-//           tooltipHandler(context, setTooltip),
-//         },
-//       },
-//       scales: {
-//         x: {
-//           border: {
-//             display: false,
-//           },
-//
-//           grid: {
-//             display: false,
-//           },
-//           stacked: false,
-//           title: {
-//             display: false,
-//             // text: ` ${xAxisDropdown ?  xAxisDropdownValues  : dimensionLabel }`,
-//             font: {
-//               size: 10,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             }
-//           },
-//           ticks: {
-//
-//
-//             display: showTwo || showX ? true : false,
-//
-//             // `${showX  ? true : false  : showTwo  ? true : false : false}`,
-//
-//               autoSkip: `${diagonal ?  true : false }`,
-//               maxRotation: `${diagonal ?  60  : 0 }`,
-//               minRotation: `${diagonal ?  60  : 0 }`,
-//
-//               maxTicksLimit: `${showTwo ?  1 : 5000}`,
-//               autoSkip: `${showTwo ?  true : false}`,
-//               minRotation:`${showTwo ?  0 : 0}`,
-//
-//
-//             // callback: () => {
-//             //
-//             //   return labels[0];
-//             //   // return labels[labels.length - 1];
-//             // },
-//
-//
-//
-//             font: {
-//               size:`${xFontSize ?  xFontSize  : 10 }`,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             },
-//             color: 'black',
-//           },
-//         },
-//
-//         yLeft: {
-//           border: {
-//             display: false,
-//           },
-//           grid: {
-//             display: false,
-//           },
-//           position: "left" as const,
-//           stacked: false,
-//           ticks: {
-//             font: {
-//               size: `${yFontSize ?  yFontSize  : 10 }`,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             },
-//             display:showYGridLines,
-//             callback: function (value: number) {
-//               return `${percentSign ? formatNumber((value*100).toFixed(0)) + "%" :  formatNumber(value)}`;
-//             },
-//           },
-//           title: {
-//             display: false,
-//             // text: `${showYGridLines ?  yAxisRightDropdownValues  : measureLabel }`,
-//             font: {
-//               size: 10,
-//               family: bodyStyle ? bodyStyle : "'Roboto'"
-//             }
-//           },
-//
-//         },
-//
-//         yRight: {
-//           legend: {
-//             display: true,
-//         },
-//         grid: {
-//           display: false,
-//         },
-//         position: "right" as const,
-//         display: false,
-//         ticks: {
-//
-//           display: false,
-//
-//
-//         },
-//
-//
-//       },
-//
-//       },
-//     }),
-//     []
-//   );
-//
-//   const kpiValue = data.reduce((total, currentRow) => {
-//     let newTotal = total;
-//     if (hasPivot) {
-//       const cellValues = Object.values(currentRow[measureName]).map(
-//         (cell) => cell.value
-//       );
-//       for (let i = 0; i < cellValues.length; i++) {
-//         newTotal += cellValues[i];
-//       }
-//     } else {
-//       newTotal += currentRow[measureName].value;
-//     }
-//
-//     return newTotal;
-//   }, 0);
-//
-//   function handleChartTypeSelection(newChartType: ChartType) {
-//     setSelectedChartType(newChartType);
-//     updateChartData(newChartType);
-//   }
-
-
-console.log(data)
-
-
   return (
     <Fragment>
     <Styles>
@@ -814,13 +471,19 @@ console.log(data)
              </div>
 
               <p className="first">Efficiency</p>
-            <p className="second" style={{fontSize: rightOn ? "20px" : "22px", right: rightOn ? "-125px" : "-100px"}}><span style={{display:rightOn ? "inline-flex" : "none"}}>{writeTarget2 === "" ? `${labelRight}:` : `${writeTarget2}:`}</span> {item[investment].rendered}</p>
+            <p className="second" style={{fontSize: rightOn ? "20px" : "22px", right: rightOn ? "-133px" : "-100px"}}><span style={{display:rightOn ? "inline-flex" : "none"}}>{writeTarget2 === "" ? `${labelRight}:` : `${writeTarget2}:`}</span> {item[investment].rendered}</p>
+
+                <p className="third" style={{fontSize: rightOn2 ? "20px" : "22px", right: rightOn2 ? "-125px" : "-100px"}}><span style={{display:rightOn2 ? "inline-flex" : "none"}}>{writeTargetSecond === "" ? `${labelRight2}:` : `${writeTargetSecond}:`}</span> {item[investment2].rendered}</p>
+
               <div className="rightTriangle3"></div>
              </div>
           <div className="thisDiv three">
             <div className="leftTriangle"></div>
             <p className="first">Effectiveness</p>
             <p className="second" style={{fontSize: leftOn ? "20px" : "22px", left: leftOn ? "-143px" : "-115px"}}><span style={{display:leftOn ? "inline-flex" : "none"}}>{writeTarget === "" ? `${labelLeft}:` : `${writeTarget}:`}</span> {item[spend].rendered}</p>
+
+            <p className="third" style={{fontSize: leftOn2 ? "20px" : "22px", left: leftOn2 ? "-143px" : "-115px"}}><span style={{display:leftOn2 ? "inline-flex" : "none"}}>{writeTargetFirst === "" ? `${labelLeft2}:` : `${writeTargetFirst}:`}</span> {item[spend2].rendered}</p>
+
           <div className="leftTriangle2"></div>
         </div>
 

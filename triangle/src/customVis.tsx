@@ -27,8 +27,6 @@ looker.plugins.visualizations.add({
   updateAsync: function (data, element, config, queryResponse, details, done) {
 
 
-
-
     const { measure_like: measureLike } = queryResponse.fields;
     const { dimension_like: dimensionLike } = queryResponse.fields;
 
@@ -85,55 +83,10 @@ looker.plugins.visualizations.add({
     }));
 
 
-    //
-    //
-    //
-    // const kpiFieldDefault = dimensions[0].name;
-    // const comparisonFieldDefault = measures.length > 1 ? measures[1].name : "";
-    // const gaugeFieldDefault = measures.length > 2 ? measures[2].name : "";
-    //
-
-
 
     const lookerVis = this;
     const configOptions: ConfigOptions = {
 
-
-
-            //
-            //
-            // writeTitle2: {
-            //   type: "string",
-            //   label: "Subtitle Override",
-            //   default: "",
-            //   order: 1,
-            //   section: "Style",
-            //
-            // },
-            //
-            // titleColor: {
-            //   type: "string",
-            //   label: "Title Color",
-            //   default: "#14171c",
-            //   display: "text",
-            //   placeholder: "",
-            //
-            //   order: 2,
-            //   section: "Style",
-            //
-            // },
-            //
-            //     titleColor2: {
-            //       type: "string",
-            //       label: "Subtitle Color",
-            //       default: "#637087",
-            //       display: "text",
-            //       placeholder: "",
-            //
-            //       order: 3,
-            //         section: "Style",
-            //
-            //     },
 
                 chooseLabel: {
                   label: "Choose Top Triangle Value",
@@ -189,52 +142,51 @@ looker.plugins.visualizations.add({
                 },
 
 
+                leftOn2: {
+                  type: "boolean",
+                  label: "Turn on 2nd Left Label",
+                  default: false,
+                  order: 6,
+                    section: "Values",
+                },
+
+
+                labelLeft2: {
+                  label: "Choose 2nd Left Label",
+                  type: "string",
+                  display: "select",
+                  default: "",
+                  values: fieldOptions2,
+
+                  order: 7,
+                  section: "Values",
+                },
+
+
+                spend2: {
+                  label: "Choose 2nd Left Triangle Value",
+                  type: "string",
+                  display: "select",
+                  default: "",
+                  values: fieldOptions0,
+
+                  order: 8,
+                  section: "Values",
+                },
+
+                writeTargetFirst: {
+                  type: "string",
+                  label: "2nd Left Label Override",
+                  default: "",
+                  order: 9,
+                  section: "Values",
+
+                },
+
+
+
       investment: {
         label: "Choose Right Triangle Value",
-        type: "string",
-        display: "select",
-        default: "",
-        values: fieldOptions0,
-
-        order: 6,
-        section: "Values",
-      },
-
-
-
-      rightOn: {
-        type: "boolean",
-        label: "Turn on Right Label",
-        default: false,
-        order: 7,
-          section: "Values",
-      },
-
-
-      labelRight: {
-        label: "Choose Right Label",
-        type: "string",
-        display: "select",
-        default: "",
-        values: fieldOptions2,
-
-        order: 8,
-        section: "Values",
-      },
-
-      writeTarget2: {
-        type: "string",
-        label: "Right Label Override",
-        default: "",
-        order: 9,
-        section: "Values",
-
-      },
-
-
-
-      reachLeft2: {
-        label: "Choose ROI Value",
         type: "string",
         display: "select",
         default: "",
@@ -246,7 +198,95 @@ looker.plugins.visualizations.add({
 
 
 
+      rightOn: {
+        type: "boolean",
+        label: "Turn on Right Label",
+        default: false,
+        order: 11,
+        section: "Values",
+      },
 
+
+
+
+      labelRight: {
+        label: "Choose Right Label",
+        type: "string",
+        display: "select",
+        default: "",
+        values: fieldOptions2,
+
+        order: 12,
+        section: "Values",
+      },
+
+      writeTarget2: {
+        type: "string",
+        label: "Right Label Override",
+        default: "",
+        order: 13,
+        section: "Values",
+
+      },
+
+
+
+      rightOn2: {
+        type: "boolean",
+        label: "Turn on 2nd Right Label",
+        default: false,
+        order: 14,
+        section: "Values",
+      },
+
+
+      labelRight2: {
+        label: "Choose 2nd Right Label",
+        type: "string",
+        display: "select",
+        default: "",
+        values: fieldOptions2,
+
+        order: 15,
+        section: "Values",
+      },
+
+
+      investment2: {
+        label: "Choose 2nd Right Triangle Value",
+        type: "string",
+        display: "select",
+        default: "",
+        values: fieldOptions0,
+
+        order: 16,
+        section: "Values",
+      },
+
+
+      writeTargetSecond: {
+        type: "string",
+        label: "2nd Right Label Override",
+        default: "",
+        order: 17,
+        section: "Values",
+
+      },
+
+
+
+
+
+      reachLeft2: {
+        label: "Choose ROI Value",
+        type: "string",
+        display: "select",
+        default: "",
+        values: fieldOptions0,
+
+        order: 18,
+        section: "Values",
+      },
 
 
                   writeTitle: {

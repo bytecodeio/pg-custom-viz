@@ -845,6 +845,17 @@ h2{
 }
 
 
+.two p.third{
+  color: white !important;
+  position: absolute;
+  top: 462px;
+  font-size: 22px;
+  right: -100px;
+  font-weight: 400;
+  z-index: 99999999999999;
+}
+
+
 .two p.first{
   color: white !important;
   position: absolute;
@@ -928,6 +939,21 @@ h2{
   font-weight: 400;
 
 }
+
+
+
+.three p.third{
+  color: white !important;
+  position: absolute;
+  font-size: 24px;
+    left: -115px;
+
+    top: 462px;
+
+  font-weight: 400;
+
+}
+
 
 
 

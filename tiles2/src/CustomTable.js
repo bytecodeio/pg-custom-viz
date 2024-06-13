@@ -822,8 +822,10 @@ h5{
   position:relative;
   display: inline-block;
 
-
+    margin-left: 10px;
 }
+
+
 
 a{
   color:black;
@@ -977,7 +979,7 @@ td a {
 }
 
 #height{
-padding: 0em 1em;
+padding: 0em .6em 0em .6em;
 border-radius:8px;
 display: flex;
 justify-content: center;
@@ -999,6 +1001,10 @@ table .th{
 
 thead th {
     line-height: 1;
+}
+
+.top15{
+      margin-top: -15px;
 }
 
   `;
@@ -1095,7 +1101,7 @@ function Table({ columns, data, config }) {
 
 
     <Container fluid className={`${config.removeBars ? "scrunch" : "padding-0 second"}`} id="height">
- <h5 className={config.hideTitle ?  "transparentText mb-2 mt-2"  : "mb-2 mt-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
+ <h5 className={config.hideTitle ?  "transparentText top15"  : "mb-2 mt-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
 
 
       <div className={`${config.short ? "short" : ""}`}>

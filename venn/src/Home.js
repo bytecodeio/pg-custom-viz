@@ -221,55 +221,10 @@ const Styles = styled.div`
     color: #0066ff;
  }
 
-  .dots p:nth-child(4) i{
-    color: #e22bb7;
+  .dots p i{
+    color: #adadad
    }
 
-  .dots p:nth-child(5) i{
-   color: #6fd0e9;
- }
-
-
- .dots p:nth-child(6) i{
-  color: #12d465;
-}
-
-.dots p:nth-child(7) i{
-  color: #ffda00;
-}
-
-.dots p:nth-child(8) i{
-  color: #0066ff;
-}
-
-.dots p:nth-child(9) i{
-  color: #e22bb7;
- }
-
-.dots p:nth-child(10) i{
- color: #6fd0e9;
-}
-
-
-.dots p:nth-child(11) i{
- color: #12d465;
-}
-
-.dots p:nth-child(12) i{
- color: #ffda00;
-}
-
-.dots p:nth-child(13) i{
- color: #0066ff;
-}
-
-.dots p:nth-child(14) i{
- color: #e22bb7;
-}
-
-.dots p:nth-child(15) i{
-color: #6fd0e9;
-}
 
 
 
@@ -374,12 +329,12 @@ margin-bottom: 3em;
 .across .halfWidth{
   width:50%;
   display:flex;
-  flex-direction:column-reverse;
+  flex-direction:column;
 }
 
 
 .across .halfWidth .overlap{
-  margin-bottom:0em
+  margin-bottom:1.5em
 }
 
 .across #venn{
@@ -406,8 +361,33 @@ const findSingleValues = data
 
 const arrayOfObjects = data
 
-const filteredArray = arrayOfObjects
+var filteredArray = arrayOfObjects
 
+
+
+function sortByMediaTypeLength(data) {
+  return Object.values(data).sort((objA, objB) => {
+    const mediaTypeA = objA["combined_reach.media_type"].value;
+    const mediaTypeB = objB["combined_reach.media_type"].value;
+
+    // Check for single media type (no comma)
+    const isSingleA = !mediaTypeA.includes(",");
+    const isSingleB = !mediaTypeB.includes(",");
+
+    // Sort single media types first (ascending order)
+    if (isSingleA && !isSingleB) return -1;
+    if (!isSingleA && isSingleB) return 1;
+
+    // If both have commas, sort by media type length (ascending order)
+    return mediaTypeA.length - mediaTypeB.length;
+  });
+}
+
+
+
+const sortedData = sortByMediaTypeLength(filteredArray);
+
+var filteredArray = sortedData;
 
 var setStrings = filteredArray.map((item, i) =>(
     item[investment].value
@@ -415,7 +395,28 @@ var setStrings = filteredArray.map((item, i) =>(
 ))
 
 
-console.log(setStrings, "strings that are picked")
+
+
+
+
+
+// function sortByLengthThenCombined(arr) {
+//   return arr.sort((a, b) => {
+//
+//     const isSingleA = !a.includes(",");
+//     const isSingleB = !b.includes(",");
+//
+//     if (isSingleA && !isSingleB) return -1;
+//     if (!isSingleA && isSingleB) return 1;
+//
+//     return a.length - b.length;
+//   });
+// }
+//
+//
+// const sortedData = sortByLengthThenCombined(setStrings);
+//
+// console.log(sortedData, "sorted");
 
 
 const filteredArray2 = setStrings.map(item => item)
