@@ -1,11 +1,16 @@
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
 const path = require("path");
 
-module.exports = merge(common, {
+module.exports = {
   mode: "production",
+  entry: "./src/customVis",
   output: {
-    filename: "bundle.js",
+    filename: "custom_table.js",
     path: path.resolve(__dirname, "dist"),
   },
-});
+  module: {
+    rules: [
+      { test: /\.(js|jsx)$/i, use: "babel-loader" },
+      { test: /\.css$/i, use: ["style-loader", "css-loader"] },
+    ],
+  },
+};
