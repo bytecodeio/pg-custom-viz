@@ -36,7 +36,7 @@ import { TablePagination } from "@mui/material";
 
 
 const Styles = ({ children, config }) => {
-  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, freeze150, freeze3150, noScroll,weight, fontColor, odd } = config;
+  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, freeze150, freeze3150, noScroll, weight, weight2, fontColor, odd } = config;
 
   const StyledWrapper = styled.div`
 
@@ -698,7 +698,7 @@ font-weight: 400;
  }
 
   .pagination{
-    margin-top:-1em
+    margin-top:.2em
   }
 
  .btn{
@@ -887,17 +887,18 @@ word-break: break-all !important
 }
 
 
-.td,
-.th,
+
+
 h5{
   font-weight: ${weight ? `${weight} !important` : "300"};
 
 }
 
+
 .td,
 .th{
   color: ${fontColor ? `${fontColor} !important` : "#212529"};
-
+  font-weight: ${weight2 ? `${weight2} !important` : "300"};
 }
 tr:nth-child(odd) td {
    background: ${odd ? `${odd} !important`: "#FCFBFA !important"};
@@ -1003,13 +1004,13 @@ function Table({ columns, data, config }) {
      `}>
 
     <Container fluid className={`${config.removeBars ? "scrunch" : "padding-0 second"}`} id="height">
-      <div className="greenBox pt-3" style={{ backgroundColor: config.color_title ? background[0] : '#00363d'}}>
+      <div className="greenBox pt-3" style={{ backgroundColor: config.color_title ? background[0] : '#00363d', display: config.hideTitle ? "none" : ""}}>
         <OverlayTrigger
           trigger={config.toolOn ? "hover" : "" }
           placement="right"
           overlay={popoverHoverFocus}
         >
-          <h5 className={config.hideTitle ?  "transparentText mb-0"  : "mb-0"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
+          <h5 className="mb-0" style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
         </OverlayTrigger>
       </div>
 
@@ -1493,7 +1494,7 @@ function Table({ columns, data, config }) {
 
   </div>
 
-<div className={`${config.hidePag ? "hidden" : "pagination display-flex justify-content-center align-items-center" }`}>
+<div className={`${config.hidePag ? "hidden" : "hidden" }`}>
 
               <Button className="clear" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                 {<i class="fal fa-angle-double-left"></i>}

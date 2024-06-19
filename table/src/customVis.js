@@ -109,13 +109,13 @@ console.log(data, "data api response")
       section: "Style",
     },
 
-    hidePag: {
-     type: "boolean",
-     label: "Hide Pagination",
-     default: true,
-     order: 9,
-    section: "Style",
-    },
+    // hidePag: {
+    //  type: "boolean",
+    //  label: "Hide Pagination",
+    //  default: true,
+    //  order: 9,
+    // section: "Style",
+    // },
     unsetTable: {
      type: "boolean",
      label: "Make Table Column Width Unset",
@@ -163,12 +163,22 @@ console.log(data, "data api response")
 
       weight: {
         type: "string",
-         label: "Font Weight",
+         label: "Font Weight Title",
          default: "300",
          display: "text",
          placeholder: "300",
          section: "Style",
          order: 31,
+      },
+
+      weight2: {
+        type: "string",
+         label: "Font Weight Table",
+         default: "300",
+         display: "text",
+         placeholder: "300",
+         section: "Style",
+         order: 32,
       },
 
       fontColor: {
@@ -178,7 +188,7 @@ console.log(data, "data api response")
            display: "text",
            placeholder: "#212529",
            section: "Style",
-           order: 32,
+           order: 33,
         },
 
 
@@ -189,7 +199,7 @@ console.log(data, "data api response")
              display: "text",
              placeholder: "#FCFBFA",
              section: "Style",
-             order: 32,
+             order: 34,
           },
 
 
@@ -199,7 +209,7 @@ console.log(data, "data api response")
 
         hideTitle: {
           type: "boolean",
-          label: "Hide Title",
+          label: "Hide Title Box",
           default: false,
           order: 30,
           section: "Style",

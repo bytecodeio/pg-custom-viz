@@ -604,7 +604,7 @@ d3.selectAll(".venn-area.venn-circle path")
         .style("font-weight", "100")
         .style("font-size", "24px");
     });
-}, []);
+}, [data]);
 
 
 
