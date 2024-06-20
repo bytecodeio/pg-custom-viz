@@ -268,7 +268,8 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     toHide1,
     toHide2,
     toHide3,
-    scrollDiv
+    scrollDiv,
+    hideTitle
   } = config;
 
 
@@ -356,6 +357,16 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
   }, []);
 
 
+  const Content = config.textTitle.split(",").map((d, i) => ({
+    textTitle: d,
+
+
+  }))
+
+    var title = Content.map(function(val, i){ return val.textTitle });
+    var title = title[0]
+
+
 
 
   return (
@@ -366,6 +377,8 @@ function BarLineVis({ data, fields, config, lookerCharts, lookerVis, configOptio
     <div id="vis-wrapper" className={scrollDiv? "scrollDiv" : ""} style={{fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
 
     <div className="blueBubble reach" style={{ backgroundColor: color_title ? background[0] : '#2960f6'}}>
+
+    <h5 className={config.hideTitle ?  "transparentText top15"  : "mb-2 mt-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
 
 
     {data.map((item, i) =>(

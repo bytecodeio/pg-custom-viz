@@ -116,6 +116,26 @@ console.log(data)
         section: "Style",
       },
 
+      textTitle: {
+        type: "string",
+        label: "Choose Title from Dropdown",
+        display: "select",
+        placeholder: "Please Select",
+        values: fieldOptions,
+        order: 0,
+        default:"Please Select",
+        section: "Style",
+      },
+
+
+      writeTitle: {
+        type: "string",
+        label: "Write Title Text Instead",
+        default: "",
+        order: 4,
+        section: "Style",
+      },
+
 
 
       titleColor: {
@@ -128,6 +148,15 @@ console.log(data)
         order: 6,
         section: "Style",
       },
+
+      hideTitle: {
+        type: "boolean",
+        label: "Hide Title",
+        default: false,
+        order: 7,
+        section: "Style",
+      },
+
 
   bodyStyle: {
       type: "string",
