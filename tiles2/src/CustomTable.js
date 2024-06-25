@@ -988,6 +988,7 @@ flex-wrap: wrap;
 margin:0;
 flex-direction:column;
 background:${backgroundViz ? `${backgroundViz[0]} !important` : "#06f !important"};
+overflow-y: scroll;
 }
 
 
@@ -1006,6 +1007,21 @@ thead th {
 .top15{
       margin-top: -15px;
 }
+
+.td{
+  position: relative;
+}
+
+.td span:nth-child(2){
+  position: absolute;
+      bottom: -23px;
+      right: -44px;
+      font-size: 13px;
+      font-weight: 400;
+
+}
+
+
 
   `;
 
@@ -1087,7 +1103,8 @@ function Table({ columns, data, config }) {
 
 
 
-  console.log(tr_length, tr_length3)
+
+    const [hiddenRows, setHiddenRows] = useState([]);
 
   return (
     <>
@@ -1502,33 +1519,35 @@ function Table({ columns, data, config }) {
                    ))}
                  </thead>
 
-                   <tbody {...getTableBodyProps()}>
-                             {page.map((row, i) => {
-                               prepareRow(row);
-                               return (
-                                 <tr
-                                 key={row.id}
-                                 {...row.getRowProps()} className="tr">
-                                   <td className="td fixedTD">
-                                     {pageIndex * pageSize + i + 1 }
-                                   </td>
-                                   {row.cells.map((cell, i) => {
-                                     return (
-                                       <td
-                                       style={{fontFamily: config.bodyStyle ? config.bodyStyle : "'Roboto'"}}
-                                       key={cell.id}
-                                         {...cell.getCellProps()} className="td">
-                                         {cell.render("Cell")}
-                                       </td>
 
 
-                                     );
-                                   })}
-                                 </tr>
+                 <tbody {...getTableBodyProps()}>
+                           {page.map((row, i) => {
+                             prepareRow(row);
+                             return (
+                               <tr
+                               key={row.id}
+                               {...row.getRowProps()} className="tr">
+                                 <td className="td fixedTD">
+                                   {pageIndex * pageSize + i + 1 }
+                                 </td>
+                                 {row.cells.map((cell, i) => {
+                                   return (
+                                     <td
+                                     style={{fontFamily: config.bodyStyle ? config.bodyStyle : "'Roboto'"}}
+                                     key={cell.id}
+                                       {...cell.getCellProps()} className="td">
+                                       {cell.render("Cell")}
+                                     </td>
 
-                               );
-                             })}
-                     </tbody>
+
+                                   );
+                                 })}
+                               </tr>
+
+                             );
+                           })}
+                   </tbody>
                      </Fragment>
 
 
@@ -1558,28 +1577,29 @@ function Table({ columns, data, config }) {
                           ))}
                         </thead>
 
+            <tbody {...getTableBodyProps()}>
+               {page.map((row, i) => {
+                 prepareRow(row);
 
-
-
-                 <tbody {...getTableBodyProps()}>
-                     {page.map((row, i) => {
-                       prepareRow(row);
-
+                 return (
+                   <tr {...row.getRowProps()} className="tr">
+                     {row.cells.map((cell) => {
                        return (
-                         <tr {...row.getRowProps()} className="tr">
-                           {row.cells.map((cell) => {
-                             return (
-                               <td
-                              style={{fontFamily: config.bodyStyle ? config.bodyStyle : "'Roboto'"}}
-                                {...cell.getCellProps()} className="td">
-                                 {cell.render("Cell")}
-                               </td>
-                             );
-                           })}
-                         </tr>
+                         <td
+                        style={{fontFamily: config.bodyStyle ? config.bodyStyle : "'Roboto'"}}
+                          {...cell.getCellProps()} className="td">
+                           {cell.render("Cell")}
+                         </td>
                        );
                      })}
-                   </tbody>
+                   </tr>
+                 );
+               })}
+             </tbody>
+
+
+
+
 
                </Fragment>
 
@@ -1721,7 +1741,8 @@ export const CustomTable = ({ data, config, queryResponse, details, done }) => {
       if (row.original[key]?.html){
 
 
-      let comment1 = `${row.original[key]?.html}`
+
+    let comment1 = `${row.original[key]?.html}`
       return <div dangerouslySetInnerHTML={{__html:comment1}} />
 
     }
@@ -1772,12 +1793,12 @@ else{
       if (row.original[key]?.html){
 
 
-      let comment1 = `${row.original[key]?.html}`
+      let comment1 = `${Math.round(row.original[key]?.html).toFixed(0)}`
       return <div dangerouslySetInnerHTML={{__html:comment1}} />
 
     }
     else{
-      return row.original[key]?.rendered || row.original[key]?.value
+      return Math.round(row.original[key]?.rendered.value.toFixed(0)) || Math.round(row.original[key]?.value.toFixed(0))
     }
 
       {/*return row.original[key]?.rendered || row.original[key]?.value*/}

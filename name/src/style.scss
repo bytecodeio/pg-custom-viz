@@ -15,7 +15,7 @@ $text-color: #ffffff;
   justify-content: space-evenly;
 
   position: relative;
-
+    overflow-x: hidden;
 }
 
 #vis {
@@ -23,6 +23,7 @@ $text-color: #ffffff;
     width: 100% !important;
     margin: 0 !important;
     border: none;
+
 }
 
 // body, html{
@@ -40,7 +41,15 @@ min-width:100%;
 margin:0em 1em;
 padding-top: .5em !important;
     padding-bottom: 2em !important;
+    overflow-x: hidden;
+}
 
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb
+{
+  width: 0px !important;
 }
 
 p{

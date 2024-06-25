@@ -14,6 +14,23 @@ looker.plugins.visualizations.add({
 
 
 
+    function filterNullValues(data) {
+      return data.filter(item => {
+        // Loop through each key-value pair within the object
+        for (const key in item) {
+          if (item[key] && typeof item[key] === 'object' && item[key].hasOwnProperty('value')) {
+            // If the value is an object with a "value" property, check for null
+            item[key].value = item[key].value === null ? 0 : item[key].value;
+          }
+        }
+        return true; // Always return true to keep all items (modified if needed)
+      });
+    }
+
+    const filteredData = filterNullValues(data);
+
+
+
         const { measure_like: measureLike } = queryResponse.fields;
         const { dimension_like: dimensionLike } = queryResponse.fields;
 
@@ -30,9 +47,13 @@ looker.plugins.visualizations.add({
         }));
 
 
+
+
         const fieldOptions = [...dimensions1, ...measures1].map((dim) => ({
           [dim.label]: queryResponse.data.map(row => row[dim.name].value).join(",")
         }));
+
+
 
 
         const fieldOptions2 = [...dimensions1, ...measures1].map((dim) => ({
@@ -55,15 +76,48 @@ looker.plugins.visualizations.add({
         const fieldOptions0 = [...dimensions, ...measures].map((all) => ({
           [all.label]: all.name
         }));
+
+
+
+        //  function checkZeroValues(fieldOptions) {
+        //  let zeroCount = 0;
         //
+        //  for (const option of fieldOptions) {
+        //    const values = option[Object.keys(option)[0]].split(","); // Get the first key and split the value
+        //
+        //
+        //    console.log(values)
+        //
+        //    // Count zeros in each value string
+        //    zeroCount += values.filter(value => value === "0").length;
+        //
+        //    // Break if zero count exceeds 3 to improve efficiency
+        //    if (zeroCount > 2) {
+        //      break;
+        //    }
+        //  }
+        //
+        //  if (zeroCount > 2) {
+        //    this.addError({
+        //      title: "Incompatible Data",
+        //      message: "This chart requires one dimension and one numerical measure.",
+        //    });
+        //    return;
+        //  }
+        // }
+        //
+        // checkZeroValues(fieldOptions);
+
+
+
         // console.log(fieldOptions)
-        // console.log(fieldOptions0)
-        // console.log(fieldOptions2)
+        // // console.log(fieldOptions0)
+        // // console.log(fieldOptions2)
 
     const options = {
 
       chooseLabel: {
-        label: "Choose 5 Labels",
+        label: "Choose Labels",
         type: "string",
         display: "select",
         default: "",
@@ -76,7 +130,7 @@ looker.plugins.visualizations.add({
 
 
       reachPercentage: {
-        label: "Choose 5 Reach Percentage",
+        label: "Choose Reach Percentage",
         type: "string",
         display: "select",
         default: "",
@@ -174,6 +228,48 @@ titleColor: {
  this.trigger("registerOptions", options);
 
 
+// if (!hasOneDimension || !hasOneMeasure || !isMeasureNumeric) {
+//   this.addError({
+//     title: "Incompatible Data",
+//     message: "This chart requires one dimension and one numerical measure.",
+//   });
+//   return;
+// }
+//
+
+
+function checkZeroValues(fieldOptions) {
+  let zeroCount = 0;
+
+  for (const option of fieldOptions) {
+    const values = option[Object.keys(option)[0]].split(","); // Get the first key and split the value
+
+    // Count zeros in each value string
+    zeroCount += values.filter(value => value === "0").length;
+
+
+
+    // Break if zero count exceeds 2 to improve efficiency
+    if (zeroCount > 2) {
+      break;
+    }
+  }
+
+  return zeroCount; // Return the zero count
+}
+
+const zeroCount = checkZeroValues(fieldOptions);
+
+
+
+if (zeroCount > 2) {
+  this.addError({
+    title: "Incompatible Data",
+    message: "This chart requires you to not have values that are not null or zero",
+  });
+  return; // Optional: Return if you need to stop execution after adding the error
+}
+
 
 // get dimensions and measures
 const { dimension_like, measure_like, pivots } = queryResponse.fields;
@@ -184,6 +280,9 @@ const fields = {
   measuresLabel: measure_like.map((m) => m.label_short),
   pivots: pivots?.map((p) => p.name),
 };
+
+
+
 
 // console.log(fields, "fields")
 

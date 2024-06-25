@@ -1,5 +1,5 @@
 
-import React, { Fragment, useEffect, useMemo, useState, useLayoutEffect } from "react";
+import React, { Fragment, useEffect, useMemo, useState, useLayoutEffect, useRef } from "react";
 import * as venn from "venn.js";
 import * as d3 from "d3";
 import 'regenerator-runtime/runtime';
@@ -350,6 +350,7 @@ export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
 var { investment, chooseLabel,  numbers, reachPercentage, writeTitle, writeTitle2, titleColor, bodyStyle, color_title, across, hideTitle } = config;
 
 
+
 const filteredEntries = Object.entries(data)
 
 
@@ -364,21 +365,17 @@ const arrayOfObjects = data
 var filteredArray = arrayOfObjects
 
 
-
 function sortByMediaTypeLength(data) {
   return Object.values(data).sort((objA, objB) => {
     const mediaTypeA = objA["combined_reach.media_type"].value;
     const mediaTypeB = objB["combined_reach.media_type"].value;
 
-    // Check for single media type (no comma)
     const isSingleA = !mediaTypeA.includes(",");
     const isSingleB = !mediaTypeB.includes(",");
 
-    // Sort single media types first (ascending order)
     if (isSingleA && !isSingleB) return -1;
     if (!isSingleA && isSingleB) return 1;
 
-    // If both have commas, sort by media type length (ascending order)
     return mediaTypeA.length - mediaTypeB.length;
   });
 }
@@ -389,34 +386,13 @@ const sortedData = sortByMediaTypeLength(filteredArray);
 
 var filteredArray = sortedData;
 
+
+
+
 var setStrings = filteredArray.map((item, i) =>(
     item[investment].value
 
 ))
-
-
-
-
-
-
-
-// function sortByLengthThenCombined(arr) {
-//   return arr.sort((a, b) => {
-//
-//     const isSingleA = !a.includes(",");
-//     const isSingleB = !b.includes(",");
-//
-//     if (isSingleA && !isSingleB) return -1;
-//     if (!isSingleA && isSingleB) return 1;
-//
-//     return a.length - b.length;
-//   });
-// }
-//
-//
-// const sortedData = sortByLengthThenCombined(setStrings);
-//
-// console.log(sortedData, "sorted");
 
 
 const filteredArray2 = setStrings.map(item => item)
@@ -425,10 +401,7 @@ const filteredArray2 = setStrings.map(item => item)
 
 var setNumbers = filteredArray.map((item, i) =>(
     item[numbers].value
-
 ))
-
-
 
 const fixedArray = setStrings.map(item =>
   item.split(',') // Split on commas
@@ -436,18 +409,9 @@ const fixedArray = setStrings.map(item =>
 );
 
 
-// console.log(setStrings, "setStrings")
-
-// const myObject = Object.fromEntries(setStrings.map((value, index) => [index, value]));
-//
-// let bigObject = Object.entries(myObject).map(([key, value]) => ({
-//   sets: [`key_${key}`],
-//   size: value
-// }));
-
  const [totalIntersectionCount, setTotalIntersectionCount] = useState(0);
-
  const [sizes, setSizes] = useState([]);
+
 
 
 useEffect(() => {
@@ -474,18 +438,13 @@ var combinedObject = combineArraysToObject(array1, array2);
 
 var bigObject = combinedObject.sort()
 
-
-
-
-
-
 const findBiggestSetAndSize = (data) => {
 
   let biggestSet = [];
   let biggestSetSize = 0;
 
   for (const item of data) {
-    // Check if the current set is larger than the biggestSet
+
     if (item.sets.length > biggestSet.length) {
       biggestSet = item.sets;
       biggestSetSize = item.size;
@@ -496,27 +455,14 @@ const findBiggestSetAndSize = (data) => {
 };
 
 const result = findBiggestSetAndSize(bigObject);
-//
-// console.log("Biggest set:", result.biggestSet);
-// console.log("Matching size value:", result.biggestSetSize);
-
-
-
-const intersectionCount = result.biggestSetSize < 1 ? result.biggestSetSize.toFixed(2) : result.biggestSetSize.toFixed(0);
-
-
+const intersectionCount = result.biggestSetSize < 1 ? result.biggestSetSize.toFixed(1) : result.biggestSetSize.toFixed(0);
 setTotalIntersectionCount(intersectionCount);
-
 var bigObject = bigObject
-
 
 const singleSetSizes = bigObject.filter(obj => obj.sets.length === 1)
   .map(obj => obj.size);
 
 setSizes(singleSetSizes)
-
-
-
 
 const buildVenn = venn.VennDiagram().height(350);
 
@@ -526,7 +472,6 @@ const vennChart = d3.select("#venn")
 .datum(bigObject);
 
 buildVenn(vennChart);
-
 
 const circleColors = ["#12d465", "#ffda00", "#0066ff", "#e22bb7", "#6fd0e9"];
 d3.selectAll(".venn-area.venn-circle path")
@@ -544,32 +489,29 @@ d3.selectAll(".venn-area.venn-circle path")
       .classed(secondClass, true);
 
 
-  // d3.select("#venn").selectAll("text").remove();
+    d3.selectAll(".venn-area").selectAll("text")
 
-
-  d3.selectAll(".venn-area").selectAll("text")
-    // Filter based on data property (adjust as needed)
     .filter(function(d) {
-      return !d.isIntersection; // Assuming data has an "isIntersection" property
+      return !d.isIntersection;
     })
     .attr("class", function(d, i) {
       let className = "";
       if (d.category === "A") {
-        className = "black-text";  // Assign color class
+        className = "black-text";
       } else {
-        className = "black-text";  // Adjust class name if needed
+        className = "black-text";
       }
       return className;
     })
     .text(function(d, i) {
       const tooltipText = `${Math.round(d.size).toFixed(0)}%`;
       return tooltipText;
+
     });
 
 
+
   let tooltip = d3.select("body").append("div").attr("class", "venntooltip");
-
-
   d3.selectAll(".venn-area")
     .on("mouseover", function (d, i) {
 
@@ -605,7 +547,6 @@ d3.selectAll(".venn-area.venn-circle path")
         .style("font-size", "24px");
     });
 }, [data]);
-
 
 
 
@@ -662,7 +603,7 @@ return (
             <div className="values">
           {setNumbers.map((val, index) =>(
             <p key={index}>
-            {val > 0 && val  < 1 ? `${parseFloat(val * 1 ).toFixed(2)}%` : `${Math.round(val).toFixed(0).toLocaleString()}%`}</p>
+            {val > 0 && val  < 1 ? `${parseFloat(val * 1 ).toFixed(1)}%` : `${Math.round(val).toFixed(0).toLocaleString()}%`}</p>
           ))}
 
             </div>

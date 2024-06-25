@@ -180,13 +180,13 @@ console.log(data, "data api response")
     //  order: 5,
     // },
 
-    index: {
-     type: "boolean",
-     label: "Show Row Index",
-     default: true,
-     order: 11,
-      section: "Style",
-    },
+    // index: {
+    //  type: "boolean",
+    //  label: "Show Row Index",
+    //  default: true,
+    //  order: 11,
+    //   section: "Style",
+    // },
 
     border: {
      type: "boolean",
@@ -235,43 +235,43 @@ console.log(data, "data api response")
            order: 32,
         },
 
+        //
+        // short: {
+        //
+        // type: "string",
+        //  label: "Choose Cell Size",
+        //   default: "200px",
+        //   display: "text",
+        //   placeholder: "200px",
+        //   order: 13,
+        //   section: "Style",
+        // },
 
-        short: {
-
-        type: "string",
-         label: "Choose Cell Size",
-          default: "200px",
-          display: "text",
-          placeholder: "200px",
-          order: 13,
-          section: "Style",
-        },
 
 
-
-        freeze: {
-         type: "boolean",
-         label: "Freeze First 2 Columns",
-         default: false,
-         order: 14,
-          section: "Style",
-        },
-
-        freeze3: {
-         type: "boolean",
-         label: "Freeze First 3 Columns",
-         default: false,
-         order: 15,
-          section: "Style",
-        },
-
-        wrapText: {
-         type: "boolean",
-         label: "Wrap Text",
-         default: false,
-         order: 16,
-          section: "Style",
-        },
+        // freeze: {
+        //  type: "boolean",
+        //  label: "Freeze First 2 Columns",
+        //  default: false,
+        //  order: 14,
+        //   section: "Style",
+        // },
+        //
+        // freeze3: {
+        //  type: "boolean",
+        //  label: "Freeze First 3 Columns",
+        //  default: false,
+        //  order: 15,
+        //   section: "Style",
+        // },
+        //
+        // wrapText: {
+        //  type: "boolean",
+        //  label: "Wrap Text",
+        //  default: false,
+        //  order: 16,
+        //   section: "Style",
+        // },
 
 
 
