@@ -849,12 +849,7 @@ a{
         top:0
     }
 
-    #vis {
-        height: 100%;
-        width: 100% !important;
-        margin: 0 !important;
-        border: none;
-    }
+
 
 
 th, .th, td, .td{
@@ -1008,18 +1003,30 @@ thead th {
       margin-top: -15px;
 }
 
-.td{
-  position: relative;
+#vis {
+    height: 100%;
+    width: 100% !important;
+    margin: 0 !important;
+    border: none;
 }
 
-.td span:nth-child(2){
+ td div {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+
+.td p{
   position: absolute;
-      bottom: -23px;
-      right: -44px;
+      bottom: -17px;
+
       font-size: 13px;
       font-weight: 400;
-
+z-index:999;
+right: 0;
 }
+
 
 
 
