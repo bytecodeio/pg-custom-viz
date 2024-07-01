@@ -1027,7 +1027,13 @@ z-index:999;
 right: 0;
 }
 
-
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb
+{
+  width: 0px !important;
+}
 
 
   `;

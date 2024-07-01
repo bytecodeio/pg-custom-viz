@@ -29,8 +29,6 @@ looker.plugins.visualizations.add({
 
     const filteredData = filterNullValues(data);
 
-
-
         const { measure_like: measureLike } = queryResponse.fields;
         const { dimension_like: dimensionLike } = queryResponse.fields;
 
@@ -77,43 +75,6 @@ looker.plugins.visualizations.add({
           [all.label]: all.name
         }));
 
-
-
-        //  function checkZeroValues(fieldOptions) {
-        //  let zeroCount = 0;
-        //
-        //  for (const option of fieldOptions) {
-        //    const values = option[Object.keys(option)[0]].split(","); // Get the first key and split the value
-        //
-        //
-        //    console.log(values)
-        //
-        //    // Count zeros in each value string
-        //    zeroCount += values.filter(value => value === "0").length;
-        //
-        //    // Break if zero count exceeds 3 to improve efficiency
-        //    if (zeroCount > 2) {
-        //      break;
-        //    }
-        //  }
-        //
-        //  if (zeroCount > 2) {
-        //    this.addError({
-        //      title: "Incompatible Data",
-        //      message: "This chart requires one dimension and one numerical measure.",
-        //    });
-        //    return;
-        //  }
-        // }
-        //
-        // checkZeroValues(fieldOptions);
-
-
-
-        // console.log(fieldOptions)
-        // // console.log(fieldOptions0)
-        // // console.log(fieldOptions2)
-
     const options = {
 
       chooseLabel: {
@@ -130,7 +91,7 @@ looker.plugins.visualizations.add({
 
 
       reachPercentage: {
-        label: "Choose Reach Percentage",
+        label: "Choose Reach Percentage for List",
         type: "string",
         display: "select",
         default: "",
@@ -154,7 +115,7 @@ section: "Values",
 
 
 numbers: {
-label: "Choose Reach Overlap Number Values",
+label: "Choose Reach Overlap Values for Diagram",
 type: "string",
 display: "select",
 default: "",
@@ -197,8 +158,6 @@ titleColor: {
 
 },
 
-
-
   bodyStyle: {
       type: "string",
       label: "Choose Font",
@@ -220,13 +179,10 @@ titleColor: {
     },
 
 
-
-
   };
 
 
  this.trigger("registerOptions", options);
-
 
 // if (!hasOneDimension || !hasOneMeasure || !isMeasureNumeric) {
 //   this.addError({
@@ -242,20 +198,16 @@ function checkZeroValues(fieldOptions) {
   let zeroCount = 0;
 
   for (const option of fieldOptions) {
-    const values = option[Object.keys(option)[0]].split(","); // Get the first key and split the value
+    const values = option[Object.keys(option)[0]].split(",");
 
-    // Count zeros in each value string
     zeroCount += values.filter(value => value === "0").length;
 
-
-
-    // Break if zero count exceeds 2 to improve efficiency
     if (zeroCount > 2) {
       break;
     }
   }
 
-  return zeroCount; // Return the zero count
+  return zeroCount;
 }
 
 const zeroCount = checkZeroValues(fieldOptions);
@@ -267,11 +219,10 @@ if (zeroCount > 2) {
     title: "Incompatible Data",
     message: "This chart requires you to not have values that are not null or zero",
   });
-  return; // Optional: Return if you need to stop execution after adding the error
+  return;
 }
 
 
-// get dimensions and measures
 const { dimension_like, measure_like, pivots } = queryResponse.fields;
 const fields = {
   dimensions: dimension_like.map((d) => d.name),
@@ -284,7 +235,7 @@ const fields = {
 
 
 
-// console.log(fields, "fields")
+console.log("elizabeth")
 
     ReactDOM.render(
       <Home

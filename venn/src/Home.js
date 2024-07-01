@@ -395,6 +395,7 @@ var setStrings = filteredArray.map((item, i) =>(
 ))
 
 
+
 const filteredArray2 = setStrings.map(item => item)
   .filter(item => !item.includes(","));
 
@@ -402,6 +403,14 @@ const filteredArray2 = setStrings.map(item => item)
 var setNumbers = filteredArray.map((item, i) =>(
     item[numbers].value
 ))
+
+var setSecondNumbers = filteredArray.map((item, i) =>(
+    item[reachPercentage].value
+))
+
+console.log(setNumbers, "setNumbers")
+
+console.log(setSecondNumbers, "setSecondNumbers")
 
 const fixedArray = setStrings.map(item =>
   item.split(',') // Split on commas
@@ -601,7 +610,7 @@ return (
 
 
             <div className="values">
-          {setNumbers.map((val, index) =>(
+          {setSecondNumbers.map((val, index) =>(
             <p key={index}>
             {val > 0 && val  < 1 ? `${parseFloat(val * 1 ).toFixed(1)}%` : `${Math.round(val).toFixed(0).toLocaleString()}%`}</p>
           ))}
