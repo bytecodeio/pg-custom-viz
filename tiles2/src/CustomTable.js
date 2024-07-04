@@ -36,7 +36,7 @@ import { TablePagination } from "@mui/material";
 
 
 const Styles = ({ children, config }) => {
-  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor, topFont, bottomFont } = config;
+  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor, topFont, bottomFont, removeScroll, removeScroll5, removeScroll6 } = config;
 
   const StyledWrapper = styled.div`
 
@@ -448,7 +448,6 @@ tr:nth-child(odd) td{
 
   .fixedHeight {
 
-      overflow-y: auto;
       overflow-x: auto;
 
 
@@ -612,6 +611,7 @@ width: 99%;
           position: relative;
           font-weight:300;
           height: 75px;
+
           width: 180px !important;
           font-size: 12px !important ;
      }
@@ -880,8 +880,12 @@ table>:not(caption)>*>* {
 .unsetTable .th,
 .unsetTable th{
   width: 100% !important;
-    max-width: 100%;
-    min-width: 180px;
+
+
+
+      max-width: ${config.removeScroll ? "25%" : ""};
+
+      min-width: ${config.removeScroll ? "12%" : "180px"};
 
 }
 
@@ -983,7 +987,10 @@ flex-wrap: wrap;
 margin:0;
 flex-direction:column;
 background:${backgroundViz ? `${backgroundViz[0]} !important` : "#06f !important"};
-overflow-y: scroll;
+
+
+overflow-y: ${config.removeScroll ? "hidden" : "scroll"};
+overflow: ${config.removeScroll ? "hidden" : ""};
 }
 
 
@@ -1044,7 +1051,7 @@ right: 0;
 function Table({ columns, data, config }) {
 
 
-  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor } = config;
+  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll } = config;
 
   const defaultColumn = React.useMemo(
      () => ({

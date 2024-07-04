@@ -172,6 +172,30 @@ console.log(data, "data api response")
      order: 10,
      section: "Style",
     },
+
+    removeScroll: {
+     type: "boolean",
+     label: "Remove Scroll and Auto Fit",
+     default: false,
+     order: 10,
+     section: "Style",
+    },
+    // removeScroll5: {
+    //  type: "boolean",
+    //  label: "Remove Scroll and Fit 5",
+    //  default: false,
+    //  order: 10,
+    //  section: "Style",
+    // },
+    //
+    // removeScroll6: {
+    //  type: "boolean",
+    //  label: "Remove Scroll and Fit 6",
+    //  default: false,
+    //  order: 10,
+    //  section: "Style",
+    // },
+
     //
     // removeBars: {
     //  type: "boolean",
@@ -216,15 +240,15 @@ console.log(data, "data api response")
           section: "Style",
         },
 
-        tableFontSize: {
-           type: "string",
-           label: "Table Font Size",
-           default: "12px",
-           display: "text",
-           placeholder: "12px",
-           section: "Style",
-           order: 31,
-         },
+        // tableFontSize: {
+        //    type: "string",
+        //    label: "Table Font Size",
+        //    default: "12px",
+        //    display: "text",
+        //    placeholder: "12px",
+        //    section: "Style",
+        //    order: 31,
+        //  },
 
         columnsToHide: {
             type: "string",

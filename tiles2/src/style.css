@@ -5,3 +5,12 @@ margin: 0 !important;
 border: none;
 
 }
+
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb
+{
+  width: 0px !important;
+}
