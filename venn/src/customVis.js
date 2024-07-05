@@ -223,19 +223,6 @@ if (zeroCount > 2) {
 }
 
 
-const { dimension_like, measure_like, pivots } = queryResponse.fields;
-const fields = {
-  dimensions: dimension_like.map((d) => d.name),
-  dimensionsLabel: dimension_like.map((d) => d.label_short),
-  measures: measure_like.map((m) => m.name),
-  measuresLabel: measure_like.map((m) => m.label_short),
-  pivots: pivots?.map((p) => p.name),
-};
-
-
-
-
-console.log("elizabeth")
 
     ReactDOM.render(
       <Home

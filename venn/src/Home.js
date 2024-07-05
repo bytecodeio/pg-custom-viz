@@ -349,6 +349,18 @@ export const Home = ({ data, config, queryResponse, details, bodyStyle}) => {
 
 var { investment, chooseLabel,  numbers, reachPercentage, writeTitle, writeTitle2, titleColor, bodyStyle, color_title, across, hideTitle } = config;
 
+const { dimension_like, measure_like, pivots } = queryResponse.fields;
+const fields = {
+  dimensions: dimension_like.map((d) => d.name),
+  dimensionsLabel: dimension_like.map((d) => d.label_short),
+  measures: measure_like.map((m) => m.name),
+  measuresLabel: measure_like.map((m) => m.label_short),
+  pivots: pivots?.map((p) => p.name),
+};
+
+
+const dimensionName = fields.dimensions[0];
+
 
 
 const filteredEntries = Object.entries(data)
@@ -367,8 +379,8 @@ var filteredArray = arrayOfObjects
 
 function sortByMediaTypeLength(data) {
   return Object.values(data).sort((objA, objB) => {
-    const mediaTypeA = objA["combined_reach.media_type"].value;
-    const mediaTypeB = objB["combined_reach.media_type"].value;
+    const mediaTypeA = objA[dimensionName].value;
+    const mediaTypeB = objB[dimensionName].value;
 
     const isSingleA = !mediaTypeA.includes(",");
     const isSingleB = !mediaTypeB.includes(",");
