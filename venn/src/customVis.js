@@ -184,15 +184,6 @@ titleColor: {
 
  this.trigger("registerOptions", options);
 
-// if (!hasOneDimension || !hasOneMeasure || !isMeasureNumeric) {
-//   this.addError({
-//     title: "Incompatible Data",
-//     message: "This chart requires one dimension and one numerical measure.",
-//   });
-//   return;
-// }
-//
-
 
 function checkZeroValues(fieldOptions) {
   let zeroCount = 0;
