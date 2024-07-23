@@ -310,11 +310,44 @@ console.log(data, "data api response")
 
         },
 
+
+        addFirst: {
+          type: "string",
+          label: "Write 1st Link Title",
+          default: "",
+          order: 1,
+          section: "Dropdown",
+        },
+
+        addFirsthref: {
+          type: "string",
+          label: "Write 1st Link href",
+          default: "",
+          order: 2,
+          section: "Dropdown",
+        },
+
         writeTooltip: {
           type: "string",
           label: "Write Tooltip Link 1",
           default: "",
-          order: 33,
+          order: 3,
+          section: "Dropdown",
+        },
+
+        addSecond: {
+          type: "string",
+          label: "Write 2nd Link Title",
+          default: "",
+          order: 4,
+          section: "Dropdown",
+        },
+
+        addSecondhref: {
+          type: "string",
+          label: "Write 2nd Link href",
+          default: "",
+          order: 5,
           section: "Dropdown",
         },
 
@@ -322,7 +355,7 @@ console.log(data, "data api response")
           type: "string",
           label: "Write Tooltip Link 2",
           default: "",
-          order: 34,
+          order: 6,
           section: "Dropdown",
         },
 
@@ -330,7 +363,7 @@ console.log(data, "data api response")
           type: "string",
           label: "Write 3rd Link Title",
           default: "",
-          order: 35,
+          order: 7,
           section: "Dropdown",
         },
 
@@ -338,7 +371,7 @@ console.log(data, "data api response")
           type: "string",
           label: "Write 3rd Link href",
           default: "",
-          order: 36,
+          order: 8,
           section: "Dropdown",
         },
 
@@ -346,7 +379,57 @@ console.log(data, "data api response")
           type: "string",
           label: "Write Tooltip Link 3",
           default: "",
-          order: 37,
+          order: 9,
+          section: "Dropdown",
+        },
+
+
+        addFourth: {
+          type: "string",
+          label: "Write 4th Link Title",
+          default: "",
+          order: 10,
+          section: "Dropdown",
+        },
+
+        addFourthhref: {
+          type: "string",
+          label: "Write 4th Link href",
+          default: "",
+          order: 11,
+          section: "Dropdown",
+        },
+
+        writeTooltip4: {
+          type: "string",
+          label: "Write Tooltip Link 4",
+          default: "",
+          order: 12,
+          section: "Dropdown",
+        },
+
+
+        addFifth: {
+          type: "string",
+          label: "Write 5th Link Title",
+          default: "",
+          order: 13,
+          section: "Dropdown",
+        },
+
+          addFifthhref: {
+          type: "string",
+          label: "Write 5th Link href",
+          default: "",
+          order: 14,
+          section: "Dropdown",
+        },
+
+        writeTooltip5: {
+          type: "string",
+          label: "Write Tooltip Link 5",
+          default: "",
+          order: 15,
           section: "Dropdown",
         },
 

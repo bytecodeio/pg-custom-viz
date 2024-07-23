@@ -1078,7 +1078,7 @@ margin-top: 7px;
 function Table({ columns, data, config }) {
 
 
-  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll, writeTooltip, writeTooltip2, addThird, addThirdhref,  writeTooltip3, buttonColor } = config;
+  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll, writeTooltip, writeTooltip2, addThird, addThirdhref, addFirst, addFirsthref, addSecond, addSecondhref, addFourth, addFourthhref, addFifth, addFifthhref, writeTooltip3, writeTooltip5, writeTooltip4, buttonColor } = config;
 
   const defaultColumn = React.useMemo(
      () => ({
@@ -1168,7 +1168,7 @@ function Table({ columns, data, config }) {
 
 
     <DropdownButton id="dropdown-basic-button" title="Reference" style={{background: buttonColor ? buttonColor : "#06f"}}>
-    <OverlayTrigger
+    {/*<OverlayTrigger
        placement="left"
        data-html="true"
        trigger={["hover"]}
@@ -1194,27 +1194,101 @@ function Table({ columns, data, config }) {
            </Tooltip>}
          >
         <Dropdown.Item target="_blank" href="https://datacatalog.pg.com/docs/glossary/27">Glossary</Dropdown.Item>
-        </OverlayTrigger>
+        </OverlayTrigger>*/}
+
+        {addFirst === "" ||  addFirst === undefined  ? (
+             ""
+
+               ) : (
+                 <OverlayTrigger
+                    placement="left"
+                    data-html="true"
+                    trigger={["hover"]}
+                    overlay={<Tooltip>
+                        <div style={{minWidth:"40px", minHeight:"20px", color:"white !important", fontSize:"12px", display:"flex", alignItem:"center", padding:"4px 7px", fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+                     {writeTooltip}
+                     </div>
+                      </Tooltip>}
+                    >
+                   <Dropdown.Item target="_blank" href={addFirsthref}>{addFirst}</Dropdown.Item>
+                   </OverlayTrigger>
+             )}
 
 
 
- {addThird === "" ||  addThird === undefined  ? (
-      ""
+        {addSecond === "" ||  addSecond === undefined  ? (
+             ""
 
-        ) : (
-          <OverlayTrigger
-             placement="left"
-             data-html="true"
-             trigger={["hover"]}
-             overlay={<Tooltip>
-                 <div style={{minWidth:"40px", minHeight:"20px", color:"white !important", fontSize:"12px", display:"flex", alignItem:"center", padding:"4px 7px", fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
-              {writeTooltip3}
-              </div>
-               </Tooltip>}
-             >
-            <Dropdown.Item target="_blank" href={addThirdhref}>{addThird}</Dropdown.Item>
-            </OverlayTrigger>
-      )}
+               ) : (
+                 <OverlayTrigger
+                    placement="left"
+                    data-html="true"
+                    trigger={["hover"]}
+                    overlay={<Tooltip>
+                        <div style={{minWidth:"40px", minHeight:"20px", color:"white !important", fontSize:"12px", display:"flex", alignItem:"center", padding:"4px 7px", fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+                     {writeTooltip2}
+                     </div>
+                      </Tooltip>}
+                    >
+                   <Dropdown.Item target="_blank" href={addSecondhref}>{addSecond}</Dropdown.Item>
+                   </OverlayTrigger>
+             )}
+
+
+
+       {addThird === "" ||  addThird === undefined  ? (
+            ""
+
+              ) : (
+                <OverlayTrigger
+                   placement="left"
+                   data-html="true"
+                   trigger={["hover"]}
+                   overlay={<Tooltip>
+                       <div style={{minWidth:"40px", minHeight:"20px", color:"white !important", fontSize:"12px", display:"flex", alignItem:"center", padding:"4px 7px", fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+                    {writeTooltip3}
+                    </div>
+                     </Tooltip>}
+                   >
+                  <Dropdown.Item target="_blank" href={addThirdhref}>{addThird}</Dropdown.Item>
+                  </OverlayTrigger>
+            )}
+
+            {addFourth === "" ||  addFourth === undefined  ? (
+                 ""
+
+                   ) : (
+                     <OverlayTrigger
+                        placement="left"
+                        data-html="true"
+                        trigger={["hover"]}
+                        overlay={<Tooltip>
+                            <div style={{minWidth:"40px", minHeight:"20px", color:"white !important", fontSize:"12px", display:"flex", alignItem:"center", padding:"4px 7px", fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+                         {writeTooltip4}
+                         </div>
+                          </Tooltip>}
+                        >
+                       <Dropdown.Item target="_blank" href={addFourthhref}>{addFourth}</Dropdown.Item>
+                       </OverlayTrigger>
+                 )}
+
+                 {addFifth === "" ||  addFifth === undefined  ? (
+                      ""
+
+                        ) : (
+                          <OverlayTrigger
+                             placement="left"
+                             data-html="true"
+                             trigger={["hover"]}
+                             overlay={<Tooltip>
+                                 <div style={{minWidth:"40px", minHeight:"20px", color:"white !important", fontSize:"12px", display:"flex", alignItem:"center", padding:"4px 7px", fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>
+                              {writeTooltip5}
+                              </div>
+                               </Tooltip>}
+                             >
+                            <Dropdown.Item target="_blank" href={addFifthhref}>{addFifth}</Dropdown.Item>
+                            </OverlayTrigger>
+                      )}
 
       </DropdownButton>
 </div>
