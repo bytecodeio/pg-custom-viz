@@ -36,7 +36,6 @@ const dimensions = dimensionLike.map((dimension) => ({
      [dim.label]: queryResponse.data.map(row => row[dim.name].value).join(",")
    }));
 
-console.log(data, "data api response")
 
     const options = {
 
@@ -68,9 +67,6 @@ console.log(data, "data api response")
         order: 2,
         section: "Style",
       },
-
-
-
 
       titleColor: {
       type: "string",
@@ -126,29 +122,6 @@ console.log(data, "data api response")
   section: "Style",
 },
 
-     //  tableBordered: {
-     //   type: "boolean",
-     //   label: "Hide Header",
-     //   default: false,
-     //   order: 5,
-     //   section: "Style",
-     // },
-
-           // toolOn: {
-           //   type: "boolean",
-           //   label: "Turn on Tooltip for Title",
-           //   default: false,
-           //   order: 6,
-           //     section: "Style",
-           // },
-           //
-           // writeTooltip: {
-           //   type: "string",
-           //   label: "Write Tooltip Text",
-           //   default: "",
-           //   order: 7,
-           //  section: "Style",
-           // },
 
      fixedHeight: {
       type: "boolean",
@@ -180,37 +153,7 @@ console.log(data, "data api response")
      order: 10,
      section: "Style",
     },
-    // removeScroll5: {
-    //  type: "boolean",
-    //  label: "Remove Scroll and Fit 5",
-    //  default: false,
-    //  order: 10,
-    //  section: "Style",
-    // },
-    //
-    // removeScroll6: {
-    //  type: "boolean",
-    //  label: "Remove Scroll and Fit 6",
-    //  default: false,
-    //  order: 10,
-    //  section: "Style",
-    // },
 
-    //
-    // removeBars: {
-    //  type: "boolean",
-    //  label: "Center Small Table",
-    //  default: false,
-    //  order: 5,
-    // },
-
-    // index: {
-    //  type: "boolean",
-    //  label: "Show Row Index",
-    //  default: true,
-    //  order: 11,
-    //   section: "Style",
-    // },
 
     border: {
      type: "boolean",
@@ -219,9 +162,6 @@ console.log(data, "data api response")
      order: 12,
       section: "Style",
     },
-
-
-
 
       bodyStyle: {
           type: "string",
@@ -240,16 +180,6 @@ console.log(data, "data api response")
           section: "Style",
         },
 
-        // tableFontSize: {
-        //    type: "string",
-        //    label: "Table Font Size",
-        //    default: "12px",
-        //    display: "text",
-        //    placeholder: "12px",
-        //    section: "Style",
-        //    order: 31,
-        //  },
-
         columnsToHide: {
             type: "string",
            label: "Columns to Hide (use comma as delimiter)",
@@ -259,43 +189,6 @@ console.log(data, "data api response")
            order: 32,
         },
 
-        //
-        // short: {
-        //
-        // type: "string",
-        //  label: "Choose Cell Size",
-        //   default: "200px",
-        //   display: "text",
-        //   placeholder: "200px",
-        //   order: 13,
-        //   section: "Style",
-        // },
-
-
-
-        // freeze: {
-        //  type: "boolean",
-        //  label: "Freeze First 2 Columns",
-        //  default: false,
-        //  order: 14,
-        //   section: "Style",
-        // },
-        //
-        // freeze3: {
-        //  type: "boolean",
-        //  label: "Freeze First 3 Columns",
-        //  default: false,
-        //  order: 15,
-        //   section: "Style",
-        // },
-        //
-        // wrapText: {
-        //  type: "boolean",
-        //  label: "Wrap Text",
-        //  default: false,
-        //  order: 16,
-        //   section: "Style",
-        // },
 
 
         buttonColor: {
@@ -434,7 +327,148 @@ console.log(data, "data api response")
         },
 
 
-  };
+        button1: {
+          type: "string",
+          label: "Button 1 Link Title",
+          default: "",
+          order: 1,
+          section: "Buttons",
+        },
+
+          button1link: {
+          type: "string",
+          label: "Button 1 Link href",
+          default: "",
+          order: 2,
+          section: "Buttons",
+        },
+
+        button2: {
+          type: "string",
+          label: "Button 2 Link Title",
+          default: "",
+          order: 3,
+          section: "Buttons",
+        },
+
+          button2link: {
+          type: "string",
+          label: "Button 2 Link href",
+          default: "",
+          order: 4,
+          section: "Buttons",
+        },
+
+
+
+        button3: {
+          type: "string",
+          label: "Button 3 Link Title",
+          default: "",
+          order: 5,
+          section: "Buttons",
+        },
+
+          button3link: {
+          type: "string",
+          label: "Button 3 Link href",
+          default: "",
+          order: 6,
+          section: "Buttons",
+        },
+
+
+
+        button4: {
+          type: "string",
+          label: "Button 4 Link Title",
+          default: "",
+          order: 7,
+          section: "Buttons",
+        },
+
+          button4link: {
+          type: "string",
+          label: "Button 4 Link href",
+          default: "",
+          order: 8,
+          section: "Buttons",
+        },
+
+
+
+        button5: {
+          type: "string",
+          label: "Button 5 Link Title",
+          default: "",
+          order: 9,
+          section: "Buttons",
+        },
+
+          button5link: {
+          type: "string",
+          label: "Button 5 Link href",
+          default: "",
+          order: 10,
+          section: "Buttons",
+        },
+
+
+
+        button6: {
+          type: "string",
+          label: "Button 6 Link Title",
+          default: "",
+          order: 11,
+          section: "Buttons",
+        },
+
+          button6link: {
+          type: "string",
+          label: "Button 6 Link href",
+          default: "",
+          order: 12,
+          section: "Buttons",
+        },
+
+
+        button7: {
+          type: "string",
+          label: "Button 7 Link Title",
+          default: "",
+          order: 13,
+          section: "Buttons",
+        },
+
+          button7link: {
+          type: "string",
+          label: "Button 7 Link href",
+          default: "",
+          order: 14,
+          section: "Buttons",
+        },
+
+
+        button8: {
+          type: "string",
+          label: "Button 8 Link Title",
+          default: "",
+          order: 15,
+          section: "Buttons",
+        },
+
+          button8link: {
+          type: "string",
+          label: "Button 8 Link href",
+          default: "",
+          order: 16,
+          section: "Buttons",
+        },
+
+
+
+
+  }
 
 
 
