@@ -140,7 +140,7 @@ const Styles = styled.div`
 
   .across{
     display:flex;
-    justify-content:space-between;
+    justify-content:space-around;
     margin-top:3%;
     margin-left:-3vw !important
   }
@@ -321,7 +321,7 @@ const singleSetSizes = bigObject.filter(obj => obj.sets.length === 1)
 
 setSizes(singleSetSizes)
 
-const buildVenn = venn.VennDiagram().height(350);
+const buildVenn = venn.VennDiagram().height(390);
 
 const data2 = bigObject;
 

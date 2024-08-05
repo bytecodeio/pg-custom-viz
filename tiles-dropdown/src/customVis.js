@@ -204,6 +204,15 @@ const dimensions = dimensionLike.map((dimension) => ({
         },
 
 
+        bottomTitle: {
+          type: "boolean",
+          label: "Change Title to Bottom",
+          default: false,
+          order: 3,
+          section: "Style",
+        },
+
+
         addFirst: {
           type: "string",
           label: "Write 1st Link Title",

@@ -36,7 +36,7 @@ import { TablePagination } from "@mui/material";
 
 
 const Styles = ({ children, config }) => {
-  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor, topFont, bottomFont, removeScroll, removeScroll5, removeScroll6, writeTooltip, writeTooltip2, addThird, addThirdhref,  writeTooltip3, buttonColor, button1, button1link, button2, button2link, button3, button3link, button4, button4link, button5, button5link, button6, button6link, button7, button7link, button8, button8link} = config;
+  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor, topFont, bottomFont, removeScroll, removeScroll5, removeScroll6, writeTooltip, writeTooltip2, addThird, addThirdhref,  writeTooltip3, buttonColor, button1, button1link, button2, button2link, button3, button3link, button4, button4link, button5, button5link, button6, button6link, button7, button7link, button8, button8link, bottomTitle} = config;
 
   const StyledWrapper = styled.div`
 
@@ -952,14 +952,14 @@ td a {
 }
 
 #height{
-padding: 0em .6em 0em .6em;
+padding: ${bottomTitle? "1em .6em 0em .6em" : "0em .6em 0em .6em"};
 border-radius:8px;
 display: flex;
 justify-content: center;
 
 flex-wrap: wrap;
 margin:0;
-flex-direction:column;
+flex-direction:${bottomTitle? "column-reverse" : "column"};
 background:${backgroundViz ? `${backgroundViz[0]} !important` : "#06f !important"};
 
 
@@ -967,6 +967,9 @@ overflow-y: ${config.removeScroll ? "hidden" : "scroll"};
 overflow: ${config.removeScroll ? "hidden" : ""};
 }
 
+h5{
+  margin-top: ${bottomTitle? "-.5rem !important" : ".5rem !important"}
+}
 
 .th,
 table .th{
@@ -1052,7 +1055,7 @@ margin-top: 7px;
   border: none;
   font-size: 15px;
   min-height:50px;
-  width:130px;
+  width:140px;
   line-height:1;
   margin:0 5px
 }
@@ -1071,7 +1074,7 @@ margin-top: 7px;
 function Table({ columns, data, config }) {
 
 
-  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll, writeTooltip, writeTooltip2, addThird, addThirdhref, addFirst, addFirsthref, addSecond, addSecondhref, addFourth, addFourthhref, addFifth, addFifthhref, writeTooltip3, writeTooltip5, writeTooltip4, buttonColor, button1, button1link, button2, button2link, button3, button3link, button4, button4link, button5, button5link, button6, button6link, button7, button7link, button8, button8link } = config;
+  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll, writeTooltip, writeTooltip2, addThird, addThirdhref, addFirst, addFirsthref, addSecond, addSecondhref, addFourth, addFourthhref, addFifth, addFifthhref, writeTooltip3, writeTooltip5, writeTooltip4, buttonColor, button1, button1link, button2, button2link, button3, button3link, button4, button4link, button5, button5link, button6, button6link, button7, button7link, button8, button8link,   bottomTitle } = config;
 
   const defaultColumn = React.useMemo(
      () => ({

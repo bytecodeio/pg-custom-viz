@@ -240,6 +240,14 @@ console.log(data, "data api response")
           section: "Style",
         },
 
+        bottomTitle: {
+          type: "boolean",
+          label: "Change Title to Bottom",
+          default: false,
+          order: 31,
+          section: "Style",
+        },
+
         // tableFontSize: {
         //    type: "string",
         //    label: "Table Font Size",

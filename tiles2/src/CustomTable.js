@@ -36,7 +36,7 @@ import { TablePagination } from "@mui/material";
 
 
 const Styles = ({ children, config }) => {
-  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor, topFont, bottomFont, removeScroll, removeScroll5, removeScroll6 } = config;
+  var { thColor, thFontSize, tableBordered, fixedHeight, unsetTable, hidePag, removeBars, rightPag, index, border, unsetWidth, titleColor,  toolOn, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapText, freeze3, short, color_title, backgroundViz, fontColor, topFont, bottomFont, removeScroll, removeScroll5, removeScroll6,   bottomTitle } = config;
 
   const StyledWrapper = styled.div`
 
@@ -978,14 +978,14 @@ td a {
 }
 
 #height{
-padding: 0em .6em 0em .6em;
+padding: ${bottomTitle? "1em .6em 0em .6em" : "0em .6em 0em .6em"};
 border-radius:8px;
 display: flex;
 justify-content: center;
 
 flex-wrap: wrap;
 margin:0;
-flex-direction:column;
+flex-direction:${bottomTitle? "column-reverse" : "column"};
 background:${backgroundViz ? `${backgroundViz[0]} !important` : "#06f !important"};
 
 
@@ -993,6 +993,9 @@ overflow-y: ${config.removeScroll ? "hidden" : "scroll"};
 overflow: ${config.removeScroll ? "hidden" : ""};
 }
 
+h5{
+  margin-top: ${bottomTitle? "-.5rem !important" : ".5rem !important"}
+}
 
 .th,
 table .th{
@@ -1042,6 +1045,11 @@ right: 0;
   width: 0px !important;
 }
 
+.column-reverse{
+  display:flex !important;
+  flex-column:reverse !important;
+}
+
 
   `;
 
@@ -1051,7 +1059,7 @@ right: 0;
 function Table({ columns, data, config }) {
 
 
-  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll } = config;
+  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll, bottomTitle } = config;
 
   const defaultColumn = React.useMemo(
      () => ({
@@ -1138,7 +1146,9 @@ function Table({ columns, data, config }) {
 
 
     <Container fluid className={`${config.removeBars ? "scrunch" : "padding-0 second"}`} id="height">
- <h5 className={config.hideTitle ?  "transparentText top15"  : "mb-2 mt-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
+
+
+    <h5 className={config.hideTitle ?  "transparentText top15"  : "mb-2 mt-2"} style={{ color: titleColor ? titleColor : '#fff', fontFamily: bodyStyle ? bodyStyle : "'Roboto'"}}>{config.writeTitle === "" ? title : config.writeTitle}</h5>
 
 
       <div className={`${config.short ? "short" : ""}`}>
@@ -1633,7 +1643,7 @@ function Table({ columns, data, config }) {
         </div>
 
 
-</div>
+      </div>
 
 
 
