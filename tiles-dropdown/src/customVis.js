@@ -118,7 +118,7 @@ const dimensions = dimensionLike.map((dimension) => ({
   display: "text",
   placeholder: "24px",
 
-  order: 6,
+  order: 7,
   section: "Style",
 },
 
@@ -150,7 +150,7 @@ const dimensions = dimensionLike.map((dimension) => ({
      type: "boolean",
      label: "Remove Scroll and Auto Fit",
      default: false,
-     order: 10,
+     order: 11,
      section: "Style",
     },
 
@@ -170,13 +170,13 @@ const dimensions = dimensionLike.map((dimension) => ({
           values: [{ "Roboto": "'Roboto'" } , { "Open Sans": "'Open Sans'" }, {"Montserrat" : "'Montserrat'"}],
           section: "Style",
           default: "'Roboto', sans-serif;",
-          order: 29,
+          order: 13,
         },
         hideTitle: {
           type: "boolean",
           label: "Hide Title",
           default: false,
-          order: 30,
+          order: 14,
           section: "Style",
         },
 
@@ -186,29 +186,38 @@ const dimensions = dimensionLike.map((dimension) => ({
            default: "",
            display: "text",
            section: "Style",
-           order: 32,
+           order: 15,
         },
 
 
 
         buttonColor: {
           type: "string",
-          label: "Background Color",
+          label: "Dropdown Background Color",
           default: "#06f",
           display: "text",
           placeholder: "#06f",
 
-          order: 2,
+          order: 16,
           section: "Style",
 
         },
+
+        dropdownTitle: {
+          type: "string",
+          label: "Override Dropdown Title",
+          default: "",
+          order: 17,
+          section: "Style",
+        },
+
 
 
         bottomTitle: {
           type: "boolean",
           label: "Change Title to Bottom",
           default: false,
-          order: 3,
+          order: 18,
           section: "Style",
         },
 

@@ -232,33 +232,35 @@ looker.plugins.visualizations.add({
  this.trigger("registerOptions", options);
 
 
-function checkZeroValues(fieldOptions) {
-  let zeroCount = 0;
+// function checkZeroValues(fieldOptions) {
+//   let zeroCount = 0;
+//
+//   for (const option of fieldOptions) {
+//     const values = option[Object.keys(option)[0]].split(",");
+//
+//     zeroCount += values.filter(value => value === "0").length;
+//
+//     if (zeroCount > 2) {
+//       break;
+//     }
+//   }
+//
+//   return zeroCount;
+// }
+//
+// const zeroCount = checkZeroValues(fieldOptions);
 
-  for (const option of fieldOptions) {
-    const values = option[Object.keys(option)[0]].split(",");
-
-    zeroCount += values.filter(value => value === "0").length;
-
-    if (zeroCount > 2) {
-      break;
-    }
-  }
-
-  return zeroCount;
-}
-
-const zeroCount = checkZeroValues(fieldOptions);
 
 
 
-if (zeroCount > 2) {
-  this.addError({
-    title: "Incompatible Data",
-    message: "This chart requires you to not have values that are not null or zero",
-  });
-  return;
-}
+
+// if (zeroCount > 2) {
+//   this.addError({
+//     title: "Incompatible Data",
+//     message: "This chart requires you to not have values that are not null or zero",
+//   });
+//   return;
+// }
 
 
 

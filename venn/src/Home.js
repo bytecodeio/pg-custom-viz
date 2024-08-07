@@ -177,6 +177,55 @@ const fields = {
   pivots: pivots?.map((p) => p.name),
 };
 
+const { measure_like: measureLike } = queryResponse.fields;
+const { dimension_like: dimensionLike } = queryResponse.fields;
+
+const dimensions1 = dimensionLike.map((dimension) => ({
+  label: dimension.label_short ?? dimension.label,
+  name: dimension.name
+
+}));
+
+const measures1 = measureLike.map((measure) => ({
+  label: measure.label_short ?? measure.label,
+  name: measure.name
+}));
+
+const fieldOptions = [...dimensions1, ...measures1].map((dim) => ({
+  [dim.label]: queryResponse.data.map(row => row[dim.name].value).join(",")
+}));
+
+
+function checkZeroValues(fieldOptions) {
+  let zeroCount = 0;
+
+  for (const option of fieldOptions) {
+    const values = option[Object.keys(option)[0]].split(",");
+
+    zeroCount += values.filter(value => value === "0").length;
+
+    if (zeroCount > 2) {
+      break;
+    }
+  }
+
+  return zeroCount;
+}
+
+const zeroCount = checkZeroValues(fieldOptions);
+
+
+
+
+//
+// if (zeroCount > 2) {
+//
+// }
+
+const [showVenn, setShowVenn] = useState(zeroCount <= 2);
+
+
+
 const dimensionName = fields.dimensions[0];
 
   const Content = config.reachPercentage.split(",").map((d, i) => ({
@@ -185,6 +234,9 @@ const dimensionName = fields.dimensions[0];
   investment: config.investment.split(",")[i],
 
   }))
+
+console.log
+
 
 
 if(reachPercentage.length === 0 && numbers.length === 0 && investment.length === 0) {
@@ -272,6 +324,8 @@ const dotColors = config.colors.slice(0, numberOfSingleValues);
 
 
 useEffect(() => {
+  if (showVenn) {
+
 
 function combineArraysToObject(array1, array2) {
   if (!Array.isArray(array1) || !Array.isArray(array2)) {
@@ -407,7 +461,10 @@ d3.selectAll(".venn-area.venn-circle path")
         .style("font-weight", "100")
         .style("font-size", "24px");
     });
-}, [data]);
+
+}
+
+}, [data, showVenn]);
 
 
   return (
@@ -425,12 +482,15 @@ d3.selectAll(".venn-area.venn-circle path")
       </Container>
 
       <div className="lightBubble mt-0" style={{ backgroundColor: color_title ? background[0] : 'white'}}>
-      <Container fluid className={across ? "" : "across"}>
+
+    <Container fluid className={across === false && showVenn ? 'across' : !showVenn  ? '' : ''}>
         <Row>
+            {showVenn && (
             <div
             id="venn"
             config={config}>
             </div>
+          )}
         </Row>
         <div className="halfWidth">
 
@@ -446,7 +506,6 @@ d3.selectAll(".venn-area.venn-circle path")
           <Row>
             <Col md={12}>
 
-            {console.log(numberOfSingleValues)}
 
             <div className="d-flex justify-content-between">
 

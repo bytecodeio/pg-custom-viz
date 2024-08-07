@@ -1074,7 +1074,7 @@ margin-top: 7px;
 function Table({ columns, data, config }) {
 
 
-  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll, writeTooltip, writeTooltip2, addThird, addThirdhref, addFirst, addFirsthref, addSecond, addSecondhref, addFourth, addFourthhref, addFifth, addFifthhref, writeTooltip3, writeTooltip5, writeTooltip4, buttonColor, button1, button1link, button2, button2link, button3, button3link, button4, button4link, button5, button5link, button6, button6link, button7, button7link, button8, button8link,   bottomTitle } = config;
+  var { tableBordered, fixedHeight, unsetTable, hidePag, rightPag, removeBars, index, border, textTitle, color_title, writeTitle, toolOn, writeTooltip, headerText, yesText, unsetWidth, titleColor, bodyStyle, hideTitle, tableFontSize, columnsToHide, freeze, wrapTex, freeze3, short, backgroundViz, fontColor, removeScroll, writeTooltip, writeTooltip2, addThird, addThirdhref, addFirst, addFirsthref, addSecond, addSecondhref, addFourth, addFourthhref, addFifth, addFifthhref, writeTooltip3, writeTooltip5, writeTooltip4, buttonColor, button1, button1link, button2, button2link, button3, button3link, button4, button4link, button5, button5link, button6, button6link, button7, button7link, button8, button8link,   bottomTitle, bottomTitle } = config;
 
   const defaultColumn = React.useMemo(
      () => ({
@@ -1187,7 +1187,7 @@ const addDropdownData = [
 
 </div>
 
-    <DropdownButton id="dropdown-basic-button" title="Reference" style={{background: buttonColor ? buttonColor : "#06f"}}>
+      <DropdownButton id="dropdown-basic-button" title={config.dropdownTitle === "" ? "Reference" : config.dropdownTitle} style={{background: buttonColor ? buttonColor : "#06f"}}>
 
     {addDropdownData.map((button, index) => (
         button.text ? (
